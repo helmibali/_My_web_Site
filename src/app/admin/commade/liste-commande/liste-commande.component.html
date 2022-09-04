@@ -1,0 +1,107 @@
+<app-dashboard *ngIf="authService.isAdmin()"></app-dashboard>
+<div class="entete">
+  <h5 class="text-center mt-1">
+    Liste des commandes
+  </h5>
+</div>
+
+<!-- tableau de Produits -->
+
+<div class="container tab">
+    <div class="card shadow mb-4">
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">nom</th>
+        <th scope="col">prix</th>
+        <th scope="col">date création</th>
+        <th scope="col">produits</th>
+        
+        <th scope="col">etat</th>
+        <th colspan="2" scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of commandes">
+      <td>{{ c.user.prenom }} {{ c.user.nom  }}
+        <!-- <a href="#"><img class="card-img-top img-responsive rounded-circle"
+            src = "{{'http://localhost:8081/api/imgp/'+produit.idProduit}}" 
+            style = "height :70px;width:50px"
+           alt=""></a> -->
+    </td> 
+        <td></td>
+        <td>{{ c.prixCommande }}</td>
+        <td>{{c.dateCreation|date:'dd/MM/yyyy'}}</td> 
+        
+        <td>
+            <ul *ngFor="let cart of c.carts">
+                <li class="list-group-item">
+                    <img class="card-img-top img-responsive"
+                    src = "{{'http://localhost:8081/api/imgp/'+cart.produit.idProduit}}" 
+                    style = "height :70px;width:50px"
+                   alt="">
+                    {{cart.produit.nomProduit }}
+                    
+                </li>
+            </ul>
+        </td>
+        <td>
+           <small *ngIf="!c.annulation && !c.validation" style="color: orangered;">en cours</small>
+           <small *ngIf="!c.annulation && c.validation" style="color:green ;">validé</small>
+           <small *ngIf="c.annulation && !c.validation" style="color: red;">annulé</small>
+        </td>
+        
+          <td>
+            <form [formGroup]="this.commandeService.dataForm" (ngSubmit)="valider(c)">
+                <div class="form-group" hidden>      
+                    <input type="text" class="form-control"
+                     formControlName="validation" id="validation" placeholder="">
+                  </div>
+                  <div class="form-group" hidden>      
+                      <input type="text" class="form-control"
+                       formControlName="annulation" id="annualation" placeholder="">
+                    </div>
+            
+            <button *ngIf="!c.validation"
+            type="button"
+            style="color:white ;"
+            type="submit"
+            
+            class="badge bg-success">
+            valider
+            </button>
+              </form>
+
+              <form [formGroup]="this.commandeService.activeForm" (ngSubmit)="annuler(c)">
+                <div class="form-group" hidden>      
+                  <input type="text" class="form-control"
+                   formControlName="validation" id="validation" placeholder="">
+                </div>
+                <div class="form-group" hidden>      
+                    <input type="text" class="form-control"
+                     formControlName="annulation" id="annualation" placeholder="">
+                  </div>
+              <button *ngIf="!c.annulation"
+              type="button"
+              style="color:white ;"
+              type="submit"
+              class="badge bg-danger">
+              Annuller
+              </button>
+                </form>
+         </td>
+       
+        <!-- <td><a *ngIf="authService.isAdmin()" class="btn btn-outline-danger" (click)="supprimerProduit(produit)">
+          <i class="fa fa-trash"></i></a></td>
+        <td><a *ngIf="authService.isAdmin()" class="btn btn-outline-secondary" [routerLink]="['/updateProduit',produit.idProduit]">
+          <i class="fa fa-edit"></i></a>
+        </td> -->
+    </tr>
+  </tbody>
+</table>
+   
+  
+</div>
+<!-- <pagination-controls (pageChange)="p =$event"></pagination-controls> -->
+</div>
