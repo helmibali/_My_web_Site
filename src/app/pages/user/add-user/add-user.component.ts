@@ -30,7 +30,6 @@ export class AddUserComponent implements OnInit {
   socialUser: SocialUser;
   selectedGouvernorat: any={id:0,  libelle:''};
   selectedRoles:Role[]=[{id:2,role:'USER'}];
-  //selectedRole:any={id:1,  libelle:'USER'};
   imgURL: any;
   public imagePath;
   public message: string;

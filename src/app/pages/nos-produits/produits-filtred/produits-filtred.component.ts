@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import { Produit } from 'src/app/model/produit.model';
-import { ProduitService } from 'src/app/produit.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProduitService } from 'src/app/services/produit.service';
+;
 
 @Component({
   selector: 'app-produits-filtred',

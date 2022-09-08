@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,25 +13,6 @@ export class AppComponent {
   darkModeEnabled:boolean = false;
  constructor(public authService:AuthService,
               private router: Router){}
-
-//  ngOnInit(){
-//    let isloggedin: string;
-//    let loggedUser:string;
-//    isloggedin = localStorage.getItem('isloggedIn');
-//    loggedUser = localStorage.getItem('loggedUser');
-//   // if (isloggedin!="true" || !loggedUser)
-//   // this.router.navigate(['/login']);
-//   // else
-//   // this.authService.setLoggedUserFromLocalStorage(loggedUser);
-//   this.authService.loadToken();
-// if (this.authService.getToken()==null ||
-//  this.authService.isTokenExpired())
-// this.router.navigate(['/login']);
-//    else
-//    this.authService.setLoggedUserFromLocalStorage(loggedUser);
-//  }
-
-
 ngOnInit() {
      let isloggedin: string;
    let loggedUser:string;

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import { Marque } from 'src/app/model/marque.model';
 import { Modele } from 'src/app/model/modele.model';
 import { Produit } from 'src/app/model/produit.model';
-import { ProduitService } from 'src/app/produit.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProduitService } from 'src/app/services/produit.service';
+
 
 @Component({
   selector: 'app-produits',
@@ -22,7 +23,7 @@ export class ProduitsComponent implements OnInit {
               private router : Router,
               public authService:AuthService,
               private formBuilder : FormBuilder) {
-    //this.produits = produitService.listeProduits();
+  
    }
 
    ngOnInit(): void {

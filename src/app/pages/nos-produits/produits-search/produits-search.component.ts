@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { AuthService } from 'src/app/auth.service';
 import { Categorie } from "src/app/model/categorie.model";
 import { Delegation } from "src/app/model/delegation.model";
 import { Famille } from "src/app/model/famille.model";
@@ -9,13 +8,14 @@ import { Marque } from "src/app/model/marque.model";
 import { Modele } from "src/app/model/modele.model";
 import { Moteur } from "src/app/model/moteur.model";
 import { Produit } from "src/app/model/produit.model";
-import { ProduitService } from "src/app/produit.service";
+import { AuthService } from 'src/app/services/auth.service';
 import { CatService } from "src/app/services/cat.service";
 import { DelegationService } from "src/app/services/delegation.service";
 import { FamilleService } from "src/app/services/famille.service";
 import { GouvernoratService } from "src/app/services/gouvernorat.service";
 import { MarqueService } from "src/app/services/marque.service";
 import { ModeleService } from "src/app/services/modele.service";
+import { ProduitService } from 'src/app/services/produit.service';
 
 
 @Component({

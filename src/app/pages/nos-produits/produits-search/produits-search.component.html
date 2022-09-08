@@ -1,9 +1,206 @@
 <div class="n">
-    <app-navbar></app-navbar>
+  <app-menu></app-menu>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div style="background-color: #e9ebedaf">
       <div class="all" style="display: flex">
-  
+
+        <div class="filter-mobile ">
+          <div class="button-filtre-div" >
+          <button class="btn btn-danger button-filtre" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                     <i class="fa fa-filter">filtre</i>
+          </button>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div class="collapse navbar-collapse filter2">
+            <div class="mt-5" style="  position: sticky; top: 85px;width: 95%;border:2px rgb(135, 135, 135) solid;border-radius: 1rem;background-color: #e9ebedaf">
+                <div class="mt-3" style="width:50%;margin: auto;">
+                    <h4>Filtre avancé</h4>
+                </div>
+                <div></div>
+                <div style="width: 80%;margin: auto;">
+                    <input
+                      class="form-control form-control-lg recherche text-center"
+                    
+                      type="search"
+                      placeholder="Rechercher une piece..."
+                      aria-label="Search"
+                      [(ngModel)]="term"
+                    />
+                  </div>
+        
+                  <div>
+                    <div class="mt-2 mb-2" style="width: 100%">
+                        <div style="display: flex;width: 100%;">
+                          <div style="width:45% ; margin: auto;">
+                            <select
+                              class="form-control mb-1 inputFiltre text-center"
+                         
+                              [(ngModel)]="selectedFamille.id"
+                              (change)="onSelectByFamille($event)"
+                            >
+                              <option value="0"><u>Catégorie</u></option>
+                              <option *ngFor="let f of familles" [value]="f.id">
+                                {{ f.libelle }}
+                              </option>
+                            </select>
+                          </div>
+                          <div style="width:45% ;margin: auto;">
+                            <select
+                              class="form-control mb-1 inputFiltre text-center"
+                              style="/* border-radius: 10px; */"
+                              [(ngModel)]="selectedCategorie.id"
+                              (change)="onSelectByCat($event)"
+                            >
+                              <option value="0">Sous-catégorie</option>
+                              <option
+                                *ngFor="let c of categoriesByFamille"
+                                [value]="c.id"
+                              >
+                                {{ c.nomCategorie }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-2 mb-2" style="width: 100%">
+                        <div style="display: flex;">
+                          <div style="width: 45%;margin: auto;">
+                            <select
+                              class="form-control mb-1 inputFiltre text-center"
+                              style="/* border-radius: 10px; */"
+                              [(ngModel)]="selectedMarque.id"
+                              (change)="onSelect($event)"
+                            >
+                              <option value="0">Marque</option>
+                              <option *ngFor="let m of marques" [value]="m.id">
+                                {{ m.libelleMarque }}
+                              </option>
+                            </select>
+                          </div>
+                          <div style="width: 45%;margin: auto;">
+                            <select
+                              class="form-control mb-1 inputFiltre text-center"
+                              style="/* border-radius: 10px; */"
+                              [(ngModel)]="selectedModele.id"
+                              (change)="onSelectByMod($event)"
+                            >
+                              <option value="0">Modele</option>
+                              <option
+                                *ngFor="let mod of modelesByMarque"
+                                [value]="mod.id"
+                              >
+                                {{ mod.libelleModele }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-2 mb-2" style="width: 100%">
+                       
+                      </div>
+        
+                      <div class="mt-2 mb-2" style="width: 100%">
+                        <div style="display: flex;">
+                          <div style="width:45%;margin:auto;">
+                            <select
+                              class="form-control mb-1 inputFiltre text-center"
+                              style="/* border-radius: 10px; */"
+                              [(ngModel)]="selectedGouvernorat.id"
+                              (change)="onSelectGov($event)"
+                            >
+                              <option style="border-radius: 25px" value="0">
+                                Gouvernourat
+                              </option>
+                              <option
+                                style="border-radius: 25px"
+                                *ngFor="let g of gouvernorats"
+                                [value]="g.id"
+                              >
+                                {{ g.libelle }}
+                              </option>
+                            </select>
+                          </div>
+                          <div style="width:45%;margin:auto;">
+                            <select
+                              class="form-control mb-1 inputFiltre text-center"
+                              style="/* border-radius: 10px; */"
+                              [(ngModel)]="selectedDelegation.id"
+                              (change)="onSelectByDelegation($event)"
+                            >
+                              <option value="0">Délégation</option>
+                              <option *ngFor="let d of delegationsByGov" [value]="d.id">
+                                {{ d.libelle }}
+                              </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="submit mt-3 mb-5" style="display: flex;width: 100%">
+                        <button
+                          class="btn btn-danger btn-lg"
+                          style="width: 70%;margin: auto;"
+                          (click)="filter2()"
+                        >
+                          Filtrer <i class="fa fa-filter"></i>
+                        </button>
+                      </div>
+        
+        
+                  </div>
+            </div>
+        
+        
+        </div>
+        </div>
+        </div>
+        
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <div class="filter">
           <div class="mt-5" style="  position: sticky; top: 85px;width: 95%;border:2px rgb(135, 135, 135) solid;border-radius: 1rem;background-color: #e9ebedaf">
               <div class="mt-3" style="width:50%;margin: auto;">
@@ -195,23 +392,23 @@
   
   
   
-          <div class="ml-3 mt-1" style="width:75% ;">
+          <div class="ml-3 produits" style="width:75% ;">
             
       
             
-<div style="display:flex;">
-    <div class="btn-group"  role="group" aria-label="Button group with nested dropdown">
-      <button *ngIf="!dies && !gaz && !elec"type="button"class="btn btn-secondary"(click)="essence()">{{essenceButton}} </button> 
-       <button *ngIf="dies || gaz || elec"type="button" class="btn btn-secondary"disabled>{{essenceButton}} </button>
+<div class="energy" style="display:flex;">
+    <div class="btn-group mt-sm-5 groupe"  role="group" aria-label="Button group with nested dropdown">
+      <button *ngIf="!dies && !gaz && !elec"type="button"class="btn btn-secondary essence"(click)="essence()">{{essenceButton}} </button> 
+       <button *ngIf="dies || gaz || elec"type="button" class="btn btn-secondary essence"disabled>{{essenceButton}} </button>
 
-      <button *ngIf="!ess && !gaz && !elec"type="button"  class="btn btn-secondary" (click)="diesel()">{{dieselButton}}</button>
-       <button *ngIf="ess || gaz || elec"type="button"class="btn btn-secondary" disabled>{{dieselButton}}</button>
+      <button *ngIf="!ess && !gaz && !elec"type="button"  class="btn btn-secondary diesel" (click)="diesel()">{{dieselButton}}</button>
+       <button *ngIf="ess || gaz || elec"type="button"class="btn btn-secondary diesel" disabled>{{dieselButton}}</button>
 
-      <button *ngIf="!ess && !dies && !gaz" type="button" class="btn btn-secondary" (click)="electrique()">{{electriqueButton}}</button>
-      <button *ngIf="ess || dies || gaz" type="button" class="btn btn-secondary" disabled>{{electriqueButton}}</button>
+      <button *ngIf="!ess && !dies && !gaz" type="button" class="btn btn-secondary electrique" (click)="electrique()">{{electriqueButton}}</button>
+      <button *ngIf="ess || dies || gaz" type="button" class="btn btn-secondary electrique" disabled>{{electriqueButton}}</button>
       
-      <button *ngIf="!ess && !dies && !elec" type="button" class="btn btn-secondary" (click)="gpl()">{{gplButton}}</button>
-      <button *ngIf="ess || dies || elec" type="button" class="btn btn-secondary" disabled>{{gplButton}}</button>
+      <button *ngIf="!ess && !dies && !elec" type="button" class="btn btn-secondary gpl" (click)="gpl()">{{gplButton}}</button>
+      <button *ngIf="ess || dies || elec" type="button" class="btn btn-secondary gpl" disabled>{{gplButton}}</button>
       <div  class="btn-group" role="group">
         <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Année
@@ -297,6 +494,10 @@
           </div>
         </div>
       </div>
+
+
+
+
   
   
   <app-footer></app-footer>

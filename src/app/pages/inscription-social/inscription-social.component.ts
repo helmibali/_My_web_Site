@@ -10,8 +10,9 @@ import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { UserService } from 'src/app/services/user.service';
 import { Location } from '@angular/common';
 import { User } from 'src/app/model/user.model';
-import { AuthService } from 'src/app/auth.service';
+
 import { CustomValidationService } from 'src/app/services/custom-validation.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({

@@ -1,15 +1,14 @@
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { $$ } from 'protractor';
-import { AuthService } from 'src/app/auth.service';
 import { Cart } from 'src/app/model/cart.model';
 import { Message } from 'src/app/model/message.model';
 import { Produit } from 'src/app/model/produit.model';
 import { User } from 'src/app/model/user.model';
-import { ProduitService } from 'src/app/produit.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { MessageService } from 'src/app/services/message.service';
+import { ProduitService } from 'src/app/services/produit.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({

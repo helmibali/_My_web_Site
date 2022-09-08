@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import { Marque } from 'src/app/model/marque.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { MarqueService } from 'src/app/services/marque.service';
 
 @Component({

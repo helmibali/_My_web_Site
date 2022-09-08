@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import { Categorie } from 'src/app/model/categorie.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { CatService } from 'src/app/services/cat.service';
 
 @Component({

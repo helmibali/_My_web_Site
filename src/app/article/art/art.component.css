@@ -28,3 +28,34 @@
  z-index: 9998; 
 
 }
+@media screen and (max-width:790px){
+    .root{
+        display: flex;
+        flex-direction: column;
+     
+    }
+    .config{ 
+        width: 0%; 
+        display: none; 
+    }
+    .create-article{
+        width: 100%;
+        display: flex; 
+        /* justify-content:center */
+        flex-direction: column;
+        z-index: 9997;
+    }
+    
+.articles{ 
+    width: 95%;
+    margin-bottom: 20px;
+  
+}
+.photo{
+    display: none;
+}
+.text{
+    display: none;
+}
+
+}

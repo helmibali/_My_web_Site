@@ -2,11 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
- import {  GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import {  GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from 'src/app/auth.service';
 import { Role } from 'src/app/model/role.model';
 import { User } from 'src/app/model/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -67,25 +67,13 @@ random:String;
           })
         });
   }
-  
- 
-
-
-  
-   
-    
- 
-   
-  
-
     signInHandler(): void {
       this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
         localStorage.setItem('google_auth', JSON.stringify(data));
         this.router.navigateByUrl('/verification').then();
         this.socialService.authState.subscribe((userSocial)=>{
           this.socialUser = userSocial;
-          console.log(this.socialUser);
-          
+          console.log(this.socialUser);       
         })
       });
     }
@@ -96,18 +84,6 @@ random:String;
 
 
   
-  // onLoggedin()
-  //   {
-  //     this.authService.login(this.user).subscribe({
-  //       next: (data) => {
-  //         let jwToken = data.headers.get('Authorization')!;
-  //         this.authService.saveToken(jwToken);
-  //          this.router.navigate(['/']); 
-  //       },
-  //       error: (err: any) => {
-  //       this.err = 1; 
-  //       }
-  //       });   
-  //   }
+
 
 }

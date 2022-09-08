@@ -1,14 +1,153 @@
-<div class="n"><app-navbar></app-navbar></div>
+<div class="n">
+  <app-menu></app-menu>
+</div>
 <div style="background-color:#e9ebedaf ;">
  
    
         <div class="all">
+
+
+          <p>
+            <button class="btn btn-danger button-user" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="profile-mobile">
+              <div style="width:100% ;position:sticky; top:80px;">
+                <div class="card mt-3 mb-3" style="width:90%;margin: auto;border-radius: 10px;">
+               
+                  <div class="card-body " style="margin:auto;">
+                    <div class="photo">
+                      <div *ngIf="user?.filename===null" style="display:flex ;align-items:center;" >
+                        <img src="../../../assets/images/user.png"  class="rounded-circle" 
+                        style="width: 90px;height:80px;margin:auto;" alt="...">
+                      </div>
+                      <div *ngIf="user?.filename!==null" style="display:flex ;align-items:center;">
+                        <img src="{{'http://localhost:8081/api/ImgUser/'+user.user_id}}"  class="rounded-circle" 
+                        style="width: 70px;height:80px;margin:auto;" alt="...">
+                      </div>
+                    </div>
+                    <h5 class="card-title" style="margin:auto ;" >{{user?.prenom}} {{user?.nom}}</h5>
+                  </div>
+                  <ul class="list-group list-group-flush mb-3">
+                 
+                    
+                    <li class="list-group-item"*ngIf="user?.username !== this.authService.loggedUser "><i class="fa fa-phone"> {{user?.telephone}}</i></li>
+                    <li class="list-group-item"*ngIf="user?.username !== this.authService.loggedUser "><i class="fa fa-envelope" aria-hidden="true"> {{user?.username}}</i></li>
+                    <li class="list-group-item"*ngIf="user?.username !== this.authService.loggedUser "><i class="fa fa-map-marker" aria-hidden="true"> {{user?.delegation.libelle}},{{user?.delegation.gouvernorat.libelle}}</i></li>
+                    <li class="list-group-item p-0 ml-2"*ngIf="user?.username === this.authService.loggedUser ">
+                        <div class="m-0" id="headingProduits">
+                            
+                            <button 
+                            class="btn btn-light"
+                            style="border:none;"
+                             type="button" data-toggle="collapse" 
+                             data-target="#mesproduits" 
+                             aria-expanded="false"
+                              aria-controls="mesproduits"
+                              (click)="scroll()">
+                              <b style="font-size:15px ;color: black;"> Mes produits actives {{produits?.length }}</b>
+                            </button>
+                          
+                        </div>
+                    </li>
+                    <li class="list-group-item p-0 ml-2"*ngIf="user?.username === this.authService.loggedUser ">
+                        <div class="m-0" id="headingTwo">
+                            
+                              <button 
+                              class="btn btn-light"
+                            style="border:none;"
+                               type="button" 
+                               data-toggle="collapse"
+                                data-target="#pcmd" 
+                                aria-expanded="false"
+                                 aria-controls="pcmd"
+                                 (click)="scroll()"
+                                 ><b style="font-size:15px ;color: black;">Mes produits commandés {{cartsCmd?.length }}</b>
+                                
+                              </button>
+                            
+                          </div>
+                      <!-- <cartinCmd [cartsCmd]="cartsCmd"></cartinCmd> -->
+                    </li>
+                    <li class="list-group-item p-0 ml-2"*ngIf="user?.username === this.authService.loggedUser ">
+                        <div class="m-0" id="headingOne">
+                            
+                              <button 
+                              class="btn btn-light"
+                            style="border:none;" 
+                              type="button" 
+                              data-toggle="collapse" 
+                              data-target="#discussion"
+                               aria-expanded="true"
+                                aria-controls="collapseOne"
+                                (click)="scroll()">
+                                
+                                <b style="font-size:15px ;color: black;">  Mes commandes {{carts?.length }}</b>
+                              </button>
+                            
+                          </div>
+                    </li>
+                    <li class="list-group-item p-0 ml-2"*ngIf="user?.username === this.authService.loggedUser ">
+                        <div class="m-0" id="headingThree">
+                            
+                              <button 
+                              class="btn btn-light"
+                            style="border:none;"
+                               type="button" 
+                               data-toggle="collapse" 
+                               data-target="#mesmessages" 
+                               aria-expanded="false"
+                               
+                                (click)="scroll()">
+                                <b style="font-size:15px ;color: black;">Mes messsages</b>
+                              </button>
+                            
+                          </div>
+                    </li>
+                    <li class="list-group-item p-0 ml-2"*ngIf="user?.username === this.authService.loggedUser ">
+                        <div class="m-0" id="headingThree">
+                            
+                              <button 
+                              class="btn btn-light"
+                            style="border:none;"
+                               type="button" 
+                               data-toggle="collapse" 
+                               data-target="#mesposts" 
+                               aria-expanded="false"
+                               
+                                (click)="scroll()">
+                                <b style="font-size:15px ;color: black;">Mes posts</b>
+                              </button>
+                            
+                          </div>
+                    </li>
+                   
+                    
+                  </ul>
+                
+                </div>
+              </div>
+      
+            
+      
+              
+    
+            
+      
+            </div>
+          </div>
+
+
+
         <div class="profile">
           <div style="width:100% ;position:sticky; top:80px;">
             <div class="card mt-3 mb-3" style="width:70%;margin: auto;border-radius: 10px;">
            
-              <div class="card-body" style="margin:auto;">
-                <div>
+              <div class="card-body " style="margin:auto;">
+                <div class="photo">
                   <div *ngIf="user?.filename===null" style="display:flex ;align-items:center;" >
                     <img src="../../../assets/images/user.png"  class="rounded-circle" 
                     style="width: 90px;height:80px;margin:auto;" alt="...">

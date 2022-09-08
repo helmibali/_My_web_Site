@@ -52,10 +52,14 @@ small.justify-content-center{
 	text-decoration: underline;
 }
 
-@media screen and (max-width:600px){
+@media screen and (max-width:790px){
     .col-sm-4{
         margin-bottom: 50px;
     }
+	.produit-card{
+		margin-left: 14%;
+		
+	}
 }
 
 

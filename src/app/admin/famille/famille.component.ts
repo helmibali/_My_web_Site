@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth.service';
 import { Famille } from 'src/app/model/famille.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { FamilleService } from 'src/app/services/famille.service';
 
 @Component({

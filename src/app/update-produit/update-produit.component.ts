@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../auth.service';
 import { Categorie } from '../model/categorie.model';
 import { Delegation } from '../model/delegation.model';
 import { Famille } from '../model/famille.model';
@@ -10,12 +9,13 @@ import { Gouvernorat } from '../model/gouvernorat.model';
 import { Marque } from '../model/marque.model';
 import { Modele } from '../model/modele.model';
 import { Produit } from '../model/produit.model';
-import { ProduitService } from '../produit.service';
+import { AuthService } from '../services/auth.service';
 import { CatService } from '../services/cat.service';
 import { DelegationService } from '../services/delegation.service';
 import { GouvernoratService } from '../services/gouvernorat.service';
 import { MarqueService } from '../services/marque.service';
 import { ModeleService } from '../services/modele.service';
+import { ProduitService } from '../services/produit.service';
 
 @Component({
   selector: 'app-update-produit',

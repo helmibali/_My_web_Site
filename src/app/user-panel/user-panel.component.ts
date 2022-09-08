@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AuthService } from '../auth.service';
 import { Article } from '../model/article.model';
 import { Cart } from '../model/cart.model';
 import { Message } from '../model/message.model';
 import { Produit } from '../model/produit.model';
 import { User } from '../model/user.model';
-import { ProduitService } from '../produit.service';
 import { ArticleService } from '../services/article.service';
+import { AuthService } from '../services/auth.service';
 import { CartService } from '../services/cart.service';
 import { MessageService } from '../services/message.service';
+import { ProduitService } from '../services/produit.service';
 import { UserService } from '../services/user.service';
 
 @Component({

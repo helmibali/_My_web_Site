@@ -2,28 +2,28 @@
   <footer class="py-5 bg-light">
     <div class="container">
       <div class="row">
-        <div class="col-3 element">
+        <div class="col-sm-1 col-md-2 col-l-3 element">
   <div>
     <a type="button" style="color:rgb(61, 59, 59) ;" routerLink="/Conditions-utilisation">Conditions d'utilisation</a><br>
   
   
   </div>
         </div>
-        <div class="col-3 element">
+        <div class="col-sm-1 col-md-2 col-l-3 element">
           <div>
             <a type="button" style="color:rgb(61, 59, 59) ;" routerLink="/Regles-De-Diffusion">Règles de diffusion</a><br>
       
           
           </div>
         </div>
-        <div class="col-3 element">
+        <div class="col-sm-1 col-md-2 col-l-3 element">
           <div>
             <a type="button" style="color:rgb(61, 59, 59) ;" routerLink="/contact">Contactez-nous</a>
            
          
           </div>
         </div>
-        <div class="col-3 element">
+        <div class="col-sm-1 col-md-2 col-l-3 element">
           <div>
             <a *ngIf="!authService.isloggedIn" type="button" style="color:rgb(61, 59, 59) ;" routerLink="/login">S'identifier</a><br>
             <a *ngIf="!authService.isloggedIn" type="button" style="color:rgb(61, 59, 59) ;" routerLink="/sign-up">S'inscrire</a><br>

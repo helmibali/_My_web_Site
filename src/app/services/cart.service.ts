@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth.service';
+
 import { Cart } from '../model/cart.model';
+import { AuthService } from './auth.service';
 const httpOPtions = {
   headers : new HttpHeaders({'Content-Type':'application/json'})
  };

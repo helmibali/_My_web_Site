@@ -1,3 +1,16 @@
+.filtre-mobile{
+    display: none;
+    
+    position: sticky;
+    top: 150px;
+}
+
+.button-filtre{
+    display: none;
+    position: sticky;
+    top: 25px;
+    z-index: 9998;
+}
 .n{
     position: sticky;
     top:0px;
@@ -41,7 +54,19 @@
 }
 
 
-
+.filter2{
+    display: none;
+    background-color:#ddd;
+   
+    width: 100%;
+    border-radius: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: sticky;
+   top: 85px;
+    
+}
 
 
 
@@ -245,5 +270,104 @@ small.justify-content-center{
         margin-bottom: 50px;
     }
 }
+@media only screen and (max-width:790px){
+    .filtre{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        margin: auto;
+       position: sticky;
+       top: 85px;
+       height:400px;
+    }
+    .filter{
+        display: none;
+        background-color:#ddd;
+       
+        width: 100%;
+        border-radius: 1rem;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        position: sticky;
+       top: 85px;
+        
+    }
+    .filter2{
+        margin-top: 0px;
+        display: flex;
+        background-color:#ddd;
+       z-index: 12;
+        width: 100%;
+        border-radius: 1rem;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+         position: fixed;
+       top: 54px; 
+        
+    }
+    
+.all{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 
+.produits{
+   margin-top: 10px; 
+    width: 100%;
+    
+    
+}
+.energy{
+    margin-top: 100px;
+   
+    
+}
+.filtre-mobile{
+    display:flex;  
+    
+    position: relative;
+    top: 150px;
+}
+
+.button-filtre{
+    display: flex;
+    position: fixed;
+    border-radius: 0px;
+    top: 1%;
+    z-index: 9999;
+    left: 70%;
+    
+}
+.essence{
+    
+}
+
+.diesel{
+    
+}
+.electrique{
+    
+}
+.gpl{
+    
+}
+.groupe{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0%;
+    margin-top: -20%;
+}
+.button-filtre-div{
+    display: flex;
+    position: fixed;
+    border-radius: 25px;
+    top: 1%;
+    z-index: 9999;
+    left: 70%;  
+}
+}
 

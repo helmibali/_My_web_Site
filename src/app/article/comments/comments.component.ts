@@ -1,12 +1,13 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+
 import { ActiveCommentInterface } from 'src/app/model/activeComment';
 import { Article } from 'src/app/model/article.model';
 import { Cmt } from 'src/app/model/cmt.model';
 
 import { User } from 'src/app/model/user.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({

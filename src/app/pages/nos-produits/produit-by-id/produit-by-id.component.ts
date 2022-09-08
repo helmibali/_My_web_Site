@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import { Cart } from 'src/app/model/cart.model';
 import { Produit } from 'src/app/model/produit.model';
 import { User } from 'src/app/model/user.model';
-import { ProduitService } from 'src/app/produit.service';
 import { CartService } from 'src/app/services/cart.service';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { ProduitService } from 'src/app/services/produit.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-produit-by-id',
   templateUrl: './produit-by-id.component.html',

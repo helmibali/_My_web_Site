@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './ui/navbar/navbar.component';
@@ -14,7 +13,6 @@ import { UpdateProduitComponent } from './update-produit/update-produit.componen
 import { HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
-import { PieceComponent } from './pages/piece/piece.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { ListeCategorieComponent } from './pages/categorie/liste-categorie/liste-categorie.component';
 import { UpdateCategorieComponent } from './pages/categorie/update-categorie/update-categorie.component';
@@ -29,11 +27,8 @@ import { SlideComponent } from './ui/slide/slide.component';
 import { NosProduitsComponent } from './pages/nos-produits/nos-produits.component';
 import { ListModeleComponent } from './pages/modele/list-modele/list-modele.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { TestComponent } from './test/test.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { FiltreComponent } from './ui/filtre/filtre.component';
-
-
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AddModeleComponent } from './pages/modele/add-modele/add-modele.component';
 import { UpdateImageComponent } from './pages/user/update-image/update-image.component';
@@ -75,13 +70,11 @@ import { ListeCartCmdComponent } from './cart/liste-cart-cmd/liste-cart-cmd.comp
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
-
 import { DiscussionsComponent } from './pages/discussions/discussions.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { WriteMessageComponent } from './pages/write-message/write-message.component';
 import { MessagesAllComponent } from './pages/messages/messages-all/messages-all.component';
 import { ProduitsSearchComponent } from './pages/nos-produits/produits-search/produits-search.component';
-
 import { FacebookLoginProvider,SocialLoginModule,GoogleLoginProvider,SocialAuthServiceConfig } from 'angularx-social-login';
 import { InscriptionSocialComponent } from './pages/inscription-social/inscription-social.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -90,8 +83,10 @@ import { LoginModalComponent } from './pages/login/login-modal/login-modal.compo
 import { ModifierProduitComponent } from './pages/produits/modifier-produit/modifier-produit.component';
 import { ListeCommandeComponent } from './admin/commade/liste-commande/liste-commande.component';
 import { PasswordForgotComponent } from './pages/login/password-forgot/password-forgot.component';
-import { EmailPipe } from './email.pipe';
 import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot/reset-password-forgot.component';
+import { MenuComponent } from './ui/menu/menu.component';
+import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-sign-up.component';
+
 
 
 
@@ -114,7 +109,6 @@ import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot
     UpdateProduitComponent,
     ForbiddenComponent,
     UtilisateursComponent,
-    PieceComponent,
     InscriptionComponent,
     ListeCategorieComponent,
     UpdateCategorieComponent,
@@ -128,7 +122,6 @@ import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot
     SlideComponent,
     NosProduitsComponent,
     ListModeleComponent,
-    TestComponent,
     UpdateUserComponent,
     FiltreComponent,
     AddModeleComponent,
@@ -177,8 +170,9 @@ import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot
     ModifierProduitComponent,
     ListeCommandeComponent,
     PasswordForgotComponent,
-    EmailPipe,
     ResetPasswordForgotComponent,
+    MenuComponent,
+    AddUserSignUpComponent,
     
    
    

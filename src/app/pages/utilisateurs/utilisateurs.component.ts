@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/api.service';
-import { AuthService } from 'src/app/auth.service';
 import { User } from 'src/app/model/user.model';
+import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UtilisateursComponent implements OnInit {
 
-  constructor(private api:ApiService,private authService:AuthService,
+  constructor(
+    private api:ApiService,
+    private authService:AuthService,
     private router : Router,
     private userService: UserService) { }
 

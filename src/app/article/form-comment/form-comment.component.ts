@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/auth.service';
 import { Article } from 'src/app/model/article.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 

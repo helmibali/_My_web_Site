@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { Categorie } from 'src/app/model/categorie.model';
 import { Modele } from 'src/app/model/modele.model';
 import { Produit } from 'src/app/model/produit.model';
-import { ProduitService } from 'src/app/produit.service';
+import { ProduitService } from 'src/app/services/produit.service';
+
 
 @Component({
   selector: 'app-add-produit',

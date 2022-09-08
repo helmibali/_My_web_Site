@@ -6,12 +6,12 @@ import { Gouvernorat } from 'src/app/model/gouvernorat.model';
 import { Marque } from 'src/app/model/marque.model';
 import { Modele } from 'src/app/model/modele.model';
 import { Produit } from 'src/app/model/produit.model';
-import { ProduitService } from 'src/app/produit.service';
 import { CatService } from 'src/app/services/cat.service';
 import { DelegationService } from 'src/app/services/delegation.service';
 import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { MarqueService } from 'src/app/services/marque.service';
 import { ModeleService } from 'src/app/services/modele.service';
+import { ProduitService } from 'src/app/services/produit.service';
 
 @Component({
   selector: 'app-filter',

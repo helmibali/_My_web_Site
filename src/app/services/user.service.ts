@@ -2,7 +2,7 @@ import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth.service';
+import { AuthService } from './auth.service';
 import { User } from '../model/user.model';
 
 const httpOPtions = {

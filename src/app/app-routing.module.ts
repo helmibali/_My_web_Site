@@ -8,13 +8,11 @@ import { DelegationComponent } from './admin/delegation/delegation.component';
 import { FamilleComponent } from './admin/famille/famille.component';
 import { GouvernoratComponent } from './admin/gouvernorat/gouvernorat.component';
 import { ArtComponent } from './article/art/art.component';
-import { ArticleComponent } from './article/article/article.component';
 import { CommentsComponent } from './article/comments/comments.component';
 import { CartCompleteComponent } from './cart/cart-complete/cart-complete.component';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LoginGuard } from './guard/login.guard';
-
 import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
 import { AddArticleComponent } from './pages/article/add-article/add-article.component';
@@ -42,7 +40,6 @@ import { FilterComponent } from './pages/nos-produits/filter/filter.component';
 import { NosProduitsComponent } from './pages/nos-produits/nos-produits.component';
 import { ProduitByIdComponent } from './pages/nos-produits/produit-by-id/produit-by-id.component';
 import { ProduitsSearchComponent } from './pages/nos-produits/produits-search/produits-search.component';
-import { PieceComponent } from './pages/piece/piece.component';
 import { AjouterProduitFrontComponent } from './pages/produits/ajouter-produit-front/ajouter-produit-front.component';
 import { ModifierProduitComponent } from './pages/produits/modifier-produit/modifier-produit.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
@@ -56,7 +53,6 @@ import { UpdateImageComponent } from './pages/user/update-image/update-image.com
 import { UpdatePasswordComponent } from './pages/user/update-password/update-password.component';
 import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
 import { ProduitGuard } from './produit.guard';
-import { TestComponent } from './test/test.component';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
@@ -73,7 +69,6 @@ const routes: Routes = [
   {path:"profile",component:ProfileComponent,canActivate:[ProduitGuard]},
   {path: 'app-forbidden', component: ForbiddenComponent},
   {path: 'utilisateurs', component: UtilisateursComponent},
-  {path: 'pieces', component: PieceComponent},
   {path: 'dashboard', component: DashboardComponent,canActivate:[ProduitGuard]},
   {path: 'categories', component: ListeCategorieComponent,canActivate:[ProduitGuard]},
   {path: 'marques', component: ListMarqueComponent,canActivate:[ProduitGuard]},
@@ -83,7 +78,6 @@ const routes: Routes = [
   {path:"updateCategorie/:id", component:UpdateCategorieComponent ,canActivate:[ProduitGuard]},
   {path:"modifier-produit/:id", component:ModifierProduitComponent},
   {path:"modeles",component:ListModeleComponent,canActivate:[ProduitGuard]},
-  {path:"test",component:TestComponent},
   {path:"modifier-utilisateur/:user_id" ,component:UpdateUserComponent,canActivate:[ProduitGuard]},
   {path:"profile/:user_id",component:ProfileComponent},
   {path:"produit/:id" ,component:ProduitByIdComponent},
@@ -100,7 +94,6 @@ const routes: Routes = [
   {path:"gouvernorat",component:GouvernoratComponent,canActivate:[ProduitGuard]},
   {path:"delegation",component:DelegationComponent,canActivate:[ProduitGuard]},
   {path:"ajouter-delegation",component:AddDelegationComponent,canActivate:[ProduitGuard]},
-  // {path:"filter/:categorie/:libelleMarque/:modele/:gov/:deleg" ,component:FilterComponent},
   {path:"search" ,component:FilterComponent},
   {path:"familles",component:FamilleComponent},
   {path:"Conditions-utilisation",component:ConditionUtilisationComponent},

@@ -3,10 +3,10 @@ import { Comment } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth.service';
 import { Article } from '../model/article.model';
 import { Cmt } from '../model/cmt.model';
 import { User } from '../model/user.model';
+import { AuthService } from './auth.service';
 
 const httpOPtions = {
   headers : new HttpHeaders({'Content-Type':'application/json'})

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth.service';
 import { Article } from 'src/app/model/article.model';
 import { Produit } from 'src/app/model/produit.model';
 import { User } from 'src/app/model/user.model';
-import { ProduitService } from 'src/app/produit.service';
 import { ArticleService } from 'src/app/services/article.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProduitService } from 'src/app/services/produit.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +18,11 @@ produits:Produit[];
 user:User;
 p:number=1;
 
-  constructor(public articleService:ArticleService,private userService: UserService ,private produitService:ProduitService,public authService:AuthService) { }
+  constructor(
+    public articleService:ArticleService,
+    private userService: UserService ,
+    private produitService:ProduitService,
+    public authService:AuthService) { }
 
   ngOnInit(): void {
     this.articleService.listeArticles().subscribe(a=>{
