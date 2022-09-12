@@ -12,15 +12,15 @@ const httpOPtions = {
   providedIn: 'root'
 })
 export class CatService {
-  apiURL:string = 'http://localhost:8081/api/categorie';
-  apiURLu:string = 'http://localhost:8081/api/categorie/update';
-  apiURLd:string = 'http://localhost:8081/api/categorie/delete';
+  apiURL:string = `${this.authService.backUrl}${'/api/categorie'}`;
+  apiURLu:string =`${this.authService.backUrl}${'/api/categorie/update'}`; 
+  apiURLd:string = `${this.authService.backUrl}${'/api/categorie/delete'}`;
 
   constructor(private http : HttpClient,private authService: AuthService) { }
 
   listeCategories():Observable<Categorie[]>{
   
-    return this.http.get<Categorie[]>('http://localhost:8081/api/categorie/liste');
+    return this.http.get<Categorie[]>(`${this.authService.backUrl}${'/api/categories'}`);
   }
   consulterCategorie(id : number): Observable<Categorie>{
 
@@ -41,7 +41,7 @@ export class CatService {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Categorie>('http://localhost:8081/api/categorie/add',cat,{headers:httpHeaders});
+    return this.http.post<Categorie>(`${this.authService.backUrl}${'/api/categorie/add'}`,cat,{headers:httpHeaders});
   }
   supprimerCategorie(id: number){
     let jwt = this.authService.getToken();
@@ -51,7 +51,7 @@ export class CatService {
     return this.http.delete(url, {headers:httpHeaders});
     }
     listeCategorieByFamille(id:number):Observable<Categorie[]>{
-      const url = `${'http://localhost:8081/api/categoriesByFamille'}/${id}`;
+      const url = `${this.authService.backUrl}${'/api/categoriesByFamille'}/${id}`;
       return this.http.get<Categorie[]>(url);
     }
 }

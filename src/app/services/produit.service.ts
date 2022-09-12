@@ -15,7 +15,7 @@ const httpOPtions = {
 })
 export class ProduitService {
 
-apiURL : string =  'http://localhost:8081/api/produits';
+apiURL : string =  `${this.authService.backUrl}${'/api/produits'}`;
 produits :Produit[];
  produit :Produit;
  public modeles:Modele[];
@@ -45,13 +45,13 @@ produits :Produit[];
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.post("http://localhost:8081/api/produit/add", formData, {headers:httpHeaders});
+    return this.http.post(`${this.authService.backUrl}${"/api/produit/add"}`, formData, {headers:httpHeaders});
   }
   supprimerProduit(id: number){
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    const url = `${'http://localhost:8081/api/produit/delete'}/${id}`;
+    const url = `${this.authService.backUrl}${'/api/produit/delete'}/${id}`;
     return this.http.delete(url, {headers:httpHeaders} );
     }
 
@@ -59,14 +59,14 @@ produits :Produit[];
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put(`${'http://localhost:8081/api/produit'}/${id}`, formData,{headers:httpHeaders});
+    return this.http.put(`${this.authService.backUrl}${'/api/produit'}/${id}`, formData,{headers:httpHeaders});
   }
 
   activeProduit(formData: FormData,id:number): Observable<any> {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put(`${'http://localhost:8081/api/activeProduit'}/${id}`, formData,{headers:httpHeaders});
+    return this.http.put(`${this.authService.backUrl}${'/api/activeProduit'}/${id}`, formData,{headers:httpHeaders});
   }
 
 
@@ -74,7 +74,7 @@ produits :Produit[];
  
   listeProduitsEnabled():Observable<Produit[]>{
 
-    return this.http.get<Produit[]>('http://localhost:8081/api/produitsEnabled');
+    return this.http.get<Produit[]>(`${this.authService.backUrl}${'api/produitsenabled'}`);
   }
 
 
@@ -83,92 +83,92 @@ listeProduits():Observable<Produit[]>{
   return this.http.get<Produit[]>(this.apiURL);
 }
 ProdByModGov(id_marque,id_mod,id_gouvernorat):Observable<Produit[]>{
-const url = `${'http://localhost:8081/api/produit/modeleByGov'}/${id_marque}/${id_mod}/${id_gouvernorat}`;
+const url = `${this.authService.backUrl}${'/api/produit/modeleByGov'}/${id_marque}/${id_mod}/${id_gouvernorat}`;
 return this.http.get<Produit[]>(url);
 }
 
 listeProduitsByCategorie(id: number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit_cat'}/${id}`;
+  const url = `${this.authService.backUrl}${'/api/produit_cat'}/${id}`;
   return this.http.get<Produit[]>(url);
 }
 listeProduitsByUser(user_id: number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/user'}/${user_id}`;
+  const url = `${this.authService.backUrl}${'/api/produit/user'}/${user_id}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByModele(id_mod:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/modele'}/${id_mod}`;
+  const url = `${this.authService.backUrl}${'/api/produit/modele'}/${id_mod}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByModeleAndCategorieAndMarque(id_mod:number,id_cat:number,id_marque:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/modelebycat'}/${id_mod}/${id_cat}/${id_marque}`;
+  const url = `${this.authService.backUrl}${'/api/produit/modelebycat'}/${id_mod}/${id_cat}/${id_marque}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByModeleAndCategorieAndGouvernorat(id_mod:number,id_cat:number,id_gouvernorat:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}`;
+  const url = `${this.authService.backUrl}${'/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByModeleAndCategorieAndGouvernoratAndDelegation(id_mod:number,id_cat:number,id_gouvernorat:number,id_delegation):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}/${id_delegation}`;
+  const url = `${this.authService.backUrl}${'/api/produit/modele'}/${id_mod}/${id_cat}/${id_gouvernorat}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByGouvernoratAndDelegation(id_gouvernorat:number,id_delegation:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/delegationAndGouvernorat'}/${id_gouvernorat}/${id_delegation}`;
+  const url = `${this.authService.backUrl}${'/api/produit/delegationAndGouvernorat'}/${id_gouvernorat}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByGouvernorat(id_gouvernorat:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/gouvernorat'}/${id_gouvernorat}`;
+  const url = `${this.authService.backUrl}${'/api/produit/gouvernorat'}/${id_gouvernorat}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByCarburant(carburant:string):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit-par-carburant'}/${carburant}`;
+  const url = `${this.authService.backUrl}${'/api/produit-par-carburant'}/${carburant}`;
   return this.http.get<Produit[]>(url);
 }
 
 
 
 listeProdduitsByGouvernoratAndMarque(id_gouvernorat:number,id_marque:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/gouvernoratAndMarque'}/${id_gouvernorat}/${id_marque}`;
+  const url = `${this.authService.backUrl}${'/api/produit/gouvernoratAndMarque'}/${id_gouvernorat}/${id_marque}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByMarque(id_marque:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/marque'}/${id_marque}`;
+  const url = `${this.authService.backUrl}${'/api/produit/marque'}/${id_marque}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProduitsByMarque(id_marque:number):Observable<Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/marque'}/${id_marque}`;
+  const url = `${this.authService.backUrl}${'/api/produit/marque'}/${id_marque}`;
   return this.http.get<Produit[]>(url); 
 }
 
 listeProdduitsByMarqueAndCategorie(id_marque:number, id_cat:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/marque/categorie'}/${id_marque}/${id_cat}`;
+  const url = `${this.authService.backUrl}${'/api/produit/marque/categorie'}/${id_marque}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
 
 
 listeProdduitsByGouvernoratAndDelegationAndMarque(id_gouvernorat:number,id_marque:number,id_delegation:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/gouvernoratAndMarqueAndDelegation'}/${id_gouvernorat}/${id_marque}/${id_delegation}`;
+  const url = `${this.authService.backUrl}${'/api/produit/gouvernoratAndMarqueAndDelegation'}/${id_gouvernorat}/${id_marque}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByGouvernoratAndDelegationAndMarqueAndCategorie(id_gouvernorat:number,id_marque:number,id_delegation:number,id_cat:number):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/gouvernoratAndMarqueAndDelegationAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_delegation}/${id_cat}`;
+  const url = `${this.authService.backUrl}${'/api/produit/gouvernoratAndMarqueAndDelegationAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_delegation}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeFilter(id_famille:number,id_cat:number,id_marque:number,id_modele:number,id_gouvernorat:number,id_delegation:number,):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit-search'}/${id_famille}/${id_cat}/${id_marque}/${id_modele}/${id_gouvernorat}/${id_delegation}`;
+  const url = `${this.authService.backUrl}${'/api/produit-search'}/${id_famille}/${id_cat}/${id_marque}/${id_modele}/${id_gouvernorat}/${id_delegation}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeProdduitsByGouvernoratAndMarqueAndCategorie(id_gouvernorat:number,id_marque:number,id_cat:number):Observable <Produit[]>{
-  const url = `${'/api/produit/gouvernoratAndMarqueAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_cat}`;
+  const url = `${this.authService.backUrl}${'/api/produit/gouvernoratAndMarqueAndCategorie'}/${id_gouvernorat}/${id_marque}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
@@ -177,42 +177,42 @@ listeProdduitsByDelegationAndModeles(id_delegation:number,id_mod:number):Observa
   let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-  const url = `${'http://localhost:8081/api/produit/delegationAndModeles'}/${id_delegation}/${id_mod}`;
+  const url = `${this.authService.backUrl}${'/api/produit/delegationAndModeles'}/${id_delegation}/${id_mod}`;
   return this.http.get<Produit[]>(url,{headers:httpHeaders});
 }
 
 listeProdduitsByGouvernoratAndCategorie(id_gouvernorat:number,id_cat):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/gouvernoratAndCategorie'}/${id_gouvernorat}/${id_cat}`;
+  const url = `${this.authService.backUrl}${'/api/produit/gouvernoratAndCategorie'}/${id_gouvernorat}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 listeProdduitsByDelegationAndCategorie(id_delegation:number,id_cat):Observable <Produit[]>{
-  const url = `${'http://localhost:8081/api/produit/delegationAndCategorie'}/${id_delegation}/${id_cat}`;
+  const url = `${this.authService.backUrl}${'/api/produit/delegationAndCategorie'}/${id_delegation}/${id_cat}`;
   return this.http.get<Produit[]>(url);
 }
 
 listeCategories():Observable<Categorie[]>{
   
-  return this.http.get<Categorie[]>('http://localhost:8081/api/categorie/liste');
+  return this.http.get<Categorie[]>(`${this.authService.backUrl}${'/api/categories'}`);
 }
 
 listeModele(): Observable<any> {
    
-  return this.http.get('http://localhost:8081/api/modele/liste');
+  return this.http.get(`${this.authService.backUrl}${'/api/modeles'}`);
 }
 consulterModele(id : number): Observable<Modele>{
 
-  const url = `${'http://localhost:8081/api/modele'}/${id}`;
+  const url = `${this.authService.backUrl}${'/api/modele'}/${id}`;
   return this.http.get<Modele>(url);
 
 }
 
 
 ajouterProduit(prod: Produit):Observable<Produit>{
- return this.http.post<Produit>('http://localhost:8081/api/produit/addd', prod, httpOPtions);
+ return this.http.post<Produit>(`${this.authService.backUrl}${'/api/produit/addd'}`, prod, httpOPtions);
 }
 
 ajouterCategorie(cat : Categorie):Observable<Categorie>{
-  return this.http.post<Categorie>('/api/categorie/add',cat,httpOPtions);
+  return this.http.post<Categorie>(`${this.authService.backUrl}${'/api/produit/add'}`,cat,httpOPtions);
 }
 
 
@@ -220,14 +220,14 @@ ajouterCategorie(cat : Categorie):Observable<Categorie>{
 
 consulterProduit(id : number): Observable<Produit>{
 
-  const url = `${'http://localhost:8081/api/produit'}/${id}`;
+  const url = `${this.authService.backUrl}${'/api/produit'}/${id}`;
   return this.http.get<Produit>(url);
 
 }
 
 consulterCategorie(id : number): Observable<Categorie>{
 
-  const url = `${'http://localhost:8081/api/categorie'}/${id}`;
+  const url = `${this.authService.backUrl}${'/api/categorie'}/${id}`;
   return this.http.get<Categorie>(url);
 
 }

@@ -28,7 +28,7 @@ random:String;
   constructor(private authService:AuthService,
               private router:Router,
               private toastr: ToastrService,
-               private socialService: SocialAuthService,
+              //  private socialService: SocialAuthService,
                private formBuilder : FormBuilder,
               public userService:UserService
               ) {}
@@ -67,16 +67,16 @@ random:String;
           })
         });
   }
-    signInHandler(): void {
-      this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
-        localStorage.setItem('google_auth', JSON.stringify(data));
-        this.router.navigateByUrl('/verification').then();
-        this.socialService.authState.subscribe((userSocial)=>{
-          this.socialUser = userSocial;
-          console.log(this.socialUser);       
-        })
-      });
-    }
+    // signInHandler(): void {
+    //   this.socialService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
+    //     localStorage.setItem('google_auth', JSON.stringify(data));
+    //     this.router.navigateByUrl('/verification').then();
+    //     this.socialService.authState.subscribe((userSocial)=>{
+    //       this.socialUser = userSocial;
+    //       console.log(this.socialUser);       
+    //     })
+    //   });
+    // }
   
 
 

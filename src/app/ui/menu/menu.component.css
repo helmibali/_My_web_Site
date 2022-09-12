@@ -4,7 +4,20 @@
     position: absolute; 
     top: -140%
 }
+/* .menu-list{
+    margin-left:30% ;
+} */
+.nom{
+    display: none;
 
+}
+.menu-list{
+   margin-left: 30%;
+}
+
+.image-user{
+    height: 5px;
+}
 
 
 
@@ -15,6 +28,23 @@
         position: absolute;
         top: -180%;
         left: -12%;
+    }
+    .icon{
+        display:none;
+    }
+    .menu-list{
+        margin-left: 01%;
+     }
+  
+    .nom{
+        display: flex;
+        
+    }
+    /* .menu-list{
+        margin-left:3% ;
+    } */
+    .msg-icn{
+        display: none;
     }
 }
 

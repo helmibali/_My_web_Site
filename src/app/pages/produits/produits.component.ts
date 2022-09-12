@@ -42,10 +42,11 @@ export class ProduitsComponent implements OnInit {
     if (conf) 
     this.produitService.supprimerProduit(p.idProduit).subscribe(()=>{
       console.log("produit supprimé");
-    });
-    this.router.navigate(['produits']).then(()=> {
       window.location.reload();
     });
+    // this.router.navigate(['produits']).then(()=> {
+    //   window.location.reload();
+    // });
    }
 
    activeProduit(p:Produit){

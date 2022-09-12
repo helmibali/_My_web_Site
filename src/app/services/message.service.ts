@@ -19,36 +19,36 @@ export class MessageService {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Message>('http://localhost:8081/api/message',formData,{headers:httpHeaders});
+    return this.http.post<Message>(`${this.authService.backUrl}${'/api/message'}`,formData,{headers:httpHeaders});
   }
   read(formData: FormData,id:number):Observable<any>{
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    const url = `${'http://localhost:8081/api/message-read'}/${id}`;
+    const url = `${this.authService.backUrl}${'/api/message-read'}/${id}`;
     return this.http.put<any>(url,formData,{headers:httpHeaders});
   }
   getByAuteur(username:string):Observable<any>{
-  const url = `${'http://localhost:8081/api/message-par-auteur'}/${username}`;
+  const url = `${this.authService.backUrl}${'/api/message-par-auteur'}/${username}`;
   return this.http.get(url);
   }
 getByEmiteur(username:string):Observable<any>{
-  const url = `${'http://localhost:8081/api/message-par-emiteur'}/${username}`;
+  const url = `${this.authService.backUrl}${'/api/message-par-emiteur'}/${username}`;
   return this.http.get(url);
     }
 
     
     getByEmiteurUnread(username:string):Observable<any>{
-      const url = `${'http://localhost:8081/api/message-par-emiteur-unread'}/${username}`;
+      const url = `${this.authService.backUrl}${'/api/message-par-emiteur-unread'}/${username}`;
       return this.http.get(url);
         }
     getByUser(username:string):Observable<any>{
-      const url = `${'http://localhost:8081/api/message-par-user'}/${username}`;
+      const url = `${this.authService.backUrl}${'/api/message-par-user'}/${username}`;
       return this.http.get(url);
         }
 
         getDiscussion(username1:string,username2:string):Observable<any>{
-          const url = `${'http://localhost:8081/api/discussion'}/${username1}/${username2}`;
+          const url = `${this.authService.backUrl}${'/api/discussion'}/${username1}/${username2}`;
           return this.http.get(url);
             }
     
@@ -58,7 +58,7 @@ getByEmiteur(username:string):Observable<any>{
             let jwt = this.authService.getToken();
           jwt = "Bearer "+jwt;
           let httpHeaders = new HttpHeaders({"Authorization":jwt})
-            return this.http.post<Message>('http://localhost:8081/api/message',{
+            return this.http.post<Message>(`${this.authService.backUrl}${'/api/message'}`,{
               message: text,
               auteur: this.authService.loggedUser,
             },{headers:httpHeaders})

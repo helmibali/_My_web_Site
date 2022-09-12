@@ -11,6 +11,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'Shop';
   darkModeEnabled:boolean = false;
+  
  constructor(public authService:AuthService,
               private router: Router){}
 ngOnInit() {

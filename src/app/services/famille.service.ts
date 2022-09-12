@@ -15,16 +15,16 @@ export class FamilleService {
   constructor(private http:HttpClient,private authService: AuthService) { }
 
   listeFamille():Observable<Famille[]>{
-    return this.http.get<Famille[]>('http://localhost:8081/api/familles');
+    return this.http.get<Famille[]>(`${this.authService.backUrl}${'/api/familles'}`);
   }
   familleById(id:number):Observable<Famille>{
-    return this.http.get<Famille>('http://localhost:8081/api/famille');
+    return this.http.get<Famille>(`${this.authService.backUrl}${'/api/famille'}`);
   }
   ajouterCategorie(f : Famille):Observable<Famille>{
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Famille>('http://localhost:8081/api/famille',f,{headers:httpHeaders});
+    return this.http.post<Famille>(`${this.authService.backUrl}${'/api/famille'}`,f,{headers:httpHeaders});
   }
   
 }

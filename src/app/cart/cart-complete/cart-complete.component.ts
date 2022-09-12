@@ -129,7 +129,7 @@ addToCart(){
   //  window.location.reload();
  
   this.router.navigate(['/nos-produits']);
-  alert("Votre commande a été envoyé avec succé");
+  alert("Votre commande a été envoyé avec succés");
     //window.location.reload();
    }
   ) 

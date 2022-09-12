@@ -16,12 +16,12 @@ export class GouvernoratService {
 
   listeGouvernorats():Observable<Gouvernorat[]>{
   
-    return this.http.get<Gouvernorat[]>('http://localhost:8081/api/gouvernorats');
+    return this.http.get<Gouvernorat[]>(`${this.authService.backUrl}${'/api/gouvernorats'}`);
   }
   ajouter(d : Gouvernorat):Observable<Gouvernorat>{
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Gouvernorat>('http://localhost:8081/api/gouvernorat',d,{headers:httpHeaders});
+    return this.http.post<Gouvernorat>(`${this.authService.backUrl}${'/api/gouvernorat'}`,d,{headers:httpHeaders});
   }
 }

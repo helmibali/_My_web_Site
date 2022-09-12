@@ -22,14 +22,14 @@ export class CommandeService {
   
   
     getAll():Observable<any>{
-      return this.http.get('http://localhost:8081/api/commande/liste');
+      return this.http.get(`${this.authService.backUrl}${'/api/commande/liste'}`);
         }
 
         create(formData: FormData):Observable<any>{
           let jwt = this.authService.getToken();
           jwt = "Bearer "+jwt;
           let httpHeaders = new HttpHeaders({"Authorization":jwt})
-          return this.http.post('http://localhost:8081/api/commande', formData , {headers:httpHeaders});
+          return this.http.post(`${this.authService.backUrl}${'/api/commande'}`, formData , {headers:httpHeaders});
         }
 
         
@@ -37,6 +37,6 @@ export class CommandeService {
           let jwt = this.authService.getToken();
           jwt = "Bearer "+jwt;
           let httpHeaders = new HttpHeaders({"Authorization":jwt})
-          return this.http.put(`${'http://localhost:8081/api/commande/etat'}/${id}`, formData , {headers:httpHeaders});
+          return this.http.put(`${this.authService.backUrl}${'/api/commande/etat'}/${id}`, formData , {headers:httpHeaders});
         }
 }

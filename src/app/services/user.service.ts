@@ -13,6 +13,7 @@ const httpOPtions = {
   providedIn: 'root'
 })
 export class UserService {
+  backUrl="https://casse-back.herokuapp.com";
   users:User[];
   baseUrl:'/api/user';
   public dataForm: FormGroup;
@@ -31,51 +32,51 @@ export class UserService {
   }
 
   // sendMailResetPassword(mailTo:string,subject:string,body:string):Observable<any>{
-  //   return this.http.post(`${'http://localhost:8081/api'}/${mailTo}/${subject}/${body}`);
+  //   return this.http.post(`${'https://casse-back.herokuapp.com/api'}/${mailTo}/${subject}/${body}`);
   // }
   getUserByToken(token: string):Observable<User> {
-    return this.http.get<User>(`${'http://localhost:8081/api/userByToken'}/${token}`);
+    return this.http.get<User>(`${this.authService.backUrl}${'/api/userByToken'}/${token}`);
   }
 
   
   getUserById(user_id: number):Observable<User> {
-    return this.http.get<User>(`${'http://localhost:8081/api/infoUserById'}/${user_id}`);
+    return this.http.get<User>(`${this.authService.backUrl}${'/api/infoUserById'}/${user_id}`);
   }
   getUserByUsername(username: string):Observable<User> {
-    return this.http.get<User>(`${'http://localhost:8081/api/info'}/${username}`);
+    return this.http.get<User>(`${this.authService.backUrl}${'/api/info'}/${username}`);
   }
   getAllUsername():Observable<any> {
-    return this.http.get<any>('http://localhost:8081/api/usernames');
+    return this.http.get<any>(`${this.authService.backUrl}${'/api/usernames'}`);
   }
 
   getUserByDiscussion(username: string):Observable<any> {
-    return this.http.get<any>(`${'http://localhost:8081/api/user-contact'}/${username}`);
+    return this.http.get<any>(`${this.authService.backUrl}${'/api/user-contact'}/${username}`);
   }
   createData(formData: FormData): Observable<any> {
-    return this.http.post('http://localhost:8081/api/signup', formData);
+    return this.http.post(`${this.authService.backUrl}${'/api/signup'}`, formData);
   }
   email(formData: FormData): Observable<any> {
-    return this.http.post('http://localhost:8081/api/email', formData);
+    return this.http.post(`${this.authService.backUrl}${'/api/email'}`, formData);
   }
   createDataSocial(formData: FormData): Observable<any> {
-    return this.http.post('http://localhost:8081/api/user/social', formData);
+    return this.http.post(`${this.authService.backUrl}${'/api/user/social'}`, formData);
   }
   createDataWithFile(formData: FormData): Observable<any> {
-    return this.http.post('http://localhost:8081/api/signupwithimg', formData);
+    return this.http.post(`${this.authService.backUrl}${'/api/signupwithimg'}`, formData);
   }
   getRoleslist(){
-    return  this.http.get('http://localhost:8081/api/role/liste');
+    return  this.http.get(`${this.authService.backUrl}${'/api/role/liste'}`);
   }
   updateData(formData: FormData ,user_id): Observable<any> {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put(`${'http://localhost:8081/api/user'}/${user_id}`, formData,{headers:httpHeaders});
+    return this.http.put(`${this.authService.backUrl}${'/api/user'}/${user_id}`, formData,{headers:httpHeaders});
   }
 
  resetPasswordToken(formData: FormData ,username:string): Observable<User> {
    
-    return this.http.put<User>(`${'http://localhost:8081/api/usertoken'}/${username}`, formData);
+    return this.http.put<User>(`${this.authService.backUrl}${'/api/usertoken'}/${username}`, formData);
   }
   
 
@@ -84,24 +85,24 @@ export class UserService {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put<User>(`${'http://localhost:8081/api/user'}/${user_id}`, u,{headers:httpHeaders});
+    return this.http.put<User>(`${this.authService.backUrl}${'/api/user'}/${user_id}`, u,{headers:httpHeaders});
   }
 updateImageUser(formData:FormData , user_id):Observable<any> {
   let jwt = this.authService.getToken();
   jwt = "Bearer "+jwt;
   let httpHeaders = new HttpHeaders({"Authorization":jwt})
-  return this.http.put(`${'http://localhost:8081/api/userImg'}/${user_id}`, formData,{headers:httpHeaders})
+  return this.http.put(`${this.authService.backUrl}${'/api/userImg'}/${user_id}`, formData,{headers:httpHeaders})
 }
 updateImagePw(formData:FormData , user_id):Observable<any> {
   let jwt = this.authService.getToken();
   jwt = "Bearer "+jwt;
   let httpHeaders = new HttpHeaders({"Authorization":jwt})
-  return this.http.put(`${'http://localhost:8081/api/userPw'}/${user_id}`, formData,{headers:httpHeaders})
+  return this.http.put(`${this.authService.backUrl}${'/api/userPw'}/${user_id}`, formData,{headers:httpHeaders})
 }
 
 updatePwEmail(formData:FormData , user_id):Observable<any> {
   
-  return this.http.put(`${'http://localhost:8081/api/userPwEmail'}/${user_id}`, formData)
+  return this.http.put(`${this.authService.backUrl}${'/api/userPwEmail'}/${user_id}`, formData)
 }
 
 
@@ -109,7 +110,7 @@ supprimerUtilisateur(id: number){
   let jwt = this.authService.getToken();
   jwt = "Bearer "+jwt;
   let httpHeaders = new HttpHeaders({"Authorization":jwt})
-  const url = `${'http://localhost:8081/api/user'}/${id}`;
+  const url = `${this.authService.backUrl}${'/api/user'}/${id}`;
   return this.http.delete(url,{headers:httpHeaders});
   }
 }

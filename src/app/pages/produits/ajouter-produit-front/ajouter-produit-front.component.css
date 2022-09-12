@@ -1,3 +1,25 @@
 .localisation{
     display:flex;
+   
+}
+.all{
+    display:flex; 
+     
+}
+.left{
+    display:flex;
+    width:50%; 
+    flex-direction: column; 
+}
+.right{
+    display:flex;
+    width:50%; 
+    flex-direction: column; 
+}
+@media only screen and (max-width:790px){
+    .all{
+        display:flex;
+        flex-direction: column;
+        width: 200%;
+    }
 }

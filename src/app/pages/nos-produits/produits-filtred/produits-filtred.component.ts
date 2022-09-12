@@ -15,6 +15,7 @@ export class ProduitsFiltredComponent implements OnInit {
   term;
   key:number;
   tcarburant:string;
+  urlImgProduit=`${this.authService.backUrl}${"/api/imgp/"}`
   constructor(
    public authService:AuthService,
    public produitService: ProduitService,

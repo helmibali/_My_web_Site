@@ -4,6 +4,7 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { Cart } from '../model/cart.model';
+import { Panier } from '../model/panier.model';
 import { AuthService } from './auth.service';
 const httpOPtions = {
   headers : new HttpHeaders({'Content-Type':'application/json'})
@@ -16,34 +17,41 @@ export class CartService {
   public dataForm: FormGroup;
   constructor(private http: HttpClient, 
      private authService : AuthService) { }
-  createCart(formData: FormData):Observable<Cart>{
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Cart>('http://localhost:8081/api/add-to-cart',formData,{headers:httpHeaders});
+  createCart(formData: FormData):Observable<Panier>{
+    
+    // return this.http.post<Cart>(`${this.authService.backUrl}${'/api/add-to-cart'}`,formData,{headers:httpHeaders});
+     return this.http.post<Panier>(`${this.authService.backUrl}${'/api/panier'}`,formData);
+  }
+
+  addCart(c:Cart):Observable<any>{
+    // let jwt = this.authService.getToken();
+    // jwt = "Bearer "+jwt;
+    // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+return this.http.post<any>(`${this.authService.backUrl}${'/api/c'}`,c)
+//return this.http.post<any>(`${'http://localhost:8081'}${'/api/c'}`,c)
   }
 
   getAll():Observable<any>{
-    return this.http.get('http://localhost:8081/api/liste-cart');
+    return this.http.get(`${this.authService.backUrl}${'/api/liste-cart'}`);
       }
 
       getByUsername(username:string):Observable<any>{
-        const url = `${'http://localhost:8081/api/liste-cart'}/${username}`;
+        const url = `${this.authService.backUrl}${'/api/liste-cart'}/${username}`;
         return this.http.get(url);
           }
 
           prixByUsername(username:string):Observable<any>{
-            const url = `${'http://localhost:8081/api/prix-cart'}/${username}`;
+            const url = `${this.authService.backUrl}${'/api/prix-cart'}/${username}`;
             return this.http.get(url);
               }
 
               getByUsernameEnCours(username:string):Observable<any>{
-                const url = `${'http://localhost:8081/api/liste-cart-en-cours'}/${username}`;
+                const url = `${this.authService.backUrl}${'/api/liste-cart-en-cours'}/${username}`;
                 return this.http.get(url);
                   }
 
         getByUsernameEnCommade(username:string):Observable<any>{
-          const url = `${'http://localhost:8081/api/liste-cart-en-commande'}/${username}`;
+          const url = `${this.authService.backUrl}${'/api/liste-cart-en-commande'}/${username}`;
           return this.http.get(url);
             }
 
@@ -52,7 +60,7 @@ supprimerCart(id: number){
   let jwt = this.authService.getToken();
   jwt = "Bearer "+jwt;
   let httpHeaders = new HttpHeaders({"Authorization":jwt})
-  const url = `${'http://localhost:8081/api/cart'}/${id}`;
+  const url = `${this.authService.backUrl}${'/api/cart'}/${id}`;
   return this.http.delete(url,{headers:httpHeaders});
   }
 

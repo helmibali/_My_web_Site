@@ -24,12 +24,12 @@ private helper = new JwtHelperService();
 public countMsg: number;
 apiURL: string = '/api/login';
 apiURLall: string = '/api/users/liste';
-
+backUrl="https://casse-back.herokuapp.com";
   constructor(private router:Router, private http:HttpClient) { }
 
   login(user : User)
   {
-  return this.http.post<User>('http://localhost:8081/login', user , {observe:'response'});
+  return this.http.post<User>(`${this.backUrl}${'/login'}`, user , {observe:'response'});
   }
 
 
@@ -62,7 +62,7 @@ this.decodeJWT();
    
   getUserFromDB(username:string):Observable<User>
   {
-    const url = `${'http://localhost:8081/api/info'}/${username}`;
+    const url = `${this.backUrl}${'/api/info'}/${username}`;
     return this.http.get<User>(url)
   }
 
@@ -70,7 +70,7 @@ this.decodeJWT();
     let jwt = this.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return  this.http.get('http://localhost:8081/all',{headers:httpHeaders});
+    return  this.http.get(`${this.backUrl}${'/all'}`,{headers:httpHeaders});
   }
   setLoggedUserFromLocalStorage(login : string) {
     this.loggedUser = login;
@@ -95,12 +95,12 @@ this.decodeJWT();
       if (!this.roles) //this.roles== undefiened
       return false;
       return (this.roles.indexOf('ADMIN') >-1) ;
-      ;
+      
     }  
 
 
       addUser(user:User):Observable<User>{
-        return this.http.post<User>('http://localhost:8081/api/user/add', user,httpOPtions);
+        return this.http.post<User>(`${this.backUrl}${'/all'}${'/api/user/add'}`, user,httpOPtions);
       }
       logout() {
         this.loggedUser = undefined!;

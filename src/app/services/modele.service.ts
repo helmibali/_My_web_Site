@@ -15,7 +15,7 @@ const httpOPtions = {
 })
 export class ModeleService {
 modeles:Modele[];
-apiUrl:'http://localhost:8081/api/modele';
+apiUrl=`${this.authService.backUrl}${'/api/modele'}`;
 public dataForm: FormGroup;
   constructor(
     private http: HttpClient,private authService:AuthService
@@ -23,7 +23,7 @@ public dataForm: FormGroup;
 
   getAll(): Observable<any> {
    
-    return this.http.get('http://localhost:8081/api/modele/liste');
+    return this.http.get(`${this.authService.backUrl}${'/api/modeles'}`);
   }
   consulterModele(id : number): Observable<Modele>{
 
@@ -43,7 +43,7 @@ public dataForm: FormGroup;
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<any>('http://localhost:8081/api/modele/add',formData,{headers:httpHeaders});
+    return this.http.post<any>(`${this.authService.backUrl}${'/api/modele/add'}`,formData,{headers:httpHeaders});
   }
   supprimerCategorie(id: number){
     let jwt = this.authService.getToken();
@@ -55,11 +55,11 @@ public dataForm: FormGroup;
     }
 
     getAllModeles():Observable<any>{
-      return this.http.get<any>('http://localhost:8081/api/modele/liste');
+      return this.http.get<any>(`${this.authService.backUrl}${'/api/modeles'}`);
     }
 
     getAllModelesByMarque_id(id:number):Observable<any>{
-      return this.http.get<any>(`${'http://localhost:8081/api/modeleByMarqueId'}/${id}`);
+      return this.http.get<any>(`${this.authService.backUrl}${'/api/modeleByMarqueId'}/${id}`);
     }
     
 }

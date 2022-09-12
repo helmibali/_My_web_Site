@@ -34,38 +34,38 @@ public dataForm: FormGroup;
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post("http://localhost:8081/api/addMarque", formData,{headers:httpHeaders});
+    return this.http.post(`${this.authService.backUrl}${"/api/addMarque"}`, formData,{headers:httpHeaders});
   }
 
   getData(id: number): Observable<Object> {
-    return this.http.get(`${'http://localhost:8081/api/marque'}/${id}`);
+    return this.http.get(`${this.authService.backUrl}${'/api/marque'}/${id}`);
   }
   updateMarque(formData: FormData):Observable<Marque>{
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put<Marque>("http://localhost:8081/api/marque", formData,{headers:httpHeaders});
+    return this.http.put<Marque>(`${this.authService.backUrl}${'/api/marque'}`, formData,{headers:httpHeaders});
     }
   deleteData(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
   getAll(): Observable<any> {
    
-    return this.http.get('http://localhost:8081/api/marque/liste');
+    return this.http.get(`${this.authService.backUrl}${'/api/marques'}`);
   }
   supprimerProduit(id: number){
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    const url = `${'http://localhost:8081/api/marque'}/${id}`;
+    const url = `${this.authService.backUrl}${'/api/marque'}/${id}`;
     return this.http.delete(url, {headers:httpHeaders});
     }
     consulterMarque(id : number): Observable<Marque>{
-      const url = `${'http://localhost:8081/api/marque'}/${id}`;
+      const url = `${this.authService.backUrl}${'/api/marque'}/${id}`;
       return this.http.get<Marque>(url);
     }
     getAllMarques():Observable<any>{
-      return this.http.get<any>('http://localhost:8081/api/marque/liste');
+      return this.http.get<any>(`${this.authService.backUrl}${'/api/marques'}`);
     }
 }
 

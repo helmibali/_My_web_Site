@@ -45,10 +45,9 @@ export class CreateArticleComponent implements OnInit {
      // formData.append('file',this.userFile);
       this.articleService.createData(formData).subscribe(data=>{
         console.log(data);
-      });
-      this.router.navigate(['actualite']).then(()=> {
         window.location.reload();
       });
+    
      }
   
      else{
@@ -58,10 +57,9 @@ export class CreateArticleComponent implements OnInit {
       formData.append('file',this.userFile);
       this.articleService.createDataWithImg(formData).subscribe(data=>{
         console.log(data);
-      });
-      this.router.navigate(['actualite']).then(()=> {
         window.location.reload();
       });
+     
      }
      
     }

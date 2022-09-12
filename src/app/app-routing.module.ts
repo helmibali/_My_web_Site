@@ -15,6 +15,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LoginGuard } from './guard/login.guard';
 import { ActualitesComponent } from './pages/actualites/actualites.component';
 import { AddProduitComponent } from './pages/add-produit/add-produit.component';
+import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { AddArticleComponent } from './pages/article/add-article/add-article.component';
 import { ListArticleComponent } from './pages/article/list-article/list-article.component';
 import { BlogComponent } from './pages/blog/blog.component';
@@ -111,7 +112,8 @@ const routes: Routes = [
   {path:"verification" ,component:LoginSocialComponent,canActivate:[LoginGuard]},
   {path: "add-familles",component:AddFamilleComponent},
   {path:"reset-password/:token",component:ResetPasswordForgotComponent},
-  
+  {path:"reset-password/:token",component:ResetPasswordForgotComponent},
+  {path:"add-cart",component:AddToCartComponent},
 
 ];
 

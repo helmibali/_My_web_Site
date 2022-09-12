@@ -20,7 +20,8 @@ export class ProduitByIdComponent implements OnInit {
   errTXT:string='';
   carts:Cart[];
   loginBtn:string = "Commander";
-  
+  date=new Date();
+  c = new Cart();
   constructor(
     private _location: Location,
     public produitService:ProduitService,
@@ -65,17 +66,22 @@ initData(){
   })
 }
 
+newCart(){
 
+  this.cartService.addCart(this.c).subscribe((data)=>{
+    console.log(data);
+  })
+}
 
 addToCart(){
     const formData = new FormData();
-    const cart = this.cartService.dataForm.value;
-    formData.append('cart',JSON.stringify(cart));
+    const panier = this.cartService.dataForm.value;
+    formData.append('panier',JSON.stringify(panier));
   
     this.cartService.createCart(formData).toPromise().then(data=>{
       console.log(data);  
-      this.carts = [...this.carts, data];
-      this.toastr.success('Pièce commandé avec succé!');
+      //this.carts = [...this.carts, data];
+      this.toastr.success('Pièce commandé avec succés!');
       this.isLoading=true;
      window.location.reload();
      }

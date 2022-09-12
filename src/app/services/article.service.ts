@@ -16,6 +16,8 @@ const httpOPtions = {
 export class ArticleService {
   public dataForm: FormGroup;
 
+
+
   constructor(private http: HttpClient,private authService : AuthService) { }
   uploadFile(file: File): Observable<HttpEvent<{}>> {
 		const formdata: FormData = new FormData();
@@ -27,39 +29,39 @@ export class ArticleService {
     return this.http.request(req);
   }
   getArticleById(id: number):Observable<Article> {
-    return this.http.get<Article>(`${'http://localhost:8081/api/article'}/${id}`);
+    return this.http.get<Article>(`${`${this.authService.backUrl}${'/api/article'}`}/${id}`);
   }
   createData(formData: FormData): Observable<any> {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post('http://localhost:8081/api/article', formData,{headers:httpHeaders});
+    return this.http.post(`${this.authService.backUrl}${'/api/article'}`, formData,{headers:httpHeaders});
   }
   createDataWithImg(formData: FormData): Observable<any> {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post('http://localhost:8081/api/articleWithImg', formData,{headers:httpHeaders});
+    return this.http.post(`${this.authService.backUrl}${'/api/articleWithImg'}`, formData,{headers:httpHeaders});
   }
   updateData(formData: FormData,id:number): Observable<any> {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put(`${'http://localhost:8081/api/article'}/${id}`, formData ,{headers:httpHeaders});
+    return this.http.put(`${'https://casse-back.herokuapp.com/api/article'}/${id}`, formData ,{headers:httpHeaders});
   }
   listeArticles():Observable<Article[]>{
   
-    return this.http.get<Article[]>('http://localhost:8081/api/articles');
+    return this.http.get<Article[]>(`${this.authService.backUrl}${'/api/articles'}`);
   }
   listeArticlesByUser(username:string):Observable<Article[]>{
   
-    return this.http.get<Article[]>(`${'http://localhost:8081/api/article-par-utlisateur'}/${username}`);
+    return this.http.get<Article[]>(`${this.authService.backUrl}${'/api/article-par-utlisateur'}/${username}`);
   }
   supprimerArticle(id: number){
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    const url = `${'http://localhost:8081/api/article'}/${id}`;
+    const url = `${this.authService.backUrl}${'/api/article'}/${id}`;
     return this.http.delete(url ,{headers:httpHeaders});
     }
 

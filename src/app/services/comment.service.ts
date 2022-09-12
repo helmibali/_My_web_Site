@@ -30,23 +30,23 @@ public dataForm: FormGroup;
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
       return this.http.post<any>
-      ('http://localhost:8081/api/comment1',formData ,{headers:httpHeaders});
+      (`${this.authService.backUrl}${'/api/comment1'}`,formData ,{headers:httpHeaders});
     }
 getCommentsByArticle(id:number):Observable<any>{
   
  
-  return this.http.get<any>(`${'http://localhost:8081/api/comments/article'}/${id}`);
+  return this.http.get<any>(`${this.authService.backUrl}${'/api/comments/article'}/${id}`);
 }
     
   getComments():Observable<any>{
   
-    return this.http.get<any>('http://localhost:8081/api/comments');
+    return this.http.get<any>(`${this.authService.backUrl}${'/api/comments'}`);
   }
     createComment(text:string,parentId:number,articleId:number):Observable<Cmt>{
       let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-      return this.http.post<Cmt>('http://localhost:8081/api/comment',{
+      return this.http.post<Cmt>(`${this.authService.backUrl}${'/api/comment'}`,{
         texte: text,
         user: this.authservice.loggedUser,
         article:articleId,
@@ -57,14 +57,14 @@ getCommentsByArticle(id:number):Observable<any>{
 
     listeComments():Observable<Cmt[]>{
   
-      return this.http.get<Cmt[]>('http://localhost:8081/api/comments');
+      return this.http.get<Cmt[]>(`${this.authService.backUrl}${'/api/comments'}`);
     }
 
     deleteComment(id: number){
       let jwt = this.authService.getToken();
       jwt = "Bearer "+jwt;
       let httpHeaders = new HttpHeaders({"Authorization":jwt})
-      const url = `${'http://localhost:8081/api/comment'}/${id}`;
+      const url = `${this.authService.backUrl}${'/api/comment'}/${id}`;
       return this.http.delete(url,{headers:httpHeaders});
       }
 
@@ -72,7 +72,7 @@ getCommentsByArticle(id:number):Observable<any>{
         let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-        return this.http.put<Cmt>(`'http://localhost:8081/api/comment'/${id}`,{
+        return this.http.put<Cmt>(`${this.authService.backUrl}${'/api/comment'}/${id}`,{
           id,
           text: text,
           user: this.authservice.loggedUser,

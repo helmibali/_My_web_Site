@@ -63,7 +63,7 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
 import { AddGouvernoratComponent } from './admin/add-gouvernorat/add-gouvernorat.component';
 import { ReglesDeDiffusionComponent } from './pages/regles-de-diffusion/regles-de-diffusion.component';
-import { AddCartComponent } from './cart/add-cart/add-cart.component';
+
 import { ListeCartComponent } from './cart/liste-cart/liste-cart.component';
 import { CartCompleteComponent } from './cart/cart-complete/cart-complete.component';
 import { ListeCartCmdComponent } from './cart/liste-cart-cmd/liste-cart-cmd.component';
@@ -86,6 +86,7 @@ import { PasswordForgotComponent } from './pages/login/password-forgot/password-
 import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot/reset-password-forgot.component';
 import { MenuComponent } from './ui/menu/menu.component';
 import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-sign-up.component';
+import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 
 
 
@@ -153,7 +154,6 @@ import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-s
     ConditionUtilisationComponent,
     AddGouvernoratComponent,
     ReglesDeDiffusionComponent,
-    AddCartComponent,
     ListeCartComponent,
     CartCompleteComponent,
     ListeCartCmdComponent,
@@ -173,6 +173,7 @@ import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-s
     ResetPasswordForgotComponent,
     MenuComponent,
     AddUserSignUpComponent,
+    AddToCartComponent,
     
    
    

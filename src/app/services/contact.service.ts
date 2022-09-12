@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 const httpOPtions = {
   headers : new HttpHeaders({'Content-Type':'application/json'})
  };
@@ -11,13 +12,13 @@ const httpOPtions = {
 })
 export class ContactService {
   public dataForm: FormGroup;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private authService: AuthService) { }
 
   createData(formData: FormData): Observable<any> {
-    return this.http.post("http://localhost:8081/api/contact", formData);
+    return this.http.post(`${this.authService.backUrl}${"/api/contact"}`, formData);
   }
 
   getAll():Observable<any>{
-return this.http.get('http://localhost:8081/api/contact/liste');
+return this.http.get(`${this.authService.backUrl}${"/api/contact/liste"}`);
   }
 }
