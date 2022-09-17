@@ -41,13 +41,14 @@ export class ArticleService {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post(`${this.authService.backUrl}${'/api/articleWithImg'}`, formData,{headers:httpHeaders});
+    return this.http.post(`${this.authService.backUrl}${'/api/articleimage'}`, formData,{headers:httpHeaders});
+   // return this.http.post(`${this.authService.backUrl}${'/api/articleflickr'}`, formData,{headers:httpHeaders});
   }
   updateData(formData: FormData,id:number): Observable<any> {
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put(`${'https://casse-back.herokuapp.com/api/article'}/${id}`, formData ,{headers:httpHeaders});
+    return this.http.put(`${this.authService.backUrl}${'/api/article'}/${id}`, formData ,{headers:httpHeaders});
   }
   listeArticles():Observable<Article[]>{
   

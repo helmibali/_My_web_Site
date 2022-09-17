@@ -31,10 +31,11 @@ public dataForm: FormGroup;
 		return this.http.request(req);
    }
    createData(formData: FormData): Observable<any> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer "+jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post(`${this.authService.backUrl}${"/api/addMarque"}`, formData,{headers:httpHeaders});
+    // let jwt = this.authService.getToken();
+    // jwt = "Bearer "+jwt;
+    // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+   // return this.http.post(`${this.authService.backUrl}${"/api/addMarque"}`, formData,{headers:httpHeaders});
+   return this.http.post(`${this.authService.backUrl}${"/api/marque"}`, formData);
   }
 
   getData(id: number): Observable<Object> {

@@ -18,8 +18,6 @@ export class CartService {
   constructor(private http: HttpClient, 
      private authService : AuthService) { }
   createCart(formData: FormData):Observable<Panier>{
-    
-    // return this.http.post<Cart>(`${this.authService.backUrl}${'/api/add-to-cart'}`,formData,{headers:httpHeaders});
      return this.http.post<Panier>(`${this.authService.backUrl}${'/api/panier'}`,formData);
   }
 

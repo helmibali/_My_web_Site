@@ -87,7 +87,7 @@ import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot
 import { MenuComponent } from './ui/menu/menu.component';
 import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-sign-up.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
-
+import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-mobile/ajouter-produit-mobile.component';
 
 
 
@@ -174,6 +174,8 @@ import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
     MenuComponent,
     AddUserSignUpComponent,
     AddToCartComponent,
+    AjouterProduitMobileComponent,
+   
     
    
    

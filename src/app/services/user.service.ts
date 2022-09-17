@@ -62,7 +62,7 @@ export class UserService {
     return this.http.post(`${this.authService.backUrl}${'/api/user/social'}`, formData);
   }
   createDataWithFile(formData: FormData): Observable<any> {
-    return this.http.post(`${this.authService.backUrl}${'/api/signupwithimg'}`, formData);
+    return this.http.post(`${this.authService.backUrl}${'/api/inscription'}`, formData);
   }
   getRoleslist(){
     return  this.http.get(`${this.authService.backUrl}${'/api/role/liste'}`);

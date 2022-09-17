@@ -45,7 +45,9 @@ produits :Produit[];
     let jwt = this.authService.getToken();
     jwt = "Bearer "+jwt;
     let httpHeaders = new HttpHeaders({"Authorization":jwt}) 
-    return this.http.post(`${this.authService.backUrl}${"/api/produit/add"}`, formData, {headers:httpHeaders});
+  //  return this.http.post(`${'http://localhost:8081'}${"/api/produit"}`, formData, {headers:httpHeaders});
+
+     return this.http.post(`${this.authService.backUrl}${"/api/produit"}`, formData, {headers:httpHeaders});
   }
   supprimerProduit(id: number){
     let jwt = this.authService.getToken();

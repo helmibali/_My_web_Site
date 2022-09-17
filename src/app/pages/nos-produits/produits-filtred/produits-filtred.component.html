@@ -9,7 +9,7 @@
           
 
 
-      <img src="{{'https://casse-back.herokuapp.com/api/imgp/'+produit.idProduit}}" class="card-img-top" width="100%" style="height:170px ;">
+      <img src="{{'https://casse12.herokuapp.com/api/imageproduit/'+produit.idProduit}}" class="card-img-top" width="100%" style="height:170px ;">
       <div class="card-body pt-0 px-0">
         <div class="dropdown" style="position:absolute ;left: 83%; top: 1%;">
           <button class="btn btn-light dropdown-toggle" *ngIf="authService.loggedUser == produit.user.username" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +39,7 @@
           <div class="d-flex flex-column" *ngFor="let m of produit.modeles">
             <small class="text-muted mb-1">Marque</small>
             <div class="d-flex flex-row">
-            <img src="{{'https://casse-back.herokuapp.com/api/imgmarque/'+m.marque.id}}" width="35px" height="25px">
+            <img src="{{'https://casse12.herokuapp.com/api/imagemarque/'+m.marque.id}}" width="35px" height="25px">
             <div class="d-flex flex-column ml-1">
                 <small class="ghj">{{m.libelleModele}} </small></div></div></div>
         </div>

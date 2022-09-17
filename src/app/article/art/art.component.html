@@ -17,7 +17,7 @@
                 style="width: 90px;height:80px;margin:auto;" alt="...">
               </div>
               <div *ngIf="user?.filename!==null" style="display:flex ;align-items:center;">
-                <img src="{{'https://casse-back.herokuapp.com/api/ImgUser/'+user.user_id}}"  class="rounded-circle" 
+                <img src="{{'https://casse12.herokuapp.com/api/ImgUser/'+user.user_id}}"  class="rounded-circle" 
                 style="width: 70px;height:80px;margin:auto;" alt="...">
               </div>
             </div>
@@ -35,13 +35,6 @@
         
         </div>
       </div>
-
-    
-
-      
-
-    
-
     </div>
    </div>
     
@@ -55,7 +48,7 @@
         <div style="display:flex;margin-left:2%;margin-top:2%;">
           <div *ngIf="a.user.filename !== null" >
             <img class="card-img-top img-responsive rounded-circle"
-            src = "{{'https://casse-back.herokuapp.com/api/ImgUser/'+a.user.user_id}}" 
+            src = "{{'https://casse12.herokuapp.com/api/ImgUser/'+a.user.user_id}}" 
             style = "height :70px;width:35px;"
            alt="">
           </div>
@@ -79,7 +72,7 @@
         </div>
         <div class="mb-2" *ngIf="a.filename !== null" style = "height :300px;width:100%;  margin:auto ; display: flex;">
           <img class="card-img-top img-responsive"
-          src = "{{'https://casse-back.herokuapp.com/api/imga/'+a.id}}" 
+          src = "{{'https://casse12.herokuapp.com/api/imagearticle/'+a.id}}" 
           style = "height :300px;width:90%; margin:auto ; "
          alt="">
         </div>
@@ -103,7 +96,7 @@
     style="width: 80%; margin: auto;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img src="{{'https://casse-back.herokuapp.com/api/imgp/'+p.idProduit}}" 
+        <img src="{{'https://casse12.herokuapp.com/api/imgp/'+p.idProduit}}" 
          style = "height :100px;width:100px;border-radius: 10px;" 
          class="card-img"
           alt="...">
