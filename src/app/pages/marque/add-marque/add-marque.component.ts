@@ -2,13 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MarqueService } from 'src/app/services/marque.service';
-
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { CompressImageService } from 'src/app/services/services/compress-image.service';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-add-marque',
   templateUrl: './add-marque.component.html',
   styleUrls: ['./add-marque.component.css']
 })
 export class AddMarqueComponent implements OnInit {
+ //-----------------------------------//
+  file: any;
+  predictions: number[];
+  imageDataEvent: any;
+  localUrl: any;
+  localCompressedURl:any;
+  isFlip: boolean = false;
+  sizeOfOriginalImage:number;
+  sizeOFCompressedImage:number;
+  //-----------------------------------//
+
   public imagePath;
   imgURL: any;
   userFile ;
@@ -16,6 +29,8 @@ export class AddMarqueComponent implements OnInit {
   constructor(public marqueService : MarqueService,
     public fb:FormBuilder,
     private router:Router,
+    private imageCompress: NgxImageCompressService,
+    private compressImage: CompressImageService
     ) { }
 
     infoForm(){
@@ -35,12 +50,19 @@ export class AddMarqueComponent implements OnInit {
       });
     }
 
-
     onSelectFile(event) {
       if (event.target.files.length > 0)
       {
         const file = event.target.files[0];
-        this.userFile = file;
+        
+
+      this.compressImage.compress(file)
+      .pipe(take(1))
+      .subscribe(compressedImage => {
+        console.log(`Image size after compressed: ${compressedImage.size} bytes.`)
+        // now you can do upload the compressed image 
+        this.userFile =compressedImage  ;
+      })
     
    
       var mimeType = event.target.files[0].type;
@@ -58,6 +80,13 @@ export class AddMarqueComponent implements OnInit {
       }
     }  
   }
+  
+ 
+
+    //-------------------------------//
+  
+    
+  
 
   ngOnInit(): void {
     this.infoForm()

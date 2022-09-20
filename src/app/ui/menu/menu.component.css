@@ -4,6 +4,9 @@
     position: absolute; 
     top: -140%
 }
+.add-pop{
+    display: flex;
+}
 /* .menu-list{
     margin-left:30% ;
 } */
@@ -20,8 +23,16 @@
 }
 
 
-
-@media only screen and (max-width:790px){
+.page-mobile{
+    display:none;
+   }
+@media only screen and (max-width:800px){
+   .page-mobile{
+    display: flex;
+   }
+    .add-pop{
+        display: none;
+    }
     .logo{
         width: 275px;
         height: 260px;

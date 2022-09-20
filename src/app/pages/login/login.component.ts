@@ -2,7 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import {  GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { ToastrService } from 'ngx-toastr';
 import { Role } from 'src/app/model/role.model';
 import { User } from 'src/app/model/user.model';
@@ -21,14 +20,12 @@ user = new User();
 err:number = 0;
 roles:Role[];
 token:string='efjreongenge'
-socialUser: SocialUser;
 usernames:any[];
 random:String;
-
   constructor(private authService:AuthService,
               private router:Router,
               private toastr: ToastrService,
-              //  private socialService: SocialAuthService,
+              
                private formBuilder : FormBuilder,
               public userService:UserService
               ) {}

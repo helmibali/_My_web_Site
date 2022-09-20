@@ -11,6 +11,7 @@ import { ArtComponent } from './article/art/art.component';
 import { CommentsComponent } from './article/comments/comments.component';
 import { CartCompleteComponent } from './cart/cart-complete/cart-complete.component';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
+import { FileComponent } from './file/file.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LoginGuard } from './guard/login.guard';
 import { ActualitesComponent } from './pages/actualites/actualites.component';
@@ -26,10 +27,10 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
 import { DiscussionsComponent } from './pages/discussions/discussions.component';
 import { HomeComponent } from './pages/home/home.component';
-import { InscriptionSocialComponent } from './pages/inscription-social/inscription-social.component';
+
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { ListContactComponent } from './pages/list-contact/list-contact.component';
-import { LoginSocialComponent } from './pages/login-social/login-social.component';
+
 import { LoginComponent } from './pages/login/login.component';
 import { PasswordForgotComponent } from './pages/login/password-forgot/password-forgot.component';
 import { AddMarqueComponent } from './pages/marque/add-marque/add-marque.component';
@@ -42,11 +43,11 @@ import { NosProduitsComponent } from './pages/nos-produits/nos-produits.componen
 import { ProduitByIdComponent } from './pages/nos-produits/produit-by-id/produit-by-id.component';
 import { ProduitsSearchComponent } from './pages/nos-produits/produits-search/produits-search.component';
 import { AjouterProduitFrontComponent } from './pages/produits/ajouter-produit-front/ajouter-produit-front.component';
+import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-mobile/ajouter-produit-mobile.component';
 import { ModifierProduitComponent } from './pages/produits/modifier-produit/modifier-produit.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ReglesDeDiffusionComponent } from './pages/regles-de-diffusion/regles-de-diffusion.component';
-import { SignupComponent } from './pages/signup/signup.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { AddUserComponent } from './pages/user/add-user/add-user.component';
 import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot/reset-password-forgot.component';
@@ -65,7 +66,7 @@ const routes: Routes = [
   {path:"ajouter",component:AddProduitComponent,canActivate:[ProduitGuard]},
   {path:"ajouter-categorie",component:AddCategorieComponent},
   {path:"inscription",component:AddUserComponent},
-  {path:"inscription-social",component:InscriptionSocialComponent},
+
   {path:"login",component:LoginComponent,canActivate:[LoginGuard]},
   {path:"profile",component:ProfileComponent,canActivate:[ProduitGuard]},
   {path: 'app-forbidden', component: ForbiddenComponent},
@@ -105,15 +106,16 @@ const routes: Routes = [
   {path:"discussion/:emiter/:auteur" ,component:DiscussionComponent},
   {path:"nos-produits-filtree/:famille/:categorie/:marque/:modele/:gouvernorat/:delegation" ,component:ProduitsSearchComponent},
   {path:"discussions" ,component:DiscussionsComponent},
-  {path:"sign-up" ,component:SignupComponent,canActivate:[LoginGuard]},
   {path:"mon-compte/:user_id" ,component:UserPanelComponent},
   {path:"liste-commande" ,component:ListeCommandeComponent},
   {path:"verification-email" ,component:PasswordForgotComponent},
-  {path:"verification" ,component:LoginSocialComponent,canActivate:[LoginGuard]},
+
   {path: "add-familles",component:AddFamilleComponent},
   {path:"reset-password/:token",component:ResetPasswordForgotComponent},
   {path:"reset-password/:token",component:ResetPasswordForgotComponent},
   {path:"add-cart",component:AddToCartComponent},
+  {path:"file",component:FileComponent},
+  {path:"add-annonce",component:AjouterProduitMobileComponent},
 
 ];
 

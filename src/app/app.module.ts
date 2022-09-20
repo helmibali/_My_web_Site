@@ -76,9 +76,6 @@ import { WriteMessageComponent } from './pages/write-message/write-message.compo
 import { MessagesAllComponent } from './pages/messages/messages-all/messages-all.component';
 import { ProduitsSearchComponent } from './pages/nos-produits/produits-search/produits-search.component';
 import { FacebookLoginProvider,SocialLoginModule,GoogleLoginProvider,SocialAuthServiceConfig } from 'angularx-social-login';
-import { InscriptionSocialComponent } from './pages/inscription-social/inscription-social.component';
-import { SignupComponent } from './pages/signup/signup.component';
-import { LoginSocialComponent } from './pages/login-social/login-social.component';
 import { LoginModalComponent } from './pages/login/login-modal/login-modal.component';
 import { ModifierProduitComponent } from './pages/produits/modifier-produit/modifier-produit.component';
 import { ListeCommandeComponent } from './admin/commade/liste-commande/liste-commande.component';
@@ -88,6 +85,9 @@ import { MenuComponent } from './ui/menu/menu.component';
 import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-sign-up.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-mobile/ajouter-produit-mobile.component';
+import { FileComponent } from './file/file.component';
+import {NgxImageCompressService} from 'ngx-image-compress';
+
 
 
 
@@ -163,9 +163,7 @@ import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-
     WriteMessageComponent,
     MessagesAllComponent,
     ProduitsSearchComponent,
-    InscriptionSocialComponent,
-    SignupComponent,
-    LoginSocialComponent,
+  
     LoginModalComponent,
     ModifierProduitComponent,
     ListeCommandeComponent,
@@ -175,6 +173,8 @@ import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-
     AddUserSignUpComponent,
     AddToCartComponent,
     AjouterProduitMobileComponent,
+    FileComponent,
+    
    
     
    
@@ -200,8 +200,11 @@ import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-
     SocialLoginModule,
     
   ],
+  
   // {provide:HTTP_INTERCEPTORS, useClass : TokenInterceptor,multi:true}
-  providers: [
+  providers: 
+  [
+    NgxImageCompressService,
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -220,7 +223,9 @@ import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-
         ]
       } as SocialAuthServiceConfig
     } 
+    
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,13 +3,15 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { CompressImageService } from 'src/app/services/services/compress-image.service';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
   styleUrls: ['./create-article.component.css']
 })
 export class CreateArticleComponent implements OnInit {
+  fileLength:number;
   userFile ;
   imgURL: any;
   public imagePath;
@@ -22,6 +24,7 @@ export class CreateArticleComponent implements OnInit {
     private router:Router,
     private formBuilder : FormBuilder,
     public authService : AuthService,
+    private compressImage: CompressImageService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +41,7 @@ export class CreateArticleComponent implements OnInit {
   }
 
   insertArticle(){
-    if (!this.validImg){
+    if (!this.imagePath){
       const formData = new FormData();
       const user = this.articleService.dataForm.value;
       formData.append('article',JSON.stringify(user));
@@ -65,10 +68,17 @@ export class CreateArticleComponent implements OnInit {
     }
 
   onSelectFile(event) {
-    if (event.target.files.length > 0)
+    this.fileLength = event.target.files.length;
+    if (this.fileLength > 0)
     {
       const file = event.target.files[0];
-      this.userFile = file;
+      this.compressImage.compress(file)
+      .pipe(take(1))
+      .subscribe(compressedImage => {
+        console.log(`Image size after compressed: ${compressedImage.size} bytes.`)
+        // now you can do upload the compressed image 
+        this.userFile =compressedImage  ;
+      })
       this.onSelect=true;
   
  

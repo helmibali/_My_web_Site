@@ -20,7 +20,17 @@
     .all{
         display:flex;
         flex-direction: column;
-        width: 200%;
+        width: 100%;
+    }
+    .left{
+        display:flex;
+        width:100%; 
+        flex-direction: column; 
+    }
+    .right{
+        display:flex;
+        width:100%; 
+        flex-direction: column; 
     }
 
     .modal-content {

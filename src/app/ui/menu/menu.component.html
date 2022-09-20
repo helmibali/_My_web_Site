@@ -42,10 +42,12 @@
                 </a>
             </b>
         </li>
-        <li class="nav-item" *ngIf="!authService.isloggedIn">
+        <li class="nav-item add-pop" *ngIf="!authService.isloggedIn">
           <!-- <a class="nav-link" href="#">Pricing</a> -->
-          
+          <div >
             <app-add-user></app-add-user>
+          </div>
+          
             
      
         </li>
@@ -60,9 +62,15 @@
         <li class="nav-item" *ngIf="authService.isloggedIn">
             <!-- <a class="nav-link" href="#">Pricing</a> -->
             <app-ajouter-produit-front
+            class="add-pop"
             [addButton]="addButton"
             style="z-index: 9999"
           ></app-ajouter-produit-front>
+          <div class="page-mobile">
+            <a class="btn btn-outline-danger" style="border:none;" routerLink="/add-annonce">
+              Ajouter votre annonce 
+          </a>
+           </div>
           </li>
           <li *ngIf="authService.isloggedIn" class="" >
            

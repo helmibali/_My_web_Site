@@ -18,7 +18,8 @@ import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { MarqueService } from 'src/app/services/marque.service';
 import { ModeleService } from 'src/app/services/modele.service';
 import { ProduitService } from 'src/app/services/produit.service';
-
+import { CompressImageService } from 'src/app/services/services/compress-image.service';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-ajouter-produit-mobile',
   templateUrl: './ajouter-produit-mobile.component.html',
@@ -64,6 +65,7 @@ export class AjouterProduitMobileComponent implements OnInit {
               private familleService : FamilleService,
               private toastr: ToastrService,
               private catService : CatService,
+              private compressImage: CompressImageService
   ) { }
   initForm(){
     this.produitService.dataForm = this.formBuilder.group({
@@ -145,7 +147,15 @@ export class AjouterProduitMobileComponent implements OnInit {
     {
       const file = event.target.files[0];
       this.userFile = file;
-  
+
+
+      this.compressImage.compress(file)
+      .pipe(take(1))
+      .subscribe(compressedImage => {
+        console.log(`Image size after compressed: ${compressedImage.size} bytes.`)
+        // now you can do upload the compressed image 
+        this.userFile =compressedImage  ;
+      })
  
     var mimeType = event.target.files[0].type;
     if (mimeType.match(/image\/*/) == null) {

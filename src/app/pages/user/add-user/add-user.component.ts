@@ -11,7 +11,8 @@ import { GouvernoratService } from 'src/app/services/gouvernorat.service';
 import { UserService } from 'src/app/services/user.service';
 import {  GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { Location } from '@angular/common';
-
+import { CompressImageService } from 'src/app/services/services/compress-image.service';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -44,6 +45,7 @@ export class AddUserComponent implements OnInit {
     private delegationService : DelegationService,
     private customValidator : CustomValidationService,
     private socialService: SocialAuthService,
+    private compressImage: CompressImageService
 
   ) { }
   infoForm(){
@@ -154,7 +156,13 @@ export class AddUserComponent implements OnInit {
     if (event.target.files.length > 0)
     {
       const file = event.target.files[0];
-      this.userFile = file;
+      this.compressImage.compress(file)
+      .pipe(take(1))
+      .subscribe(compressedImage => {
+        console.log(`Image size after compressed: ${compressedImage.size} bytes.`)
+        // now you can do upload the compressed image 
+        this.userFile =compressedImage  ;
+      })
       this.onSelect=true;
   
  

@@ -169,10 +169,10 @@ id="myModalInscription"
          
           <div class="form-group">
             <label>File Upload  </label>
-                <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                <input type="file" accept=".jpg,.png,.jpeg" (change)="onSelectFile($event)">
                 <img [src]="imgURL" height="200" *ngIf="imgURL">
         </div>
-
+        <!-- [disabled]="! onSelect"  -->
         <button
          class="btn btn-primary"
          type="button" 
@@ -180,7 +180,7 @@ id="myModalInscription"
          data-target="#collapseExample"
           aria-expanded="false"
            aria-controls="collapseExample"
-         [disabled]="! onSelect" 
+        
          (click)="validateImg()"
          >valider
         </button>

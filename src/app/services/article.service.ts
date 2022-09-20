@@ -19,15 +19,15 @@ export class ArticleService {
 
 
   constructor(private http: HttpClient,private authService : AuthService) { }
-  uploadFile(file: File): Observable<HttpEvent<{}>> {
-		const formdata: FormData = new FormData();
-		formdata.append('file', file);
-		const req = new HttpRequest('POST', '<Server URL of the file upload>', formdata, {
-			  reportProgress: true,
-			  responseType: 'text'
-		});
-    return this.http.request(req);
-  }
+  // uploadFile(file: File): Observable<HttpEvent<{}>> {
+	// 	const formdata: FormData = new FormData();
+	// 	formdata.append('file', file);
+	// 	const req = new HttpRequest('POST', '<Server URL of the file upload>', formdata, {
+	// 		  reportProgress: true,
+	// 		  responseType: 'text'
+	// 	});
+  //   return this.http.request(req);
+  // }
   getArticleById(id: number):Observable<Article> {
     return this.http.get<Article>(`${`${this.authService.backUrl}${'/api/article'}`}/${id}`);
   }
