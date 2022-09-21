@@ -85,7 +85,9 @@ export class AjouterProduitMobileComponent implements OnInit {
       user:this.authService.loggedUser,
     })
   }
+
   ngOnInit(): void {
+
     this.initForm();
 
 
@@ -118,6 +120,19 @@ export class AjouterProduitMobileComponent implements OnInit {
       selectAllText: 'Selectioner tout',
       unSelectAllText: 'déselectioner tout'
     };
+
+    
+    // this.dropdownSettings2 = {
+    //   singleSelection: false,
+    //   idField: 'id',
+    //   textField: 'libelle',
+    //   selectAllText: 'Selectioner tout',
+    //   unSelectAllText: 'déselectioner tout'
+    // };
+  
+  
+ 
+
   }
   onSubmit(){
     const formData = new FormData();
@@ -146,9 +161,7 @@ export class AjouterProduitMobileComponent implements OnInit {
     if (event.target.files.length > 0)
     {
       const file = event.target.files[0];
-      this.userFile = file;
-
-
+      
       this.compressImage.compress(file)
       .pipe(take(1))
       .subscribe(compressedImage => {
@@ -156,6 +169,7 @@ export class AjouterProduitMobileComponent implements OnInit {
         // now you can do upload the compressed image 
         this.userFile =compressedImage  ;
       })
+  
  
     var mimeType = event.target.files[0].type;
     if (mimeType.match(/image\/*/) == null) {

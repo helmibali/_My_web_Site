@@ -13,6 +13,7 @@ import {  GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-so
 import { Location } from '@angular/common';
 import { CompressImageService } from 'src/app/services/services/compress-image.service';
 import { take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -45,6 +46,7 @@ export class AddUserComponent implements OnInit {
     private delegationService : DelegationService,
     private customValidator : CustomValidationService,
     private socialService: SocialAuthService,
+    private toastr: ToastrService,
     private compressImage: CompressImageService
 
   ) { }
@@ -113,15 +115,13 @@ export class AddUserComponent implements OnInit {
 
   }
   addData(){
-   if (!this.validImg){
-    const formData = new FormData();
+    if (!this.imagePath){
+      const formData = new FormData();
     const user = this.userService.dataForm.value;
     formData.append('user',JSON.stringify(user));
    // formData.append('file',this.userFile);
     this.userService.createData(formData).subscribe(data=>{
       console.log(data);
-    });
-    this.router.navigate(['login']).then(()=> {
       window.location.reload();
     });
    }
@@ -133,9 +133,14 @@ export class AddUserComponent implements OnInit {
     formData.append('file',this.userFile);
     this.userService.createDataWithFile(formData).subscribe(data=>{
       console.log(data);
-    });
-    this.router.navigate(['login']).then(()=> {
-      window.location.reload();
+      
+      this.router.navigate(['/login']).then(()=> {
+       
+        window.location.reload();
+        
+      },
+      );
+       this.toastr.success('Vous etes inscrit!'); 
     });
    }
    
