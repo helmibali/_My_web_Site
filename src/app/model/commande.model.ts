@@ -1,5 +1,6 @@
 import { Cart } from "./cart.model";
 import { Delegation } from "./delegation.model";
+import { Panier } from "./panier.model";
 
 import { User } from "./user.model";
 
@@ -10,6 +11,7 @@ export class Commande {
      dateCreation:Date;
      user:User;
      carts:Cart[];
+     paniers:Panier[];
      livraison:string;
      delegation:Delegation;
      adresse :String;

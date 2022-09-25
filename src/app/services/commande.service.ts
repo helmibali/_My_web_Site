@@ -26,10 +26,11 @@ export class CommandeService {
         }
 
         create(formData: FormData):Observable<any>{
-          let jwt = this.authService.getToken();
-          jwt = "Bearer "+jwt;
-          let httpHeaders = new HttpHeaders({"Authorization":jwt})
-          return this.http.post(`${this.authService.backUrl}${'/api/commande'}`, formData , {headers:httpHeaders});
+          // let jwt = this.authService.getToken();
+          // jwt = "Bearer "+jwt;
+          // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+          return this.http.post(`${this.authService.backUrl}${'/api/commande'}`, formData );
+          //return this.http.post(`${'http://localhost:8081'}${'/api/commande'}`, formData );
         }
 
         

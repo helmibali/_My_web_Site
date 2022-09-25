@@ -76,11 +76,11 @@ newCart(){
 addToCart(){
     const formData = new FormData();
     const panier = this.cartService.dataForm.value;
-    formData.append('panier',JSON.stringify(panier));
+    formData.append('cart',JSON.stringify(panier));
   
     this.cartService.createCart(formData).toPromise().then(data=>{
       console.log(data);  
-      //this.carts = [...this.carts, data];
+      this.carts = [...this.carts, data];
       this.toastr.success('Pièce commandé avec succés!');
       this.isLoading=true;
      window.location.reload();

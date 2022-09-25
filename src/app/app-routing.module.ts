@@ -46,6 +46,7 @@ import { AjouterProduitFrontComponent } from './pages/produits/ajouter-produit-f
 import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-mobile/ajouter-produit-mobile.component';
 import { ModifierProduitComponent } from './pages/produits/modifier-produit/modifier-produit.component';
 import { ProduitsComponent } from './pages/produits/produits.component';
+import { ProfileTestComponent } from './pages/profile-test/profile-test.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ReglesDeDiffusionComponent } from './pages/regles-de-diffusion/regles-de-diffusion.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
@@ -116,7 +117,7 @@ const routes: Routes = [
   {path:"add-cart",component:AddToCartComponent},
   {path:"file",component:FileComponent},
   {path:"add-annonce",component:AjouterProduitMobileComponent},
-
+  {path:"profile-test",component:ProfileTestComponent},
 ];
 
 @NgModule({

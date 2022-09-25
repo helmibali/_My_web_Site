@@ -38,8 +38,13 @@ export class CartCompleteComponent implements OnInit {
     public commandeService:CommandeService) { }
 
   ngOnInit(): void {
+    console.log("ok");
+this.cartService.getByUsername(this.authService.loggedUser).subscribe(data=>{
+  this.carts=data;
+  console.log(this.carts);
+  
+})
 
-   
 
     this.gouvernoratService.listeGouvernorats().subscribe(g=>{
       this.gouvernorats=g;
@@ -97,10 +102,8 @@ initData(){
       livraison:new FormControl("livreur"),
       qty:new FormControl(this.carts.length),
       address:new FormControl(""),
-      delegation:new FormControl(0),
-
-    })
-    
+      delegation:new FormControl(1),
+    }) 
   });
 
 }

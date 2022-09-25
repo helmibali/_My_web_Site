@@ -87,6 +87,7 @@ import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-mobile/ajouter-produit-mobile.component';
 import { FileComponent } from './file/file.component';
 import {NgxImageCompressService} from 'ngx-image-compress';
+import { ProfileTestComponent } from './pages/profile-test/profile-test.component';
 
 
 
@@ -174,6 +175,7 @@ import {NgxImageCompressService} from 'ngx-image-compress';
     AddToCartComponent,
     AjouterProduitMobileComponent,
     FileComponent,
+    ProfileTestComponent,
     
    
     

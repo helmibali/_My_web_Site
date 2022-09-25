@@ -13,7 +13,7 @@
             </div>    
             <div class="row border-top border-bottom" *ngFor="let c of carts">
                 <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="{{'https://lacassetn.herokuapp.com/api/imgp/'+c.produit.idProduit}}" ></div>
+                    <div class="col-2"><img class="img-fluid" src="{{'https://casse12.herokuapp.com/api/imageproduit/'+c.produit.idProduit}}" ></div>
                     <div class="col">
                         <div class="row text-muted">{{c.produit.categorie.nomCategorie}}</div>
                         <div class="row">{{c.produit.nomProduit}}</div>
@@ -24,7 +24,7 @@
                     </div>
                    
                     <!-- <div class="col">{{c.produit.prixProduit | currency:"TND":"symbol"}} <span class="close"style="">en cours</span></div> -->
-                    <div *ngFor="let cmd of c.commandes">
+                    <div *ngFor="let cmd of c.commands">
                       <small *ngIf="!cmd.annulation && !cmd.validation" style="color: orangered;"><b>en cours</b> </small>
                       <small *ngIf="!cmd.annulation && cmd.validation" style="color:green ;"> <b>validé</b> </small>
                       <small *ngIf="cmd.annulation && !cmd.validation" style="color: red;"> <b>annulé</b> </small>

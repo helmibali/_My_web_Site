@@ -12,12 +12,100 @@
 
 .profile{
     width: 23%;
-    z-index:9989;
+    /* z-index:9989; */
+}
+.profile-card{
+    width:70%;
+    margin: auto;
+    border-radius: 10px
+}
+.profile-class{
+    width:100% ;
+    position:sticky;
+     top:80px; 
 }
 
 .produits{
     width: 73%;
     border-radius: 25px;
+}
+.button-user{
+    display: none;
+}
+.entet{
+    display: flex;
+}
+.search{
+    width: 60%;
+}
+.message{
+    display:flex ;
+    justify-content:center;
+    align-items:center;
+     width:15%
+}
+@media only screen and (max-width:790px){
+    .entet{
+        display: flex;
+        flex-direction: column;
+    }
+    .search{
+        width: 80%;
+        margin: auto;
+    }
+    .message{
+        display:flex ;
+        justify-content:center;
+        align-items:center;
+         width:70%;
+         margin:auto;
+    }
+    .all{
+        display: flex;
+        flex-direction: column;
+       
+    }
+    .profile{
+        
+        width: 100%;
+        /* z-index:9989; */
+    }
+    .profile-card{
+        width:90%;
+        margin: auto;
+        border-radius: 10px
+    }
+    .profile-class{
+        width:100% ;
+        position:sticky;
+         top:80px; 
+    }
+    .profile-mobile{
+        display:flex;
+        width: 100%;
+        position: sticky;
+        top:40px;
+        z-index: 3;
+        /* z-index:9989; */
+    }
+    .produits{
+        width: 90%;
+        border-radius: 25px;
+        margin: auto;
+    }
+    .photo{
+        display: none;
+    }
+    .button-user{
+        display: flex;
+        border-radius: 0px;
+        position: fixed;
+        top: 1%;
+        z-index: 9999;
+        left: 80%;
+    }
+
+   
 }
 
 

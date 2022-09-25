@@ -17,8 +17,8 @@ export class CartService {
   public dataForm: FormGroup;
   constructor(private http: HttpClient, 
      private authService : AuthService) { }
-  createCart(formData: FormData):Observable<Panier>{
-     return this.http.post<Panier>(`${this.authService.backUrl}${'/api/panier'}`,formData);
+  createCart(formData: FormData):Observable<Cart>{
+     return this.http.post<Cart>(`${this.authService.backUrl}${'/api/panier2'}`,formData);
   }
 
   addCart(c:Cart):Observable<any>{

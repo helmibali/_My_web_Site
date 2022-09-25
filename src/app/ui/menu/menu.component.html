@@ -42,7 +42,7 @@
                 </a>
             </b>
         </li>
-        <li class="nav-item add-pop" *ngIf="!authService.isloggedIn">
+        <li class="nav-item" *ngIf="!authService.isloggedIn">
           <!-- <a class="nav-link" href="#">Pricing</a> -->
           <div >
             <app-add-user></app-add-user>
@@ -139,7 +139,7 @@
                               <img
                                 class="card-img-top img-responsive rounded-circle image-user"
                                 src="{{
-                                  'https://casse12.herokuapp.com/api/ImgUser/' +
+                                  'https://casse12.herokuapp.com/api/imageuser/' +
                                     m.auteur.user_id
                                 }}"
                                 style="height: 30px; width: 30px"
