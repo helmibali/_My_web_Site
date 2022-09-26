@@ -11,7 +11,7 @@ import { ArtComponent } from './article/art/art.component';
 import { CommentsComponent } from './article/comments/comments.component';
 import { CartCompleteComponent } from './cart/cart-complete/cart-complete.component';
 import { ConditionUtilisationComponent } from './condition-utilisation/condition-utilisation.component';
-import { FileComponent } from './file/file.component';
+
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LoginGuard } from './guard/login.guard';
 import { ActualitesComponent } from './pages/actualites/actualites.component';
@@ -115,7 +115,7 @@ const routes: Routes = [
   {path:"reset-password/:token",component:ResetPasswordForgotComponent},
   {path:"reset-password/:token",component:ResetPasswordForgotComponent},
   {path:"add-cart",component:AddToCartComponent},
-  {path:"file",component:FileComponent},
+ 
   {path:"add-annonce",component:AjouterProduitMobileComponent},
   {path:"profile-test",component:ProfileTestComponent},
 ];

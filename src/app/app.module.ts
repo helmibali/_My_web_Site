@@ -85,8 +85,8 @@ import { MenuComponent } from './ui/menu/menu.component';
 import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-sign-up.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-mobile/ajouter-produit-mobile.component';
-import { FileComponent } from './file/file.component';
-import {NgxImageCompressService} from 'ngx-image-compress';
+
+
 import { ProfileTestComponent } from './pages/profile-test/profile-test.component';
 
 
@@ -174,7 +174,7 @@ import { ProfileTestComponent } from './pages/profile-test/profile-test.componen
     AddUserSignUpComponent,
     AddToCartComponent,
     AjouterProduitMobileComponent,
-    FileComponent,
+  
     ProfileTestComponent,
     
    
@@ -206,7 +206,7 @@ import { ProfileTestComponent } from './pages/profile-test/profile-test.componen
   // {provide:HTTP_INTERCEPTORS, useClass : TokenInterceptor,multi:true}
   providers: 
   [
-    NgxImageCompressService,
+  
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

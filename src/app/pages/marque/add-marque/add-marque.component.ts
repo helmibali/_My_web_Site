@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MarqueService } from 'src/app/services/marque.service';
-import { NgxImageCompressService } from 'ngx-image-compress';
+
 import { CompressImageService } from 'src/app/services/services/compress-image.service';
 import { take } from 'rxjs/operators';
 @Component({
@@ -29,7 +29,6 @@ export class AddMarqueComponent implements OnInit {
   constructor(public marqueService : MarqueService,
     public fb:FormBuilder,
     private router:Router,
-    private imageCompress: NgxImageCompressService,
     private compressImage: CompressImageService
     ) { }
 
