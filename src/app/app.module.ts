@@ -85,9 +85,14 @@ import { MenuComponent } from './ui/menu/menu.component';
 import { AddUserSignUpComponent } from './pages/user/add-user-sign-up/add-user-sign-up.component';
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
 import { AjouterProduitMobileComponent } from './pages/produits/ajouter-produit-mobile/ajouter-produit-mobile.component';
-
-
 import { ProfileTestComponent } from './pages/profile-test/profile-test.component';
+import { ConfigComponent } from './admin/config/config.component';
+import { SidebarComponent } from './admin/sidebar/sidebar.component';
+import { OffresComponent } from './ui/offres/offres.component';
+import { HomeSearchComponent } from './pages/home/home-search/home-search.component';
+import { CarrousselComponent } from './ui/carroussel/carroussel.component';
+import { CategoriesHomeComponent } from './ui/categories-home/categories-home.component';
+
 
 
 
@@ -164,7 +169,6 @@ import { ProfileTestComponent } from './pages/profile-test/profile-test.componen
     WriteMessageComponent,
     MessagesAllComponent,
     ProduitsSearchComponent,
-  
     LoginModalComponent,
     ModifierProduitComponent,
     ListeCommandeComponent,
@@ -174,8 +178,14 @@ import { ProfileTestComponent } from './pages/profile-test/profile-test.componen
     AddUserSignUpComponent,
     AddToCartComponent,
     AjouterProduitMobileComponent,
-  
     ProfileTestComponent,
+    ConfigComponent,
+    SidebarComponent,
+    OffresComponent,
+    HomeSearchComponent,
+    CarrousselComponent,
+    CategoriesHomeComponent,
+   
     
    
     

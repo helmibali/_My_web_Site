@@ -1,0 +1,86 @@
+
+<div id="mySidebar" class="sidebar shadow ">
+    
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <hr color="white">
+    <a routerLink=""><p class="rubrique"><i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</p> </a>
+    <hr style="display: flex;width:80%; margin:auto" color="white">
+    <a routerLink="/produits" type="button"><p class="rubrique">Produits</p></a>
+    <a routerLink="/liste-commande" type="button"><p class="rubrique">Commandes</p></a>
+    <a routerLink=""><p class="rubrique">Clients</p></a>
+    <a routerLink="/contact-liste" type="button"><p class="rubrique">Contact</p></a>
+    <hr style="display: flex;width:80%; margin:auto" color="white">
+    <div class="accordion" id="accordionExample">
+        <div class="">
+          <div class="" id="headingOne">
+            <h2 class="mb-0">
+              <a class="btn btn-link btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <p class="rubrique">Localisation <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+              </a>
+            </h2>
+          </div>
+      
+          <div id="collapseOne"
+          style="width:80%;margin:auto;" 
+          class="card collapse"
+          aria-labelledby="headingOne" 
+          data-parent="#accordionExample">
+            <div class="">
+                <a routerLink=""><p class="rubrique">Gouvernorats</p></a>
+                <a routerLink=""><p class="rubrique">Délégations</p></a>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <div class="" id="headingTwo">
+            <h2 class="mb-0">
+              <a class="btn btn-link btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <p class="rubrique"> Catégories <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+              </a>
+            </h2>
+          </div>
+          <div id="collapseTwo" 
+          style="width:80%;margin:auto;"
+           class="card collapse"
+            aria-labelledby="headingTwo" 
+            data-parent="#accordionExample">
+            <div class="">
+                <a routerLink=""><p class="rubrique">Catégories</p></a>
+                <a routerLink=""><p class="rubrique">Sous-Catégories</p></a>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <div class="" id="headingThree" >
+            <h2 class="mb-0">
+              <a class="btn btn-link btn-block text-left collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <p class="rubrique"> Marques/Modeles <i class="fa fa-caret-down" aria-hidden="true"></i></p>
+              </a>
+            </h2>
+          </div>
+          <div id="collapseThree"
+          style="width:80%;margin:auto;" 
+          class="card collapse" 
+           aria-labelledby="headingThree"
+            data-parent="#accordionExample">
+            <div class="">
+                <a routerLink=""><p class="rubrique">Marques</p></a>
+                <a routerLink=""><p class="rubrique">Modeles</p></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+  <!-- <div id="main">
+    <button class="openbtn" onclick="openNav()">☰</button>  
+   
+    
+   
+        
+            <app-produits style="left:-10% ;"></app-produits>
+     
+      
+  </div> -->
+
+ 

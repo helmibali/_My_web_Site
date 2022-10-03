@@ -1,0 +1,115 @@
+.all{
+display: flex;
+
+align-items: center;
+justify-content: center;
+height: 500px;
+border-radius: 25px;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center; 
+}
+
+.img-ele{
+    border-radius: 9%;
+    width: 99%;
+ }
+.categories{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-end;
+width: 50%;
+margin: auto;
+}
+.up{
+display: flex;
+}
+.down{
+display: flex;
+}
+
+
+.cat{
+    width: 100%;
+        
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        transition: transform .2s; /* Animation */
+    }
+    
+    .cat:hover{
+        transform: scale(1.1);
+    }
+
+    .title{
+        width: 5%;
+        margin: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .title-img{
+        width: 250%;
+        margin: auto;
+    }
+
+    @media only screen and (max-width:800px){
+        .all{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            border-radius: 25px;  
+            }
+        .categories{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            width: 75%;
+            margin: auto;
+            }
+            .up{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center; 
+                }
+                .down{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center; 
+                }
+        .cat{
+                  
+            margin: auto;
+            height: 95%;
+            display: flex;
+            align-items: center;
+            justify-content: center;   
+            transition: transform .2s; /* Animation */
+            }
+                    
+                    .cat:hover{
+                        transform: scale(1.1);
+                    }
+
+                    .img-ele{
+                        border-radius: 9%;
+                        width: 95%;
+                     }
+
+                     
+    .title-img{
+        width: 600%;
+        margin: auto;
+    }
+    }
+

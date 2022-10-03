@@ -1,0 +1,67 @@
+.all{
+    display: flex;
+    height: 400px;
+ 
+}
+.inscrire{
+    position: absolute;
+    z-index: 10;
+    top: 104%;
+    left: 68%;
+    width: 15%;
+}
+.image{
+   
+  display: flex;
+  width: 33%;
+  align-items: flex-start;
+  justify-content: center;
+   
+}
+.pic{
+    width: 90%;
+    border-radius: 10px;
+    border-bottom-right-radius:25px !important;
+}
+.left{
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+}
+.right{
+    width: 33.33%;
+    display: flex;
+    flex-direction: column;
+}
+.left-up{
+    width: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+}
+.right-up{
+    width: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    flex-direction: column;
+    transition: transform .2s; /* Animation */
+}
+.right-up:hover{
+    transform: scale(1.1);
+}
+.left-down{
+    width: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column;
+}
+.right-down{
+    width:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+}

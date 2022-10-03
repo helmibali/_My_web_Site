@@ -2,6 +2,15 @@
     background-color: #f4f4f4;
 }
 
+.product-card{
+	text-decoration:none ;
+	 color:black;
+	 transition: transform .2s; /* Animation */
+}
+.product-card:hover{
+    transform: scale(1.1);
+}
+
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 body{

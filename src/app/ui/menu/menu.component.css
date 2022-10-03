@@ -1,8 +1,7 @@
 .logo{
-    width: 275px;
-    height: 260px; 
-    position: absolute; 
-    top: -140%
+
+    position: absolute;
+    top: -55%;
 }
 .add-pop{
     display: flex;

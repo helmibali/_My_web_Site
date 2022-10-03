@@ -1,39 +1,54 @@
   <!-- Footer-->
-  <footer class="py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-1 col-md-2 col-l-3 element">
+  <footer class="py-5">
+    <div class=" mt-5" style="width:90%;display:flex;margin: auto;">
+     
+     
+        <div class="element">
   <div>
-    <a type="button" style="color:rgb(61, 59, 59) ;" routerLink="/Conditions-utilisation">Conditions d'utilisation</a><br>
+    <a type="button" style="color:rgb(229, 229, 229) ;" routerLink="/Conditions-utilisation">Acceil</a><br>
+    <a type="button" style="color:rgb(229, 229, 229) ;" routerLink="/Conditions-utilisation">Conditions d'utilisation</a><br>
   
   
   </div>
         </div>
-        <div class="col-sm-1 col-md-2 col-l-3 element">
+        <div class="element">
           <div>
-            <a type="button" style="color:rgb(61, 59, 59) ;" routerLink="/Regles-De-Diffusion">Règles de diffusion</a><br>
+            <a type="button" style="color:rgb(229, 229, 229) ;" routerLink="/Regles-De-Diffusion">Règles de diffusion</a><br>
       
           
           </div>
         </div>
-        <div class="col-sm-1 col-md-2 col-l-3 element">
+        <div class="element">
           <div>
-            <a type="button" style="color:rgb(61, 59, 59) ;" routerLink="/contact">Contactez-nous</a>
+            
+            <a *ngIf="authService.isloggedIn" type="button" style="color:rgb(229, 229, 229) ;" routerLink="/login">Mon Compte</a><br>
+            <a *ngIf="authService.isloggedIn" type="button" style="color:rgb(229, 229, 229) ;" routerLink="/login">Mon Panier</a><br>
+            <a *ngIf="!authService.isloggedIn" type="button" style="color:rgb(229, 229, 229) ;" routerLink="/login">S'identifier</a><br>
+            <a *ngIf="!authService.isloggedIn" type="button" style="color:rgb(229, 229, 229) ;" routerLink="/sign-up">S'inscrire</a><br>
            
          
           </div>
         </div>
-        <div class="col-sm-1 col-md-2 col-l-3 element">
+      
+        <div class="element">
           <div>
-            <a *ngIf="!authService.isloggedIn" type="button" style="color:rgb(61, 59, 59) ;" routerLink="/login">S'identifier</a><br>
-            <a *ngIf="!authService.isloggedIn" type="button" style="color:rgb(61, 59, 59) ;" routerLink="/sign-up">S'inscrire</a><br>
+            <a type="button" style="color:rgb(229, 229, 229) ;">+216 22 31 95 31</a><br>
+            <a  type="button" style="color:rgb(229, 229, 229) ;" routerLink="/login">info@lacasse.tn</a><br>
+            <a  type="button" style="color:rgb(229, 229, 229) ;" routerLink="/login">Residence Luxury, Les berges du lac 1</a><br>
+            <a type="button" style="color:rgb(229, 229, 229) ;" routerLink="/contact">Contactez-nous</a>
+           
            
          
-          </div>
+         
         </div>
       </div>
     </div>
     
-    <div class="container mt-2"><p class="m-0 text-center text-black">Copyright &copy; LaCasse.tn 2022</p>
+    <div class="container mt-2">
+      <p class="m-0 text-center text-black">Copyright &copy;2022</p>
+      <img src="./../../../assets/design/logoCasse.png"
+      style="position: absolute;
+      left: 43%;
+      width: 200px;" alt="">
     </div>
 </footer>

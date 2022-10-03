@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { AddDelegationComponent } from './admin/add-delegation/add-delegation.component';
 import { AddFamilleComponent } from './admin/add-famille/add-famille.component';
 import { ListeCommandeComponent } from './admin/commade/liste-commande/liste-commande.component';
+import { ConfigComponent } from './admin/config/config.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { DelegationComponent } from './admin/delegation/delegation.component';
 import { FamilleComponent } from './admin/famille/famille.component';
 import { GouvernoratComponent } from './admin/gouvernorat/gouvernorat.component';
+import { SidebarComponent } from './admin/sidebar/sidebar.component';
 import { ArtComponent } from './article/art/art.component';
 import { CommentsComponent } from './article/comments/comments.component';
 import { CartCompleteComponent } from './cart/cart-complete/cart-complete.component';
@@ -118,6 +120,8 @@ const routes: Routes = [
  
   {path:"add-annonce",component:AjouterProduitMobileComponent},
   {path:"profile-test",component:ProfileTestComponent},
+  {path:"config",component:ConfigComponent},
+  {path:"sidebar",component:SidebarComponent}
 ];
 
 @NgModule({
