@@ -1,0 +1,96 @@
+
+.allCard{
+  display: grid;
+  width: 100%;
+  grid-gap: 10px;
+  margin: auto;
+  grid-template-columns: repeat(auto-fit, 250px);
+  /* align-items: space-between;
+  justify-content: space-between; 
+  padding:20px;
+  flex-wrap: wrap;
+  margin: auto;  */
+  
+}
+/* .grid>* {
+    width: 240px;
+    
+  } */
+.fiche{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 15px;
+    height: 95%;
+    margin: auto;
+
+    
+}
+.produits{
+    background-color: #f4f4f4;
+}
+
+.product-card{
+	text-decoration:none ;
+	 color:black;
+	 transition: transform .2s; /* Animation */
+}
+.product-card:hover{
+    transform: scale(1.1);
+    z-index: 100;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+body{
+	background: #F5F1EE;
+	font-family: 'Roboto', sans-serif;
+}
+.card{
+	width: 250px;
+	border-radius: 10px;
+}
+
+.card-img-top{
+	/* border-top-right-radius: 10px;
+	border-top-left-radius: 10px; */
+  border-radius: 10px;
+}
+span.text-muted{
+	font-size: 12px;
+}
+small.text-muted{
+	font-size: 8px;
+}
+h5.mb-0{
+	font-size: 1rem;
+}
+small.ghj{
+	font-size: 9px;
+}
+.mid{
+	background: #ECEDF1;
+}
+h6.ml-1{
+	font-size: 13px;
+}
+small.key{
+	text-decoration: underline;
+	font-size: 9px;
+	cursor: pointer;
+}
+.btn-danger{
+	color: #FFCBD2;
+}
+.btn-danger:focus{
+	box-shadow: none;
+}
+
+
+
+

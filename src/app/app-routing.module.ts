@@ -58,6 +58,8 @@ import { UpdateImageComponent } from './pages/user/update-image/update-image.com
 import { UpdatePasswordComponent } from './pages/user/update-password/update-password.component';
 import { UtilisateursComponent } from './pages/utilisateurs/utilisateurs.component';
 import { ProduitGuard } from './produit.guard';
+import { CardProduitComponent } from './ui/card-produit/card-produit.component';
+import { MenuLightComponent } from './ui/menu-light/menu-light.component';
 import { UpdateProduitComponent } from './update-produit/update-produit.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
@@ -121,7 +123,8 @@ const routes: Routes = [
   {path:"add-annonce",component:AjouterProduitMobileComponent},
   {path:"profile-test",component:ProfileTestComponent},
   {path:"config",component:ConfigComponent},
-  {path:"sidebar",component:SidebarComponent}
+  {path:"sidebar",component:SidebarComponent},
+  {path:"card",component:MenuLightComponent}
 ];
 
 @NgModule({

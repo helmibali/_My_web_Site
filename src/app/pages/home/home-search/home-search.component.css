@@ -99,11 +99,66 @@
    position: sticky;
    top: 85px;
    height:400px;
+   background-image: url(../../../../assets/design/ficheproduit.png
+   );
    /* background-color: #f1f4fb; */
-  
+}
+.search-input{
+    width: 80%;
+    margin: auto;  
+}
+.search-input input{
+    border-radius: 10px;
+    transition: transform .2s; /* Animation */
+}
 
-   
+.search-input input::placeholder {
+    font-weight: bold;
+    opacity: .5;
+    color: rgb(53, 52, 52);
+}
+.search-input  input:hover{
+    transform: scale(1.1);
+}
 
+.categorie-scategorie input{
+    border-radius: 10px;
+    transition: transform .2s; /* Animation */
+}
+
+.categorie-scategorie  input:hover{
+    transform: scale(1.1);
+}
+
+.categorie-scategorie {
+    display: flex;
+    width: 100%;  
+}
+
+.filter-btn{
+    background-image: url(../../../../assets/design/menu.png);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 1rem;
+    transition: transform .2s;
+}
+.filter-btn:hover{
+    transform: scale(1.2);
+} 
+select{
+    border-radius: 10px;
+    transition: transform .2s; /* Animation */
+}
+select:hover{
+    transform: scale(1.2);
+}
+.filter-interne{
+    position: sticky; 
+    top: 85px;width: 95%;
+    /* border:2px rgb(135, 135, 135) solid; */
+    /* border-radius: 1rem; */
+    background-color: #e9ebedaf  
 }
 .btnFiltre{
     align-items: flex-end;
@@ -174,7 +229,10 @@ justify-content: space-between;
 }
 .filter{
     background-color:#ddd;
-   
+    background-image: url(../../../../assets/design/ficheproduit.png);
+        background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
     display: flex;
     width: 25%;
     border-radius: 1rem;
@@ -283,7 +341,8 @@ small.justify-content-center{
     }
     .filter{
         display: none;
-        background-color:#ddd;
+        /* background-color:#ddd; */
+    
        
         width: 100%;
         border-radius: 1rem;
@@ -370,4 +429,8 @@ small.justify-content-center{
     left: 70%;  
 }
 }
-
+@media only screen and (max-width:790px){
+    select{
+       font-size: 14px;
+    }  
+}

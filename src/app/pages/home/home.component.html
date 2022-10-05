@@ -1,12 +1,25 @@
-<div class="n"><app-menu></app-menu></div>
-<app-carroussel></app-carroussel>
-<app-categories-home></app-categories-home>
-<!-- <app-slide></app-slide> -->
 
-<element-search></element-search>
+<div class="fleche">
+    <img  src="../../../assets/design/fleche2.png" type="button" (click)="onActivate($event)" alt="">
+</div>
+<app-menu-vertical></app-menu-vertical>
+<div id="main">
 
-<!-- <div style="background-color:#e9ebedaf ;"> -->
-<!-- <app-produits-filtred [produits]="produits" [term]="term"></app-produits-filtred> -->
-<!-- </div> -->
-<app-offres></app-offres>
-<app-footer></app-footer>
+    <!-- <a  type="button" class="openbtn" id="openBtn" onclick="openNav()">☰</a> -->
+
+    <div class="n"><app-menu-light></app-menu-light></div>
+    <app-carroussel></app-carroussel>
+    <app-categories-home></app-categories-home>
+    <!-- <app-slide></app-slide> -->
+    
+    <element-search></element-search>
+    
+    <!-- <div style="background-color:#e9ebedaf ;"> -->
+    <!-- <app-produits-filtred [produits]="produits" [term]="term"></app-produits-filtred> -->
+    <!-- </div> -->
+    
+    <app-offres></app-offres>
+    
+    <app-footer></app-footer>
+
+</div>

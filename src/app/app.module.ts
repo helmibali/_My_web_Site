@@ -92,6 +92,10 @@ import { OffresComponent } from './ui/offres/offres.component';
 import { HomeSearchComponent } from './pages/home/home-search/home-search.component';
 import { CarrousselComponent } from './ui/carroussel/carroussel.component';
 import { CategoriesHomeComponent } from './ui/categories-home/categories-home.component';
+import { MenuVerticalComponent } from './ui/menu-vertical/menu-vertical.component';
+import { CardProduitComponent } from './ui/card-produit/card-produit.component';
+import { FilterElementComponent } from './ui/filter-element/filter-element.component';
+import { MenuLightComponent } from './ui/menu-light/menu-light.component';
 
 
 
@@ -185,6 +189,10 @@ import { CategoriesHomeComponent } from './ui/categories-home/categories-home.co
     HomeSearchComponent,
     CarrousselComponent,
     CategoriesHomeComponent,
+    MenuVerticalComponent,
+    CardProduitComponent,
+    FilterElementComponent,
+    MenuLightComponent,
    
     
    

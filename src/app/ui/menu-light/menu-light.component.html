@@ -1,0 +1,276 @@
+<nav class="navbar navbar-expand navbar-light shadow" style="height:50px ;background-color: rgb(255, 255, 255);">
+    <a  type="button" class="openbtn2" id="openBtn2" onclick="openNav()">☰</a>
+  
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="groupe-btn navbar-nav">
+        <!-- ---------------------------------message-------------------------------- -->
+        <div class="ml-5"
+        *ngIf="authService.isloggedIn && messagesRecevedUnread?.length === 0"
+      >
+        <a
+          type="button"
+          class="btn btn-outline-danger dropdown-toggle"
+          style="
+          
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none"
+          data-toggle="dropdown"
+          id="dropdownMenuButton2"
+          aria-haspopup="true"
+          aria-expanded="false"
+          routerLink="/discussions"
+        >
+        <img src="../../../assets/design/msg.png" width="25" alt="">
+          <!-- <i class="fa fa-envelope" aria-hidden="true"
+          style="font-size: 25px"></i> -->
+      </a>
+      </div>
+
+      <div
+        *ngIf="authService.isloggedIn && messagesRecevedUnread?.length > 0"
+      >
+        <a
+          type="button"
+          class=""
+          style="
+          text-decoration: none;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none"
+          data-toggle="dropdown"
+          id="dropdownMenuButton2"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <!-- <i class="fa fa-envelope"
+           aria-hidden="true"
+           style="font-size: 25px"></i> -->
+           <img src="../../../assets/design/msg.png" width="25" alt="">
+          <span
+            *ngIf="messagesRecevedUnread?.length > 0"
+            class="badge"
+            style="color:#59118A;"
+          >
+            {{ messagesRecevedUnread?.length }}
+          </span>
+        </a>
+        <div
+          class="dropdown-menu"
+          style="
+            width: 20%;
+            border-radius: 10px;
+            left: 71%;
+            top: 78%;
+            background-color: #f9f9f9df;
+          "
+        >
+          <div
+            *ngFor="let m of messagesRecevedUnread"
+            style="display: flex; align-items: center; align-items: center"
+          >
+            <div
+              style="
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                left: 0%;
+              "
+              class="mb-1 ml-1"
+            >
+              <form
+                [formGroup]="this.messageService.dataForm2"
+                (ngSubmit)="onSubmit(m)"
+              >
+                <input
+                  type="hidden"
+                  formControlName="id"
+                  id="id"
+                  [(ngModel)]="m.id"
+                />
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="vu"
+                    id=""
+                    hidden
+                  />
+                </div>
+
+                <button type="submit" style="border: none; width: 97%">
+                  <div style="display: flex; background-color: #f9f9f985">
+                    <div>
+                      <div *ngIf="m.auteur.filename === null">
+                        <a (click)="toDiscussion(m.auteur.username)">
+                          <img
+                            class="card-img-top img-responsive rounded-circle image-user"
+                            src="../../../assets/images/user1.png"
+                            style="height: 50px; width: 50px"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                      <div *ngIf="m.auteur.filename !== null">
+                        <a (click)="toDiscussion(m.auteur.username)">
+                          <img
+                            class="card-img-top img-responsive rounded-circle image-user"
+                            src="{{
+                              'http://localhost:8081/api/ImgUser/' +
+                                m.auteur.user_id
+                            }}"
+                            style="height: 50px; width: 50px"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                    </div>
+                    <div
+                      class="ml-2"
+                      *ngIf="
+                        this.authService.loggedUser !== m.auteur.username
+                      "
+                    >
+                      <b>{{ m.auteur.prenom }} {{ m.auteur.nom }}</b> <br />
+                      <p>{{ m.message }}</p>
+                      <a (click)="toDiscussion(m.auteur.username)"
+                        ><small><b>répondre</b></small></a
+                      >
+                    </div>
+                  </div>
+                </button>
+              </form>
+            </div>
+          </div>
+          <a routerLink="/discussions">voir tout</a>
+        </div>
+      </div>
+       <!-- -------------------------------------cart----------------------------------  -->
+        <div class="ml-4">
+          <a
+            type="button"
+            class=""
+            style="
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none"
+            data-toggle="dropdown"
+            *ngIf="authService.isloggedIn"
+            style="border: none"
+            routerLink="/cart"
+          >
+            <i
+              class="fa fa-shopping-cart"
+              aria-hidden="true"
+              style="color: #59118A; font-size: 25px"
+            ></i>
+
+            <span
+              *ngIf="carts?.length > 0"
+              class="badge"
+              style="color: #59118A"
+              >{{ carts?.length }}</span
+            >
+        </a>
+        </div>
+<!---------------user---------------------------------------------------------------- -->
+         <div *ngIf="authService.isloggedIn" class="dropdown ml-4 ">
+          <a
+            class=""
+            style="
+              text-decoration: none;
+              border: none;
+              font-weight: bold;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <div style="display: flex">
+              <div *ngIf="user?.filename === null">
+                <!-- <img
+                  class="img-responsive rounded-circle"
+                  src="../../../assets/images/user1.png"
+                  style="height: 25px; width: 25px"
+                  alt=""
+                /> -->
+                <i class="fa fa-user"
+                 aria-hidden="true" 
+                 style="color: #59118A;font-size:25px; ;"></i>
+              </div>
+              <div *ngIf="user?.filename !== null">
+                <img
+                  class="img-responsive rounded-circle"
+                  src="{{
+                    'http://localhost:8081/api/ImgUser/' + user.user_id
+                  }}"
+                  style="height: 25px; width: 25px"
+                  alt=""
+                />
+              </div>
+            </div>
+
+            <!-- {{ user?.prenom }} {{ user?.nom }} -->
+          </a>
+          <div
+            class="dropdown-menu"
+            style="border-radius: 10px; background-color: #e9ebeddf; left: -32%"
+            aria-labelledby="dropdownMenu2"
+          >
+            <button class="dropdown-item" type="button">
+              <a
+                *ngIf="authService.isAdmin()"
+                class="user_options"
+                routerLink="/produits"
+              >
+                <i class="fa fa-tachometer"></i> &nbsp;Dashboard</a
+              >
+            </button>
+            <button class="dropdown-item" type="button">
+              <a
+                *ngIf="authService.isloggedIn"
+                class="user_options"
+                (click)="viewProfile()"
+              >
+                <i class="fa fa-user"></i> &nbsp;Mon compte</a
+              >
+            </button>
+            <button class="dropdown-item" type="button">
+              <a
+                *ngIf="authService.isloggedIn"
+                class="user_options"
+                routerLink="/update-password"
+              >
+                <i class="fa fa-key"></i> &nbsp;Changer mot de passe</a
+              >
+            </button>
+
+            <button class="dropdown-item" type="button">
+              <a
+                *ngIf="authService.isloggedIn"
+                (click)="logout()"
+                class="user_options"
+                routerLink="/login"
+              >
+                <i class="fa fa-sign-out"></i> &nbsp;deconnexion</a
+              >
+            </button>
+          </div>
+        </div>
+    </div>
+    </div>
+  </nav>
