@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from 'src/app/model/produit.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProduitService } from 'src/app/services/produit.service';
 
 
@@ -11,7 +12,9 @@ import { ProduitService } from 'src/app/services/produit.service';
 export class HomeComponent implements OnInit {
 term;
 produits:Produit[];
-  constructor(private produitService:ProduitService) { }
+  constructor(
+    private produitService:ProduitService,
+    public authService:AuthService) { }
 
   ngOnInit(): void {
     

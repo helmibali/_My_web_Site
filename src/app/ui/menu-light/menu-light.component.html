@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand navbar-light shadow" style="height:50px ;background-color: rgb(255, 255, 255);">
-    <a  type="button" class="openbtn2" id="openBtn2" onclick="openNav()">☰</a>
+<div class="navbar navbar-expand navbar-light shadow" style="height:50px ;background-color: rgb(255, 255, 255);">
+    <a  type="button" class="openbtn2" id="openbtn2" onclick="openNav()">☰</a>
+    <a  type="button" class="home-btn" style="" id="" routerLink="/"><img src="../../../assets/design/home.png" width="25" alt=""></a>
   
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <div class="groupe-btn navbar-nav">
@@ -16,14 +17,15 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          border: none"
+          border: none;
+          z-index: 9999;"
           data-toggle="dropdown"
           id="dropdownMenuButton2"
           aria-haspopup="true"
           aria-expanded="false"
           routerLink="/discussions"
         >
-        <img src="../../../assets/design/msg.png" width="25" alt="">
+        <img src="../../../assets/design/msg-icon.png" width="25" alt="">
           <!-- <i class="fa fa-envelope" aria-hidden="true"
           style="font-size: 25px"></i> -->
       </a>
@@ -41,7 +43,8 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          border: none"
+          border: none;
+          z-index: 9999;"
           data-toggle="dropdown"
           id="dropdownMenuButton2"
           aria-haspopup="true"
@@ -50,25 +53,24 @@
           <!-- <i class="fa fa-envelope"
            aria-hidden="true"
            style="font-size: 25px"></i> -->
-           <img src="../../../assets/design/msg.png" width="25" alt="">
+           <img src="../../../assets/design/msg-icon.png" width="25" alt="">
           <span
             *ngIf="messagesRecevedUnread?.length > 0"
             class="badge"
-            style="color:#59118A;"
+            style="color:#212051;z-index: 9999;"
           >
             {{ messagesRecevedUnread?.length }}
           </span>
         </a>
         <div
-          class="dropdown-menu"
+          class="msg-menu dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+          aria-labelledby="messagesDropdown"
           style="
-            width: 20%;
-            border-radius: 10px;
-            left: 71%;
-            top: 78%;
-            background-color: #f9f9f9df;
+           
           "
-        >
+        ><h6 class="dropdown-header">
+          Messages
+      </h6>
           <div
             *ngFor="let m of messagesRecevedUnread"
             style="display: flex; align-items: center; align-items: center"
@@ -122,7 +124,7 @@
                           <img
                             class="card-img-top img-responsive rounded-circle image-user"
                             src="{{
-                              'http://localhost:8081/api/ImgUser/' +
+                              'https://casse12.herokuapp.com/api/imageuser/' +
                                 m.auteur.user_id
                             }}"
                             style="height: 50px; width: 50px"
@@ -137,8 +139,13 @@
                         this.authService.loggedUser !== m.auteur.username
                       "
                     >
-                      <b>{{ m.auteur.prenom }} {{ m.auteur.nom }}</b> <br />
-                      <p>{{ m.message }}</p>
+                    <div class="font-weight-bold">
+                      <div class="text-truncate">{{ m.message }}</div>
+                      <div class="small text-gray-500">{{ m.auteur.prenom }} {{ m.auteur.nom }} · {{m.dateCreation | date:'HH:mm'}}</div>
+                  </div>
+
+                   
+                      
                       <a (click)="toDiscussion(m.auteur.username)"
                         ><small><b>répondre</b></small></a
                       >
@@ -148,7 +155,11 @@
               </form>
             </div>
           </div>
-          <a routerLink="/discussions">voir tout</a>
+          <a  type="button" routerLink="/discussions">
+            <h6 class="dropdown-header">
+            tout les messages
+          </h6>
+          </a>
         </div>
       </div>
        <!-- -------------------------------------cart----------------------------------  -->
@@ -162,28 +173,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: none"
+            border: none;
+            z-index: 9999;"
             data-toggle="dropdown"
             *ngIf="authService.isloggedIn"
-            style="border: none"
             routerLink="/cart"
           >
             <i
               class="fa fa-shopping-cart"
               aria-hidden="true"
-              style="color: #59118A; font-size: 25px"
+              style="color: #212051; font-size: 25px"
             ></i>
 
             <span
               *ngIf="carts?.length > 0"
               class="badge"
-              style="color: #59118A"
+              style="color: #212051"
               >{{ carts?.length }}</span
             >
         </a>
         </div>
 <!---------------user---------------------------------------------------------------- -->
-         <div *ngIf="authService.isloggedIn" class="dropdown ml-4 ">
+         <div *ngIf="authService.isloggedIn"
+          class="dropdown ml-4 ">
           <a
             class=""
             style="
@@ -192,6 +204,7 @@
               font-weight: bold;
               display: flex;
               align-items: center;
+              z-index: 9999;
               justify-content: center;
             "
             type="button"
@@ -210,13 +223,13 @@
                 /> -->
                 <i class="fa fa-user"
                  aria-hidden="true" 
-                 style="color: #59118A;font-size:25px; ;"></i>
+                 style="color: #212051;font-size:25px; ;"></i>
               </div>
               <div *ngIf="user?.filename !== null">
                 <img
                   class="img-responsive rounded-circle"
                   src="{{
-                    'http://localhost:8081/api/ImgUser/' + user.user_id
+                    'https://casse12.herokuapp.com/api/imageuser/' + user.user_id
                   }}"
                   style="height: 25px; width: 25px"
                   alt=""
@@ -227,8 +240,7 @@
             <!-- {{ user?.prenom }} {{ user?.nom }} -->
           </a>
           <div
-            class="dropdown-menu"
-            style="border-radius: 10px; background-color: #e9ebeddf; left: -32%"
+            class="user-menu dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
             aria-labelledby="dropdownMenu2"
           >
             <button class="dropdown-item" type="button">
@@ -237,7 +249,7 @@
                 class="user_options"
                 routerLink="/produits"
               >
-                <i class="fa fa-tachometer"></i> &nbsp;Dashboard</a
+                <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;Dashboard</a
               >
             </button>
             <button class="dropdown-item" type="button">
@@ -246,11 +258,14 @@
                 class="user_options"
                 (click)="viewProfile()"
               >
-                <i class="fa fa-user"></i> &nbsp;Mon compte</a
-              >
+              <i class="fa fa-user"></i> 
+                  
+                &nbsp;Mon compte
+              
+              </a>
             </button>
             <button class="dropdown-item" type="button">
-              <a
+               <a
                 *ngIf="authService.isloggedIn"
                 class="user_options"
                 routerLink="/update-password"
@@ -266,11 +281,12 @@
                 class="user_options"
                 routerLink="/login"
               >
-                <i class="fa fa-sign-out"></i> &nbsp;deconnexion</a
+              <i class="fa-solid fa-house"></i>
+                <i class="fas fa-sign-out-alt"></i> &nbsp;deconnexion</a
               >
             </button>
           </div>
         </div>
     </div>
     </div>
-  </nav>
+  </div>

@@ -3,3 +3,18 @@
         
 }
 }
+.inscription-btn{
+    color: rgb(128, 126, 126);
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    z-index: 9999;
+    transition: transform .2s;
+
+  }
+  .inscription-btn:hover {
+    transform: scale(1.2);
+  }

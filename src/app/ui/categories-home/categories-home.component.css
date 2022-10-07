@@ -5,6 +5,7 @@ align-items: center;
 justify-content: center;
 height: 500px;
 border-radius: 25px;
+background-image: url(../../../assets/design/cat-home-fond.png);
 background-size: cover;
 background-repeat: no-repeat;
 background-position: center; 
@@ -113,5 +114,13 @@ display: flex;
         width: 600%;
         margin: auto;
     }
+
+    .all{
+    
+        background-image: url(../../../assets/design/cat-mobile.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center; 
+        }
     }
 

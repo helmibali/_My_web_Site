@@ -1,4 +1,8 @@
-<app-menu></app-menu>
+
+    <app-menu-vertical></app-menu-vertical>
+    <div id="main">
+      <div class="n" *ngIf="authService.isloggedIn"><app-menu-light></app-menu-light></div>
+    <div class="n" *ngIf="!authService.isloggedIn" ><app-menu></app-menu></div>
 <div class="global">
     <div class="form-contact container">
         <div class="form-int mt-5">
@@ -45,3 +49,4 @@ src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.627262510967!2d1
 </div>
 </div>
 <app-footer></app-footer>
+    </div>

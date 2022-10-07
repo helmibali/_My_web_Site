@@ -5,3 +5,56 @@
  z-index: 9998; 
 
 }
+
+
+.fleche{
+    position: sticky;
+    top: -100px;  
+    z-index: 9999;
+}
+.fleche img{
+    position:absolute;
+    left: 90%;
+    /* top: -1184px; */
+    top: 730px;
+border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    transition: transform .2s;
+    border: 2px solid white;
+}
+.fleche img:hover{
+    transform: scale(1.1);
+}
+@media only screen and (max-width:800px){
+    .fleche img{
+        position:absolute;
+        left: 80%;
+        /* top: -1184px; */
+        top: 800px;
+    border-radius: 5px;
+        width: 35px;
+        height: 35px;
+        transition: transform .2s;
+        border: 2px solid white;
+    }
+    .fleche img:hover{
+        transform: scale(1.1);
+    } 
+    #main {
+      transition: none;
+      padding: 0px;
+      margin-Left:0px !important;
+    } 
+}
+#main {
+    transition: margin-left .5s;
+    
+    padding: 16px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }

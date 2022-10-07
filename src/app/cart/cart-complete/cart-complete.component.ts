@@ -30,7 +30,7 @@ export class CartCompleteComponent implements OnInit {
   constructor(
     private _location: Location,
     private cartService:CartService,
-    private authService:AuthService,
+    public authService:AuthService,
     private gouvernoratService : GouvernoratService,
     private delegationService : DelegationService,
     public formBuilder:FormBuilder,

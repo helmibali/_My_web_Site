@@ -1,235 +1,30 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <a class="navbar-brand" routerLink="/">
-        <img class="logo" width="157"
-        *ngIf="authService.isloggedIn"
-          src="../../../assets/design/logo.png"
-          alt=""
-      />
-      <img class="logo" width="157"
-      *ngIf="!authService.isloggedIn"
-      src="../../../assets/design/logo.png"
-      alt=""
-  />
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse"  id="navbarNavDropdown">
-      <ul class="navbar-nav menu-list" >
-        <li class="nav-item dropdown" >
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a type="button" class="dropdown-item" routerLink="/">Acceill</a>
-                <a type="button" class="dropdown-item" routerLink="/Conditions-utilisation">Conditions d'utilisation</a>
-                <a type="button" class="dropdown-item" routerLink="/Regles-De-Diffusion">Règles de diffusion</a>
-                <a type="button" class="dropdown-item" routerLink="/contact">Contactez-nous</a>
-            </div>
-          </li>
-        <li class="nav-item active">
-          <b><a class="nav-link" routerLink="/nos-produits-filtree/0/0/0/0/0/0">
-            <i class="fa fa-search" aria-hidden="true"></i>
-                 Rechercher une piéce 
-            <!-- <span class="sr-only">(current)</span> -->
-        </a></b>
-        </li>
-        <li class="nav-item">
-            <b>
-                <a class="nav-link" routerLink="/actualite">
-                    Question/Reponse
-                </a>
-            </b>
-        </li>
-        <li class="nav-item" *ngIf="!authService.isloggedIn">
-          <!-- <a class="nav-link" href="#">Pricing</a> -->
-          <div >
-            <app-add-user></app-add-user>
-          </div>
-          
-            
+<div class="navbar navbar-expand navbar-light shadow" style="height:50px ;background-color: rgb(255, 255, 255);">
+  <a  type="button" class="openbtn2" id="openbtn2" onclick="openNav()">☰</a>
+  <a  type="button" class="home-btn" style="" id="" routerLink="/"><img src="../../../assets/design/home.png" width="25" alt=""></a>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="groupe-btn navbar-nav">
+      <!-- ---------------------------------message-------------------------------- -->
      
-        </li>
-        <li class="nav-item" *ngIf="!authService.isloggedIn">
-           <b>
-            <a class="nav-link" routerLink="/login">
-                <i class="fa fa-sign-in"></i> &nbsp;S'identifier
-            </a>
-           </b> 
-          </li>
-        
-        <li class="nav-item" *ngIf="authService.isloggedIn">
-            <!-- <a class="nav-link" href="#">Pricing</a> -->
-            <app-ajouter-produit-front
-            class="add-pop"
-            [addButton]="addButton"
-            style="z-index: 9999"
-          ></app-ajouter-produit-front>
-          <div class="page-mobile">
-            <a class="btn btn-outline-danger" style="border:none;" routerLink="/add-annonce">
-              Ajouter votre annonce 
-          </a>
-           </div>
-          </li>
-          <li *ngIf="authService.isloggedIn" class="" >
-           
-            <a  type="button" class="nav-link dropdown-toggle "
-             routerLink="/" id="navbarDropdownMenuLink"    style="
-             font-weight: bold;
-             display: flex;
-           "
-              role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa fa-envelope icon"  aria-hidden="true"></i>
-               <p class="nom"> messages</p>
-              </a>
-           
-              <div class="dropdown-menu" style="left:52%;" aria-labelledby="navbarDropdownMenuLink">
-                
-                <div
-                *ngFor="let m of messagesRecevedUnread"
-                style="display: flex; align-items: center; align-items: center"
-              >
-                <div
-                  style="
-                    list-style-type: none;
-                    padding: 0;
-                    margin: 0;
-                    width: 100%;
-                    left: 0%;
-                  "
-                  class="mb-1 ml-1"
-                >
-                  <form
-                    [formGroup]="this.messageService.dataForm2"
-                    (ngSubmit)="onSubmit(m)"
-                  >
-                    <input
-                      type="hidden"
-                      formControlName="id"
-                      id="id"
-                      [(ngModel)]="m.id"
-                    />
-  
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="vu"
-                        id=""
-                        hidden
-                      />
-                    </div>
-  
-                    <button type="submit" style="border: none; width: 97%">
-                      <div style="display: flex; background-color: #f9f9f985">
-                        <div>
-                          <div *ngIf="m.auteur.filename === null">
-                            <a (click)="toDiscussion(m.auteur.username)">
-                              <img
-                                class="card-img-top img-responsive rounded-circle image-user"
-                                src="../../../assets/images/user1.png"
-                                style="height: 30px; width: 30px"
-                                alt=""
-                              />
-                            </a>
-                          </div>
-                          <div *ngIf="m.auteur.filename !== null">
-                            <a (click)="toDiscussion(m.auteur.username)">
-                              <img
-                                class="card-img-top img-responsive rounded-circle image-user"
-                                src="{{
-                                  'https://casse12.herokuapp.com/api/imageuser/' +
-                                    m.auteur.user_id
-                                }}"
-                                style="height: 30px; width: 30px"
-                                alt=""
-                              />
-                            </a>
-                          </div>
-                        </div>
-                        <div
-                          class="ml-2"
-                          *ngIf="
-                            this.authService.loggedUser !== m.auteur.username
-                          "
-                        >
-                          <b>{{ m.auteur.prenom }} {{ m.auteur.nom }}</b> <br />
-                          <p>{{ m.message }}</p>
-                          <a (click)="toDiscussion(m.auteur.username)"
-                            ><small><b>répondre</b></small></a
-                          >
-                        </div>
-                      </div>
-                    </button>
-                  </form>
-                </div>
-              </div>
-              <a routerLink="/discussions">voir tout</a>
-
-            </div>
-          </li>
-
-          <li class="nav-item" *ngIf="authService.isloggedIn">
-            <a type="button" class="nav-link" style="
-            font-weight: bold;
-            display: flex;
-          " routerLink="/cart">
-                <i
-              class="fa fa-shopping-cart icon"
-              aria-hidden="true"
-            ></i>
-            <p class="nom"> Panier</p>
-            </a>
-          </li>
-          <li 
-          *ngIf="authService.isloggedIn"
-          class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" 
-            style="
-            font-weight: bold;
-            display: flex;
-           
-          "
-            href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="" style="display: flex">
-                    <div *ngIf="user?.filename === null">
-                      <img
-                        class="img-responsive rounded-circle"
-                        src="../../../assets/images/user1.png"
-                        style="height: 30px; width: 30px"
-                        alt=""
-                      />
-                    </div>
-                    <div *ngIf="user?.filename !== null">
-                      <img
-                      class="img-responsive rounded-circle"
-                        src="{{'https://casse12.herokuapp.com/api/imageuser/' + user.user_id
-                        }}"
-                        style="height: 30px; width: 30px"
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                  <p class="nom">{{user?.prenom}} {{user?.nom}}</p>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a *ngIf="authService.isAdmin()" type="button" class="dropdown-item" routerLink="/produits">
-                <i class="fa fa-tachometer"></i> &nbsp;Dashboard
-                </a>
-              <a *ngIf="authService.isloggedIn" type="button" class="dropdown-item" (click)="viewProfile()">
-                <i class="fa fa-user"></i> &nbsp;Mon compte
-            </a>
-            <a *ngIf="authService.isloggedIn" type="button" class="dropdown-item" routerLink="/update-password">
-                <i class="fa fa-key"></i> &nbsp;Changer mot de passe
-            </a>
-              <a *ngIf="authService.isloggedIn"
-              (click)="logout()" class="dropdown-item" routerLink="/login"><i class="fa fa-sign-out"></i> &nbsp;deconnexion</a>
-            </div>
-          </li>
-          
-
-
-         
-      </ul>
-    </div>
-  </nav>
+     <!-- -------------------------------------S'inscrire----------------------------------  -->
+      <div class="ml-4">
+        <a
+          type="button"
+          class="inscription-btn"
+          style="
+         "
+          data-toggle="dropdown"
+          *ngIf="!authService.isloggedIn"
+          routerLink="/login"
+        >
+        <i class="fas fa-sign-in-alt"></i> &nbsp;S'identifier
+      </a>
+      </div>
+      <!-- -------------------------------------S'inscrire----------------------------------  -->
+      <div class="ml-2">
+        <app-add-user></app-add-user>
+      </div>
+<!---------------user---------------------------------------------------------------- -->
+       
+  </div>
+  </div>
+</div>
