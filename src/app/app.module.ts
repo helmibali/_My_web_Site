@@ -96,6 +96,7 @@ import { MenuVerticalComponent } from './ui/menu-vertical/menu-vertical.componen
 import { CardProduitComponent } from './ui/card-produit/card-produit.component';
 import { FilterElementComponent } from './ui/filter-element/filter-element.component';
 import { MenuLightComponent } from './ui/menu-light/menu-light.component';
+import { Slide2Component } from './ui/slide2/slide2.component';
 
 
 
@@ -193,6 +194,7 @@ import { MenuLightComponent } from './ui/menu-light/menu-light.component';
     CardProduitComponent,
     FilterElementComponent,
     MenuLightComponent,
+    Slide2Component,
    
     
    

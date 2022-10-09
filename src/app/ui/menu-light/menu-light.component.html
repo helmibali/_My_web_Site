@@ -1,292 +1,279 @@
 <div class="navbar navbar-expand navbar-light shadow" style="height:50px ;background-color: rgb(255, 255, 255);">
-    <a  type="button" class="openbtn2" id="openbtn2" onclick="openNav()">☰</a>
-    <a  type="button" class="home-btn" style="" id="" routerLink="/"><img src="../../../assets/design/home.png" width="25" alt=""></a>
-  
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <div class="groupe-btn navbar-nav">
-        <!-- ---------------------------------message-------------------------------- -->
-        <div class="ml-5"
-        *ngIf="authService.isloggedIn && messagesRecevedUnread?.length === 0"
+  <a  type="button" class="openbtn2" id="openbtn2" onclick="openNav()">☰</a>
+  <a  type="button" class="home-btn" style="" id="" routerLink="/"><img src="../../../assets/design/home.png" width="25" alt=""></a>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="groupe-btn navbar-nav">
+      <!-- ---------------------------------message-------------------------------- -->
+      <div class=""
+      *ngIf="authService.isloggedIn && messagesRecevedUnread?.length === 0">
+      <a
+        type="button"
+        class="message-icon"
+        style=""
+        data-toggle="dropdown"
+        id="dropdownMenuButton2"
+        aria-haspopup="true"
+        aria-expanded="false"
+        routerLink="/discussions"
       >
-        <a
-          type="button"
-          class="btn btn-outline-danger dropdown-toggle"
-          style="
-          
-          font-weight: bold;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: none;
-          z-index: 9999;"
-          data-toggle="dropdown"
-          id="dropdownMenuButton2"
-          aria-haspopup="true"
-          aria-expanded="false"
-          routerLink="/discussions"
+      <img class="img-message" src="../../../assets/design/msg-icon.png" width="25" alt="">
+        <!-- <i class="fa fa-envelope" aria-hidden="true"
+        style="font-size: 25px"></i> -->
+    </a>
+    </div>
+
+    <div
+      *ngIf="authService.isloggedIn && messagesRecevedUnread?.length > 0"
+    >
+      <a
+        type="button"
+        class="message-icon"
+        style="
+       "
+        data-toggle="dropdown"
+        id="dropdownMenuButton2"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <!-- <i class="fa fa-envelope"
+         aria-hidden="true"
+         style="font-size: 25px"></i> -->
+         <img class="img-message" src="../../../assets/design/msg-icon.png" width="25" alt="">
+        <span
+          *ngIf="messagesRecevedUnread?.length > 0"
+          class="badge"
+          style="color:#212051;z-index: 9999;"
         >
-        <img src="../../../assets/design/msg-icon.png" width="25" alt="">
-          <!-- <i class="fa fa-envelope" aria-hidden="true"
-          style="font-size: 25px"></i> -->
+          {{ messagesRecevedUnread?.length }}
+        </span>
       </a>
-      </div>
-
       <div
-        *ngIf="authService.isloggedIn && messagesRecevedUnread?.length > 0"
-      >
-        <a
-          type="button"
-          class=""
-          style="
-          text-decoration: none;
-          font-weight: bold;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border: none;
-          z-index: 9999;"
-          data-toggle="dropdown"
-          id="dropdownMenuButton2"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <!-- <i class="fa fa-envelope"
-           aria-hidden="true"
-           style="font-size: 25px"></i> -->
-           <img src="../../../assets/design/msg-icon.png" width="25" alt="">
-          <span
-            *ngIf="messagesRecevedUnread?.length > 0"
-            class="badge"
-            style="color:#212051;z-index: 9999;"
-          >
-            {{ messagesRecevedUnread?.length }}
-          </span>
-        </a>
+        class="msg-menu dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+        aria-labelledby="messagesDropdown"
+        style="
+         
+        "
+      ><h6 class="dropdown-header">
+        Messages
+    </h6>
+    <div class="overflow-auto" style="max-height:40vh;">
+    
         <div
-          class="msg-menu dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-          aria-labelledby="messagesDropdown"
-          style="
-           
-          "
-        ><h6 class="dropdown-header">
-          Messages
-      </h6>
+          *ngFor="let m of messagesRecevedUnread"
+          style="display: flex; align-items: center; align-items: center;"
+        >
           <div
-            *ngFor="let m of messagesRecevedUnread"
-            style="display: flex; align-items: center; align-items: center"
+            style="
+              list-style-type: none;
+              padding: 0;
+              margin: 0;
+              width: 100%;
+              left: 0%;
+            "
+            class="mb-1 ml-1"
           >
-            <div
-              style="
-                list-style-type: none;
-                padding: 0;
-                margin: 0;
-                width: 100%;
-                left: 0%;
-              "
-              class="mb-1 ml-1"
+            <form
+              [formGroup]="this.messageService.dataForm2"
+              (ngSubmit)="onSubmit(m)"
             >
-              <form
-                [formGroup]="this.messageService.dataForm2"
-                (ngSubmit)="onSubmit(m)"
-              >
-                <input
-                  type="hidden"
-                  formControlName="id"
-                  id="id"
-                  [(ngModel)]="m.id"
-                />
+              <input
+                type="hidden"
+                formControlName="id"
+                id="id"
+                [(ngModel)]="m.id"
+              />
 
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    formControlName="vu"
-                    id=""
-                    hidden
-                  />
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="vu"
+                  id=""
+                  hidden
+                />
+              </div>
+
+              <button type="submit" style="border: none; width: 97%">
+                <div style="display: flex; background-color: #f9f9f985">
+                  <div>
+                    <div *ngIf="m.auteur.filename === null">
+                      <a (click)="toDiscussion(m.auteur.username)">
+                        <img
+                          class="card-img-top img-responsive rounded-circle image-user"
+                          src="../../../assets/images/user1.png"
+                          style="height: 50px; width: 50px"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                    <div *ngIf="m.auteur.filename !== null">
+                      <a (click)="toDiscussion(m.auteur.username)">
+                        <img
+                          class="card-img-top img-responsive rounded-circle image-user"
+                          src="{{
+                            'https://casse12.herokuapp.com/api/imageuser/' +
+                              m.auteur.user_id
+                          }}"
+                          style="height: 50px; width: 50px"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    class="ml-2"
+                    *ngIf="
+                      this.authService.loggedUser !== m.auteur.username
+                    "
+                  >
+                  <div class=""
+                   style="
+                   display:flex;
+                   flex-direction: column;
+                   width:100% ;
+                   align-items: flex-start;
+                   justify-content: flex-start;"
+                   >
+                   <div class="small text-gray-500"><b>{{ m.auteur.prenom }} {{ m.auteur.nom }}</b> · {{m.dateCreation | date:'HH:mm'}}</div>
+                  <div class="" style="
+                      width:100% ;
+                      text-align: left;
+                      overflow-wrap: anywhere;">{{ m.message }}</div>
+                   
                 </div>
 
-                <button type="submit" style="border: none; width: 97%">
-                  <div style="display: flex; background-color: #f9f9f985">
-                    <div>
-                      <div *ngIf="m.auteur.filename === null">
-                        <a (click)="toDiscussion(m.auteur.username)">
-                          <img
-                            class="card-img-top img-responsive rounded-circle image-user"
-                            src="../../../assets/images/user1.png"
-                            style="height: 50px; width: 50px"
-                            alt=""
-                          />
-                        </a>
-                      </div>
-                      <div *ngIf="m.auteur.filename !== null">
-                        <a (click)="toDiscussion(m.auteur.username)">
-                          <img
-                            class="card-img-top img-responsive rounded-circle image-user"
-                            src="{{
-                              'https://casse12.herokuapp.com/api/imageuser/' +
-                                m.auteur.user_id
-                            }}"
-                            style="height: 50px; width: 50px"
-                            alt=""
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <div
-                      class="ml-2"
-                      *ngIf="
-                        this.authService.loggedUser !== m.auteur.username
-                      "
+                 
+                    
+                    <a (click)="toDiscussion(m.auteur.username)"
+                      ><small><b>répondre</b></small></a
                     >
-                    <div class="font-weight-bold">
-                      <div class="text-truncate">{{ m.message }}</div>
-                      <div class="small text-gray-500">{{ m.auteur.prenom }} {{ m.auteur.nom }} · {{m.dateCreation | date:'HH:mm'}}</div>
                   </div>
-
-                   
-                      
-                      <a (click)="toDiscussion(m.auteur.username)"
-                        ><small><b>répondre</b></small></a
-                      >
-                    </div>
-                  </div>
-                </button>
-              </form>
-            </div>
+                </div>
+              </button>
+            </form>
           </div>
-          <a  type="button" routerLink="/discussions">
-            <h6 class="dropdown-header">
-            tout les messages
-          </h6>
-          </a>
         </div>
       </div>
-       <!-- -------------------------------------cart----------------------------------  -->
-        <div class="ml-4">
-          <a
-            type="button"
-            class=""
-            style="
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            z-index: 9999;"
-            data-toggle="dropdown"
-            *ngIf="authService.isloggedIn"
-            routerLink="/cart"
-          >
-            <i
-              class="fa fa-shopping-cart"
-              aria-hidden="true"
-              style="color: #212051; font-size: 25px"
-            ></i>
-
-            <span
-              *ngIf="carts?.length > 0"
-              class="badge"
-              style="color: #212051"
-              >{{ carts?.length }}</span
-            >
+        <a  type="button" routerLink="/discussions">
+          <h6 class="dropdown-header">
+          tout les messages
+        </h6>
         </a>
-        </div>
+      </div>
+    </div>
+     <!-- -------------------------------------cart----------------------------------  -->
+      <div class="ml-4">
+        <a
+          type="button"
+          class="cart-icon"
+          style=""
+          data-toggle="dropdown"
+          *ngIf="authService.isloggedIn"
+          routerLink="/cart"
+        >
+          <i
+            class="fa fa-shopping-cart img-cart"
+            aria-hidden="true"
+            style=""
+          ></i>
+
+          <span
+            *ngIf="carts?.length > 0"
+            class="badge"
+            style="color: #212051"
+            >{{ carts?.length }}</span
+          >
+      </a>
+      </div>
 <!---------------user---------------------------------------------------------------- -->
-         <div *ngIf="authService.isloggedIn"
-          class="dropdown ml-4 ">
-          <a
-            class=""
-            style="
-              text-decoration: none;
-              border: none;
-              font-weight: bold;
-              display: flex;
-              align-items: center;
-              z-index: 9999;
-              justify-content: center;
-            "
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <div style="display: flex">
-              <div *ngIf="user?.filename === null">
-                <!-- <img
-                  class="img-responsive rounded-circle"
-                  src="../../../assets/images/user1.png"
-                  style="height: 25px; width: 25px"
-                  alt=""
-                /> -->
-                <i class="fa fa-user"
-                 aria-hidden="true" 
-                 style="color: #212051;font-size:25px; ;"></i>
-              </div>
-              <div *ngIf="user?.filename !== null">
-                <img
-                  class="img-responsive rounded-circle"
-                  src="{{
-                    'https://casse12.herokuapp.com/api/imageuser/' + user.user_id
-                  }}"
-                  style="height: 25px; width: 25px"
-                  alt=""
-                />
-              </div>
+       <div *ngIf="authService.isloggedIn"
+        class="dropdown ml-4 ">
+        <a
+          class="user-icon"
+          style="
+            
+          "
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <div style="display: flex">
+            <div *ngIf="user?.filename === null">
+              <!-- <img
+                class="img-responsive rounded-circle"
+                src="../../../assets/images/user1.png"
+                style="height: 25px; width: 25px"
+                alt=""
+              /> -->
+              <i class="fa fa-user img-user"
+               aria-hidden="true" 
+               ></i>
             </div>
-
-            <!-- {{ user?.prenom }} {{ user?.nom }} -->
-          </a>
-          <div
-            class="user-menu dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-            aria-labelledby="dropdownMenu2"
-          >
-            <button class="dropdown-item" type="button">
-              <a
-                *ngIf="authService.isAdmin()"
-                class="user_options"
-                routerLink="/produits"
-              >
-                <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;Dashboard</a
-              >
-            </button>
-            <button class="dropdown-item" type="button">
-              <a
-                *ngIf="authService.isloggedIn"
-                class="user_options"
-                (click)="viewProfile()"
-              >
-              <i class="fa fa-user"></i> 
-                  
-                &nbsp;Mon compte
-              
-              </a>
-            </button>
-            <button class="dropdown-item" type="button">
-               <a
-                *ngIf="authService.isloggedIn"
-                class="user_options"
-                routerLink="/update-password"
-              >
-                <i class="fa fa-key"></i> &nbsp;Changer mot de passe</a
-              >
-            </button>
-
-            <button class="dropdown-item" type="button">
-              <a
-                *ngIf="authService.isloggedIn"
-                (click)="logout()"
-                class="user_options"
-                routerLink="/login"
-              >
-              <i class="fa-solid fa-house"></i>
-                <i class="fas fa-sign-out-alt"></i> &nbsp;deconnexion</a
-              >
-            </button>
+            <div *ngIf="user?.filename !== null">
+              <img
+                class="img-responsive rounded-circle"
+                src="{{
+                  'https://casse12.herokuapp.com/api/imageuser/' + user.user_id
+                }}"
+                style="height: 25px; width: 25px"
+                alt=""
+              />
+            </div>
           </div>
+
+          <!-- {{ user?.prenom }} {{ user?.nom }} -->
+        </a>
+        <div
+          class="user-menu dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+          aria-labelledby="dropdownMenu2"
+        >
+          <button class="dropdown-item" type="button">
+            <a
+              *ngIf="authService.isAdmin()"
+              class="user_options"
+              routerLink="/produits"
+            >
+              <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;Dashboard</a
+            >
+          </button>
+          <button class="dropdown-item" type="button">
+            <a
+              *ngIf="authService.isloggedIn"
+              class="user_options"
+              (click)="viewProfile()"
+            >
+            <i class="fa fa-user"></i> 
+                
+              &nbsp;Mon compte
+            
+            </a>
+          </button>
+          <button class="dropdown-item" type="button">
+             <a
+              *ngIf="authService.isloggedIn"
+              class="user_options"
+              routerLink="/update-password"
+            >
+              <i class="fa fa-key"></i> &nbsp;Changer mot de passe</a
+            >
+          </button>
+
+          <button class="dropdown-item" type="button">
+            <a
+              *ngIf="authService.isloggedIn"
+              (click)="logout()"
+              class="user_options"
+              routerLink="/login"
+            >
+            <i class="fa-solid fa-house"></i>
+              <i class="fas fa-sign-out-alt"></i> &nbsp;deconnexion</a
+            >
+          </button>
         </div>
-    </div>
-    </div>
+      </div>
   </div>
+  </div>
+</div>

@@ -28,10 +28,13 @@ import { take } from 'rxjs/operators';
 export class AjouterProduitMobileComponent implements OnInit {
   @Input()
   addButton;
+
   err:number = 0;
   erreur=0;
   isLoading:boolean = false;
   errTXT:string ='';
+
+
   moteursByModele:Moteur[];
   moteurs:Moteur[];
   categoriesByFamille:Categorie[];
@@ -42,6 +45,7 @@ export class AjouterProduitMobileComponent implements OnInit {
   selectedDelegation: any={id:0,  libelle:''};
   selectedFamille: any = { id: 0, libelle: "" };
   selectedCategorie: any = { id: 0, nomCategorie: "" };
+
   modeles:Modele[];
   gouvernorats:Gouvernorat[];
   delegations:Delegation[];
@@ -55,11 +59,12 @@ export class AjouterProduitMobileComponent implements OnInit {
   public message: string;
   constructor(
     public produitService:ProduitService,
+    
               private router:Router,
               private formBuilder : FormBuilder,
               private modeleService : ModeleService,
               private marqueService : MarqueService,
-              private authService : AuthService,
+              public authService : AuthService,
               private gouvernoratService : GouvernoratService,
               private delegationService : DelegationService,
               private familleService : FamilleService,
@@ -67,6 +72,7 @@ export class AjouterProduitMobileComponent implements OnInit {
               private catService : CatService,
               private compressImage: CompressImageService
   ) { }
+
   initForm(){
     this.produitService.dataForm = this.formBuilder.group({
       nomProduit:'',

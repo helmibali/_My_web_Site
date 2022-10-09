@@ -2,18 +2,29 @@
     display:flex;
    
 }
+
+.add-prod{
+    background-image: url(../../../../assets/design/cat-home-fond.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 .all{
-    display:flex; 
+    display:flex;
+    
+    width: 70%;
+    margin: auto;
+    flex-direction: column; 
      
 }
 .left{
     display:flex;
-    width:50%; 
+    width:100%; 
     flex-direction: column; 
 }
 .right{
     display:flex;
-    width:50%; 
+    width:100%; 
     flex-direction: column; 
 }
 @media only screen and (max-width:790px){
@@ -46,4 +57,51 @@
         border-radius: 0.3rem;
         outline: 0;
     }
+}
+
+@media only screen and (max-width:800px){
+ 
+    #main {
+      transition: none;
+      padding: 0px;
+      margin-Left:0px !important;
+    } 
+}
+#main {
+    transition: margin-left .5s;
+    
+    padding: 16px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
+  .filter-btn{
+    background-image: url(../../../../assets/design/menu.png);
+  
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 1rem;
+    transition: transform .2s;
+    width: 20%;
+    height: 40px;
+}
+.filter-btn:hover{
+    transform: scale(1.2);
+} 
+
+@media only screen and (max-width:800px){
+    .filter-btn{
+        background-image: url(../../../../assets/design/menu.png);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 1rem;
+        transition: transform .2s;
+        width: 50%;
+        height: 40px;
+    }  
 }
