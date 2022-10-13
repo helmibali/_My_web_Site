@@ -26,7 +26,7 @@
               
                 <input type="text" class="form-control" formControlName="emiter" id="" hidden>
               </div>
-              <div class="form-group">
+              <div  class="form-group">
                 <textarea 
                 class="form-control mb-2"
                  placeholder="ecrire un message..." 
@@ -35,13 +35,23 @@
                   ></textarea>
               </div>
             
-              <button 
+              <button *ngIf="authService.isloggedIn"
               class="btn btn-primary"
                type="submit"
                
                 >Envoyer
                   
               </button>
+
+              <button *ngIf="!authService.isloggedIn"
+              class="btn btn-primary"
+               type=""
+               routerLink="/login"
+               
+                >Envoyer
+                  
+              </button>
+
               <button
             
               type="button"

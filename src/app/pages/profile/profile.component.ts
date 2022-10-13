@@ -21,6 +21,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent implements OnInit {
 term;
+loginBtn:string = "envoyer";
 isLoading:boolean = false;
 errTXT:string='';
 user:User;

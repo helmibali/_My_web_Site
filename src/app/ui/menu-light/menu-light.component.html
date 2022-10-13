@@ -1,9 +1,11 @@
-<div class="navbar navbar-expand navbar-light shadow" style="height:50px ;background-color: rgb(255, 255, 255);">
+<div class="navbar navbar-expand navbar-light shadow" style="height:70px ;background-color: rgb(255, 255, 255);">
   <a  type="button" class="openbtn2" id="openbtn2" onclick="openNav()">☰</a>
   <a  type="button" class="home-btn" style="" id="" routerLink="/"><img src="../../../assets/design/home.png" width="25" alt=""></a>
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <div class="groupe-btn navbar-nav">
+      <img class="logo" src="./../../../assets/design/LogoR.png"
+      style="" alt="">
       <!-- ---------------------------------message-------------------------------- -->
       <div class=""
       *ngIf="authService.isloggedIn && messagesRecevedUnread?.length === 0">

@@ -3,6 +3,7 @@
    
 }
 
+
 .add-prod{
     background-image: url(../../../../assets/design/cat-home-fond.png);
     background-size: cover;
@@ -27,7 +28,30 @@
     width:100%; 
     flex-direction: column; 
 }
+.validator-lib{
+    position: absolute;
+    top: 32.6%;
+    left: 21%;
+
+}
+.validator-prix{
+    position: absolute;
+    top: 32.6%;
+    left: 52%;
+
+}
 @media only screen and (max-width:790px){
+    .validator-lib{
+  
+        position: absolute;
+        top: 32%;
+        left: 12%;  
+}
+.validator-prix{
+    position: absolute;
+    top: 32%;
+    left: 52%;
+}
     .all{
         display:flex;
         flex-direction: column;
@@ -79,9 +103,9 @@
     .sidebar a {font-size: 18px;}
   }
   .filter-btn{
-    background-image: url(../../../../assets/design/menu.png);
+    /* background-image: url(../../../../assets/design/menu.png);
   
-    color: white;
+    color: white; */
     font-weight: bold;
     border: none;
     border-radius: 1rem;

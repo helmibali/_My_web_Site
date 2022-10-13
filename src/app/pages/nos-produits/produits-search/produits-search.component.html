@@ -1,407 +1,620 @@
 <div class="fleche">
-  <img  src="../../../assets/design/fleche2.png" type="button" (click)="onActivate($event)" alt="">
+  <img
+    src="../../../assets/design/fleche2.png"
+    type="button"
+    (click)="onActivate($event)"
+    alt=""
+  />
 </div>
 <app-menu-vertical></app-menu-vertical>
 
 <div id="main">
-
-
   <div *ngIf="authservice.isloggedIn" class="n">
     <app-menu-light></app-menu-light>
-    </div>
-  
-  
-    <div *ngIf="!authservice.isloggedIn" class="n">
-      <app-menu></app-menu>
+  </div>
+
+  <div *ngIf="!authservice.isloggedIn" class="n">
+    <app-menu></app-menu>
+  </div>
+
+  <div style="background-color: #e9ebedaf">
+    <!-- <app-slide [term]="term"></app-slide> -->
+
+    <div class="demo">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div
+              class="panel-group"
+              id="accordion"
+              role="tablist"
+              aria-multiselectable="true"
+            >
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a
+                      role="button"
+                      data-toggle="collapse"
+                      data-parent="#accordion"
+                      href="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      Filtre avancé <i class="fa fa-filter"></i> 
+                    </a>
+                  </h4>
+                </div>
+                <div
+                  id="collapseOne"
+                  class="panel-collapse collapse in"
+                  role="tabpanel"
+                  aria-labelledby="headingOne"
+                >
+                  <div class="panel-body">
+                    <div class="filter-mobile">
+                      <div class="collapse navbar-collapse filter2">
+                        <div
+                          class="mt-5"
+                          style="
+                            position: sticky;
+                            top: 85px;
+                            width: 95%;
+                            border: 2px rgb(135, 135, 135) solid;
+                            border-radius: 1rem;
+                            background-color: #e9ebedaf;
+                          "
+                        >
+                          <div class="mt-3" style="width: 50%; margin: auto">
+                            <h4>Filtre avancé</h4>
+                            <a type="button" (click)="reInitFilter()">reinit filtre</a>
+                          </div>
+                          <div></div>
+                          <div class="search-input">
+                            <input
+                              class="form-control form-control-lg recherche text-center"
+                              type="search"
+                              placeholder="Rechercher une piece..."
+                              aria-label="Search"
+                              [(ngModel)]="term"
+                            />
+                          </div>
+
+                          <div>
+                            <div class="mt-2 mb-2" style="width: 100%">
+                              <div class="categorie-scategorie">
+                                <div style="width: 45%; margin: auto">
+                                  <select
+                                    class="form-control mb-1 inputFiltre text-center"
+                                    [(ngModel)]="selectedFamille.id"
+                                    (change)="onSelectByFamille($event)"
+                                  >
+                                    <option value="0"><u>Catégorie</u></option>
+                                    <option
+                                      *ngFor="let f of familles"
+                                      [value]="f.id"
+                                    >
+                                      {{ f.libelle }}
+                                    </option>
+                                  </select>
+                                </div>
+                                <div style="width: 45%; margin: auto">
+                                  <select
+                                    class="form-control mb-1 inputFiltre text-center"
+                                    style="/* border-radius: 10px; */"
+                                    [(ngModel)]="selectedCategorie.id"
+                                    (change)="onSelectByCat($event)"
+                                  >
+                                    <option value="0">Sous-catégorie</option>
+                                    <option
+                                      *ngFor="let cat of categoriesByFamille"
+                                      [value]="cat.id"
+                                    >
+                                      {{ cat.nomCategorie }}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mt-2 mb-2" style="width: 100%">
+                              <div style="display: flex">
+                                <div style="width: 45%; margin: auto">
+                                  <select
+                                    class="form-control mb-1 inputFiltre text-center"
+                                    style="/* border-radius: 10px; */"
+                                    [(ngModel)]="selectedMarque.id"
+                                    (change)="onSelect($event)"
+                                  >
+                                    <option value="0">Marque</option>
+                                    <option
+                                      *ngFor="let m of marques"
+                                      [value]="m.id"
+                                    >
+                                      {{ m.libelleMarque }}
+                                    </option>
+                                  </select>
+                                </div>
+                                <div style="width: 45%; margin: auto">
+                                  <select
+                                    class="form-control mb-1 inputFiltre text-center"
+                                    [(ngModel)]="selectedModele.id"
+                                    (change)="onSelectByMod($event)"
+                                  >
+                                    <option value="0">Modele</option>
+                                    <option
+                                      *ngFor="let mod of modelesByMarque"
+                                      [value]="mod.id"
+                                    >
+                                      {{ mod.libelleModele }}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mt-2 mb-2" style="width: 100%"></div>
+
+                            <div class="mt-2 mb-2" style="width: 100%">
+                              <div style="display: flex">
+                                <div style="width: 45%; margin: auto">
+                                  <select
+                                    class="form-control mb-1 inputFiltre text-center"
+                                    style="/* border-radius: 10px; */"
+                                    [(ngModel)]="selectedGouvernorat.id"
+                                    (change)="onSelectGov($event)"
+                                  >
+                                    <option
+                                      style="border-radius: 25px"
+                                      value="0"
+                                    >
+                                      Gouvernourat
+                                    </option>
+                                    <option
+                                      style="border-radius: 25px"
+                                      *ngFor="let g of gouvernorats"
+                                      [value]="g.id"
+                                    >
+                                      {{ g.libelle }}
+                                    </option>
+                                  </select>
+                                </div>
+                                <div style="width: 45%; margin: auto">
+                                  <select
+                                    class="form-control mb-1 inputFiltre text-center"
+                                    style="/* border-radius: 10px; */"
+                                    [(ngModel)]="selectedDelegation.id"
+                                    (change)="onSelectByDelegation($event)"
+                                  >
+                                    <option value="0">Délégation</option>
+                                    <option
+                                      *ngFor="let d of delegationsByGov"
+                                      [value]="d.id"
+                                    >
+                                      {{ d.libelle }}
+                                    </option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="submit mt-3 mb-5"
+                              style="display: flex; width: 100%"
+                            >
+                              <button
+                                class="btn-lg filter-btn"
+                                style="width: 70%; margin: auto"
+                                (click)="filter2()"
+                              >
+                                Filtrer <i class="fa fa-filter"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    <div style="background-color: #e9ebedaf">
-        <div class="all" style="display: flex">
-  
-          <div class="filter-mobile ">
+    </div>
+
+    <div class="all" style="display: flex">
+      <!-- <div class="filter-mobile ">
             <div class="button-filtre-div" >
-            <button class="btn btn-danger button-filtre" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <button class="button-filtre" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                        <i class="fa fa-filter">filtre</i>
             </button>
           </div>
           <div class="collapse" id="collapseExample">
             <div class="collapse navbar-collapse filter2">
               <div class="mt-5" style="  position: sticky; top: 85px;width: 95%;border:2px rgb(135, 135, 135) solid;border-radius: 1rem;background-color: #e9ebedaf">
-                  <div class="mt-3" style="width:50%;margin: auto;">
-                      <h4>Filtre avancé</h4>
-                  </div>
-                  <div></div>
-                  <div style="width: 80%;margin: auto;">
-                      <input
-                        class="form-control form-control-lg recherche text-center"
-                      
-                        type="search"
-                        placeholder="Rechercher une piece..."
-                        aria-label="Search"
-                        [(ngModel)]="term"
-                      />
-                    </div>
-          
-                    <div>
-                      <div class="mt-2 mb-2" style="width: 100%">
-                          <div style="display: flex;width: 100%;">
-                            <div style="width:45% ; margin: auto;">
-                              <select
-                                class="form-control mb-1 inputFiltre text-center"
-                           
-                                [(ngModel)]="selectedFamille.id"
-                                (change)="onSelectByFamille($event)"
-                              >
-                                <option value="0"><u>Catégorie</u></option>
-                                <option *ngFor="let f of familles" [value]="f.id">
-                                  {{ f.libelle }}
-                                </option>
-                              </select>
-                            </div>
-                            <div style="width:45% ;margin: auto;">
-                              <select
-                                class="form-control mb-1 inputFiltre text-center"
-                                style="/* border-radius: 10px; */"
-                                [(ngModel)]="selectedCategorie.id"
-                                (change)="onSelectByCat($event)"
-                              >
-                                <option value="0">Sous-catégorie</option>
-                                <option
-                                  *ngFor="let c of categoriesByFamille"
-                                  [value]="c.id"
-                                >
-                                  {{ c.nomCategorie }}
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="mt-2 mb-2" style="width: 100%">
-                          <div style="display: flex;">
-                            <div style="width: 45%;margin: auto;">
-                              <select
-                                class="form-control mb-1 inputFiltre text-center"
-                                style="/* border-radius: 10px; */"
-                                [(ngModel)]="selectedMarque.id"
-                                (change)="onSelect($event)"
-                              >
-                                <option value="0">Marque</option>
-                                <option *ngFor="let m of marques" [value]="m.id">
-                                  {{ m.libelleMarque }}
-                                </option>
-                              </select>
-                            </div>
-                            <div style="width: 45%;margin: auto;">
-                              <select
-                                class="form-control mb-1 inputFiltre text-center"
-                                style="/* border-radius: 10px; */"
-                                [(ngModel)]="selectedModele.id"
-                                (change)="onSelectByMod($event)"
-                              >
-                                <option value="0">Modele</option>
-                                <option
-                                  *ngFor="let mod of modelesByMarque"
-                                  [value]="mod.id"
-                                >
-                                  {{ mod.libelleModele }}
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="mt-2 mb-2" style="width: 100%">
-                         
-                        </div>
-          
-                        <div class="mt-2 mb-2" style="width: 100%">
-                          <div style="display: flex;">
-                            <div style="width:45%;margin:auto;">
-                              <select
-                                class="form-control mb-1 inputFiltre text-center"
-                                style="/* border-radius: 10px; */"
-                                [(ngModel)]="selectedGouvernorat.id"
-                                (change)="onSelectGov($event)"
-                              >
-                                <option style="border-radius: 25px" value="0">
-                                  Gouvernourat
-                                </option>
-                                <option
-                                  style="border-radius: 25px"
-                                  *ngFor="let g of gouvernorats"
-                                  [value]="g.id"
-                                >
-                                  {{ g.libelle }}
-                                </option>
-                              </select>
-                            </div>
-                            <div style="width:45%;margin:auto;">
-                              <select
-                                class="form-control mb-1 inputFiltre text-center"
-                                style="/* border-radius: 10px; */"
-                                [(ngModel)]="selectedDelegation.id"
-                                (change)="onSelectByDelegation($event)"
-                              >
-                                <option value="0">Délégation</option>
-                                <option *ngFor="let d of delegationsByGov" [value]="d.id">
-                                  {{ d.libelle }}
-                                </option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="submit mt-3 mb-5" style="display: flex;width: 100%">
-                          <button
-                            class="btn btn-danger btn-lg"
-                            style="width: 70%;margin: auto;"
-                            (click)="filter2()"
+                <div class="mt-3" style="width:50%;margin: auto;">
+                  <h4>Filtre avancé</h4>
+              </div>
+              <div></div>
+              <div class="search-input">
+                  <input
+                    class=" form-control form-control-lg recherche text-center"
+                  
+                    type="search"
+                    placeholder="Rechercher une piece..."
+                    aria-label="Search"
+                    [(ngModel)]="term"
+                  />
+                </div>
+  
+                <div>
+                  <div class="mt-2 mb-2" style="width: 100%">
+                      <div class="categorie-scategorie">
+                        <div style="width:45% ; margin: auto;">
+                          <select
+                            class="form-control mb-1 inputFiltre text-center"
+                       
+                            [(ngModel)]="selectedFamille.id"
+                            (change)="onSelectByFamille($event)"
                           >
-                            Filtrer <i class="fa fa-filter"></i>
-                          </button>
+                            <option value="0"><u>Catégorie</u></option>
+                            <option *ngFor="let f of familles" [value]="f.id">
+                              {{ f.libelle }}
+                            </option>
+                          </select>
                         </div>
-          
-          
+                        <div style="width:45% ;margin: auto;">
+                          <select
+                            class="form-control mb-1 inputFiltre text-center"
+                            style="/* border-radius: 10px; */"
+                            [(ngModel)]="selectedCategorie.id"
+                            (change)="onSelectByCat($event)"
+                          >
+                            <option value="0">Sous-catégorie</option>
+                            <option
+                              *ngFor="let c of categoriesByFamille"
+                              [value]="c.id"
+                            >
+                              {{ c.nomCategorie }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
+                    <div class="mt-2 mb-2" style="width: 100%">
+                      <div style="display: flex;">
+                        <div style="width: 45%;margin: auto;">
+                          <select
+                            class="form-control mb-1 inputFiltre text-center"
+                            style="/* border-radius: 10px; */"
+                            [(ngModel)]="selectedMarque.id"
+                            (change)="onSelect($event)"
+                          >
+                            <option value="0">Marque</option>
+                            <option *ngFor="let m of marques" [value]="m.id">
+                              {{ m.libelleMarque }}
+                            </option>
+                          </select>
+                        </div>
+                        <div style="width: 45%;margin: auto;">
+                          <select
+                            class="form-control mb-1 inputFiltre text-center"
+                            style="/* border-radius: 10px; */"
+                            [(ngModel)]="selectedModele.id"
+                            (change)="onSelectByMod($event)"
+                          >
+                            <option value="0">Modele</option>
+                            <option
+                              *ngFor="let mod of modelesByMarque"
+                              [value]="mod.id"
+                            >
+                              {{ mod.libelleModele }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 mb-2" style="width: 100%">
+                    
+                    </div>
+  
+                    <div class="mt-2 mb-2" style="width: 100%">
+                      <div style="display: flex;">
+                        <div style="width:45%;margin:auto;">
+                          <select
+                            class="form-control mb-1 inputFiltre text-center"
+                            style="/* border-radius: 10px; */"
+                            [(ngModel)]="selectedGouvernorat.id"
+                            (change)="onSelectGov($event)"
+                          >
+                            <option style="border-radius: 25px" value="0">
+                              Gouvernourat
+                            </option>
+                            <option
+                              style="border-radius: 25px"
+                              *ngFor="let g of gouvernorats"
+                              [value]="g.id"
+                            >
+                              {{ g.libelle }}
+                            </option>
+                          </select>
+                        </div>
+                        <div style="width:45%;margin:auto;">
+                          <select
+                            class="form-control mb-1 inputFiltre text-center"
+                            style="/* border-radius: 10px; */"
+                            [(ngModel)]="selectedDelegation.id"
+                            (change)="onSelectByDelegation($event)"
+                          >
+                            <option value="0">Délégation</option>
+                            <option *ngFor="let d of delegationsByGov" [value]="d.id">
+                              {{ d.libelle }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="submit mt-3 mb-5" style="display: flex;width: 100%">
+                      <button
+                        class="btn-lg filter-btn"
+                        style="width: 70%;margin: auto;"
+                        (click)="filter2()"
+                      >
+                        Filtrer <i class="fa fa-filter"></i>
+                      </button>
+                    </div>
+  
+  
+                </div>
               </div>
           
           
           </div>
           </div>
+          </div> -->
+
+      <div class="filter">
+        <div class="filter-interne mt-5 mb-5" style="">
+          <div class="mt-3" style="width: 50%; margin: auto">
+            <h4>Filtre avancé</h4><a type="button" (click)="reInitFilter()">reinit filtre</a> 
           </div>
-          
-          
-          
-          
-          
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-          <div class="filter">
-            <div class="filter-interne mt-5 mb-5" style="  ">
-                <div class="mt-3" style="width:50%;margin: auto;">
-                    <h4>Filtre avancé</h4>
+          <div></div>
+          <div class="search-input">
+            <input
+              class="form-control form-control-lg recherche text-center"
+              type="search"
+              placeholder="Rechercher une piece..."
+              aria-label="Search"
+              [(ngModel)]="term"
+            />
+          </div>
+
+          <div>
+            <div class="mt-2 mb-2" style="width: 100%">
+              <div class="categorie-scategorie">
+                <div style="width: 45%; margin: auto">
+                  <select
+                    class="form-control mb-1 inputFiltre text-center"
+                    [(ngModel)]="selectedFamille.id"
+                    (change)="onSelectByFamille($event)"
+                  >
+                    <option value="0"><u>Catégorie</u></option>
+                    <option *ngFor="let f of familles" [value]="f.id">
+                      {{ f.libelle }}
+                    </option>
+                  </select>
                 </div>
-                <div></div>
-                <div class="search-input">
-                    <input
-                      class=" form-control form-control-lg recherche text-center"
-                    
-                      type="search"
-                      placeholder="Rechercher une piece..."
-                      aria-label="Search"
-                      [(ngModel)]="term"
-                    />
-                  </div>
-    
-                  <div>
-                    <div class="mt-2 mb-2" style="width: 100%">
-                        <div class="categorie-scategorie">
-                          <div style="width:45% ; margin: auto;">
-                            <select
-                              class="form-control mb-1 inputFiltre text-center"
-                         
-                              [(ngModel)]="selectedFamille.id"
-                              (change)="onSelectByFamille($event)"
-                            >
-                              <option value="0"><u>Catégorie</u></option>
-                              <option *ngFor="let f of familles" [value]="f.id">
-                                {{ f.libelle }}
-                              </option>
-                            </select>
-                          </div>
-                          <div style="width:45% ;margin: auto;">
-                            <select
-                              class="form-control mb-1 inputFiltre text-center"
-                              style="/* border-radius: 10px; */"
-                              [(ngModel)]="selectedCategorie.id"
-                              (change)="onSelectByCat($event)"
-                            >
-                              <option value="0">Sous-catégorie</option>
-                              <option
-                                *ngFor="let c of categoriesByFamille"
-                                [value]="c.id"
-                              >
-                                {{ c.nomCategorie }}
-                              </option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mt-2 mb-2" style="width: 100%">
-                        <div style="display: flex;">
-                          <div style="width: 45%;margin: auto;">
-                            <select
-                              class="form-control mb-1 inputFiltre text-center"
-                              style="/* border-radius: 10px; */"
-                              [(ngModel)]="selectedMarque.id"
-                              (change)="onSelect($event)"
-                            >
-                              <option value="0">Marque</option>
-                              <option *ngFor="let m of marques" [value]="m.id">
-                                {{ m.libelleMarque }}
-                              </option>
-                            </select>
-                          </div>
-                          <div style="width: 45%;margin: auto;">
-                            <select
-                              class="form-control mb-1 inputFiltre text-center"
-                              style="/* border-radius: 10px; */"
-                              [(ngModel)]="selectedModele.id"
-                              (change)="onSelectByMod($event)"
-                            >
-                              <option value="0">Modele</option>
-                              <option
-                                *ngFor="let mod of modelesByMarque"
-                                [value]="mod.id"
-                              >
-                                {{ mod.libelleModele }}
-                              </option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mt-2 mb-2" style="width: 100%">
-                      
-                      </div>
-    
-                      <div class="mt-2 mb-2" style="width: 100%">
-                        <div style="display: flex;">
-                          <div style="width:45%;margin:auto;">
-                            <select
-                              class="form-control mb-1 inputFiltre text-center"
-                              style="/* border-radius: 10px; */"
-                              [(ngModel)]="selectedGouvernorat.id"
-                              (change)="onSelectGov($event)"
-                            >
-                              <option style="border-radius: 25px" value="0">
-                                Gouvernourat
-                              </option>
-                              <option
-                                style="border-radius: 25px"
-                                *ngFor="let g of gouvernorats"
-                                [value]="g.id"
-                              >
-                                {{ g.libelle }}
-                              </option>
-                            </select>
-                          </div>
-                          <div style="width:45%;margin:auto;">
-                            <select
-                              class="form-control mb-1 inputFiltre text-center"
-                              style="/* border-radius: 10px; */"
-                              [(ngModel)]="selectedDelegation.id"
-                              (change)="onSelectByDelegation($event)"
-                            >
-                              <option value="0">Délégation</option>
-                              <option *ngFor="let d of delegationsByGov" [value]="d.id">
-                                {{ d.libelle }}
-                              </option>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="submit mt-3 mb-5" style="display: flex;width: 100%">
-                        <button
-                          class="btn-lg filter-btn"
-                          style="width: 70%;margin: auto;"
-                          (click)="filter2()"
-                        >
-                          Filtrer <i class="fa fa-filter"></i>
-                        </button>
-                      </div>
-    
-    
-                  </div>
+                <div style="width: 45%; margin: auto">
+                  <select
+                    class="form-control mb-1 inputFiltre text-center"
+                    style="/* border-radius: 10px; */"
+                    [(ngModel)]="selectedCategorie.id"
+                    (change)="onSelectByCat($event)"
+                  >
+                    <option value="0">Sous-catégorie</option>
+                    <option
+                      *ngFor="let c of categoriesByFamille"
+                      [value]="c.id"
+                    >
+                      {{ c.nomCategorie }}
+                    </option>
+                  </select>
+                </div>
+              </div>
             </div>
-    
-    
-    </div>
-    
-    
-    
-    
-            <div class="ml-3 produits" style="width:75% ;">
-              
-        
-              
-  <div class="energy" style="display:flex;">
-      <div class="btn-group mt-sm-5 groupe"  role="group" aria-label="Button group with nested dropdown">
-        <button *ngIf="!dies && !gaz && !elec"type="button"class="btn btn-secondary essence"(click)="essence()">{{essenceButton}} </button> 
-         <button *ngIf="dies || gaz || elec"type="button" class="btn btn-secondary essence"disabled>{{essenceButton}} </button>
-  
-        <button *ngIf="!ess && !gaz && !elec"type="button"  class="btn btn-secondary diesel" (click)="diesel()">{{dieselButton}}</button>
-         <button *ngIf="ess || gaz || elec"type="button"class="btn btn-secondary diesel" disabled>{{dieselButton}}</button>
-  
-        <button *ngIf="!ess && !dies && !gaz" type="button" class="btn btn-secondary electrique" (click)="electrique()">{{electriqueButton}}</button>
-        <button *ngIf="ess || dies || gaz" type="button" class="btn btn-secondary electrique" disabled>{{electriqueButton}}</button>
-        
-        <button *ngIf="!ess && !dies && !elec" type="button" class="btn btn-secondary gpl" (click)="gpl()">{{gplButton}}</button>
-        <button *ngIf="ess || dies || elec" type="button" class="btn btn-secondary gpl" disabled>{{gplButton}}</button>
-        <div  class="btn-group" role="group">
-          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Année
-          </button>
-          <div   class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <ul style="list-style-type:none;"  *ngFor="let p of anneeSearch">
-             <a (click)="anneeClick(p.annee)"> <li  *ngIf="p.annee > 0">{{p.annee}}</li></a>
-            </ul>
-            
-            
+            <div class="mt-2 mb-2" style="width: 100%">
+              <div style="display: flex">
+                <div style="width: 45%; margin: auto">
+                  <select
+                    class="form-control mb-1 inputFiltre text-center"
+                    style="/* border-radius: 10px; */"
+                    [(ngModel)]="selectedMarque.id"
+                    (change)="onSelect($event)"
+                  >
+                    <option value="0">Marque</option>
+                    <option *ngFor="let m of marques" [value]="m.id">
+                      {{ m.libelleMarque }}
+                    </option>
+                  </select>
+                </div>
+                <div style="width: 45%; margin: auto">
+                  <select
+                    class="form-control mb-1 inputFiltre text-center"
+                    style="/* border-radius: 10px; */"
+                    [(ngModel)]="selectedModele.id"
+                    (change)="onSelectByMod($event)"
+                  >
+                    <option value="0">Modele</option>
+                    <option
+                      *ngFor="let mod of modelesByMarque"
+                      [value]="mod.id"
+                    >
+                      {{ mod.libelleModele }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="mt-2 mb-2" style="width: 100%"></div>
+
+            <div class="mt-2 mb-2" style="width: 100%">
+              <div style="display: flex">
+                <div style="width: 45%; margin: auto">
+                  <select
+                    class="form-control mb-1 inputFiltre text-center"
+                    style="/* border-radius: 10px; */"
+                    [(ngModel)]="selectedGouvernorat.id"
+                    (change)="onSelectGov($event)"
+                  >
+                    <option style="border-radius: 25px" value="0">
+                      Gouvernourat
+                    </option>
+                    <option
+                      style="border-radius: 25px"
+                      *ngFor="let g of gouvernorats"
+                      [value]="g.id"
+                    >
+                      {{ g.libelle }}
+                    </option>
+                  </select>
+                </div>
+                <div style="width: 45%; margin: auto">
+                  <select
+                    class="form-control mb-1 inputFiltre text-center"
+                    style="/* border-radius: 10px; */"
+                    [(ngModel)]="selectedDelegation.id"
+                    (change)="onSelectByDelegation($event)"
+                  >
+                    <option value="0">Délégation</option>
+                    <option *ngFor="let d of delegationsByGov" [value]="d.id">
+                      {{ d.libelle }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="submit mt-3 mb-5" style="display: flex; width: 100%">
+              <button
+                class="btn-lg filter-btn"
+                style="width: 70%; margin: auto"
+                (click)="filter2()"
+              >
+                Filtrer <i class="fa fa-filter"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  
-  
-  
-    <div style="display: flex" >
-      <p>({{ produitsSearch?.length }})</p>
-      <p style="color: rgb(78, 74, 74); font-weight: bold; font-size: large">
-        Annonces sur la casse Tunisie
-      </p>
-    </div>
-  
-    <app-card-produit
-    [produits]="produitsSearch"
-    [term]="term"
-  ></app-card-produit>
-    
-    <!-- <div  class="container-fluid d-flex justify-content-center">
+
+      <div class="produits" style="width: 75%; margin: auto">
+        <div class="energy" style="display: flex">
+          <div
+            class="btn-group mt-sm-5 groupe"
+            role="group"
+            aria-label="Button group with nested dropdown"
+          >
+            <button
+              *ngIf="!dies && !gaz && !elec"
+              type="button"
+              class="btn btn-secondary essence"
+              (click)="essence()"
+            >
+              {{ essenceButton }}
+            </button>
+            <button
+              *ngIf="dies || gaz || elec"
+              type="button"
+              class="btn btn-secondary essence"
+              disabled
+            >
+              {{ essenceButton }}
+            </button>
+
+            <button
+              *ngIf="!ess && !gaz && !elec"
+              type="button"
+              class="btn btn-secondary diesel"
+              (click)="diesel()"
+            >
+              {{ dieselButton }}
+            </button>
+            <button
+              *ngIf="ess || gaz || elec"
+              type="button"
+              class="btn btn-secondary diesel"
+              disabled
+            >
+              {{ dieselButton }}
+            </button>
+
+            <button
+              *ngIf="!ess && !dies && !gaz"
+              type="button"
+              class="btn btn-secondary electrique"
+              (click)="electrique()"
+            >
+              {{ electriqueButton }}
+            </button>
+            <button
+              *ngIf="ess || dies || gaz"
+              type="button"
+              class="btn btn-secondary electrique"
+              disabled
+            >
+              {{ electriqueButton }}
+            </button>
+
+            <button
+              *ngIf="!ess && !dies && !elec"
+              type="button"
+              class="btn btn-secondary gpl"
+              (click)="gpl()"
+            >
+              {{ gplButton }}
+            </button>
+            <button
+              *ngIf="ess || dies || elec"
+              type="button"
+              class="btn btn-secondary gpl"
+              disabled
+            >
+              {{ gplButton }}
+            </button>
+            <div class="btn-group" role="group">
+              <button
+                id="btnGroupDrop1"
+                type="button"
+                class="btn btn-secondary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Année
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <ul style="list-style-type: none" *ngFor="let p of anneeSearch">
+                  <a (click)="anneeClick(p.annee)">
+                    <li *ngIf="p.annee > 0">{{ p.annee }}</li></a
+                  >
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex">
+          <p>({{ produitsSearch?.length }})</p>
+          <p
+            style="color: rgb(78, 74, 74); font-weight: bold; font-size: large"
+          >
+            Annonces sur la casse Tunisie
+          </p>
+        </div>
+
+        <app-card-produit
+          [produits]="produitsSearch"
+          [term]="term"
+        ></app-card-produit>
+
+        <!-- <div  class="container-fluid d-flex justify-content-center">
         <div class="row mb-5">
           <div *ngFor="let p of produitsSearch|filter:term  " class="col-sm-3">
             <div class="card mt-3">
@@ -455,21 +668,13 @@
         
         </div>
       </div> -->
-    
-                
-            </div>
-          </div>
-        </div>
-  
-  
-  
-  
-    
-    
-    <!-- <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- <app-footer></app-footer>
     <app-card-produit
     [produits]="produitsSearch"
     [term]="term"
   ></app-card-produit> -->
-
 </div>

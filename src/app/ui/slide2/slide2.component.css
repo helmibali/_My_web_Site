@@ -150,11 +150,11 @@ z-index: 2;
     .item1, .item2{
         object-fit: cover;
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         height: 100vh;
         width: 100%;
         border-radius:25px ;
-        background-image:url(../../../assets/design/s2.png) ;
+        background-image:url(../../../assets/design/s.png) ;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center; 

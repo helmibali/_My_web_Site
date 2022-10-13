@@ -89,10 +89,18 @@
                       ></textarea>
                   </div>
                 
-                  <button 
+                  <button *ngIf="authService.isloggedIn"
                   class="btn btn-primary"
                    type="submit"
                    
+                    >Envoyer
+                      
+                  </button>
+    
+                  <button *ngIf="!authService.isloggedIn"
+                  class="btn btn-primary"
+                   type="submit"
+                   routerLink="/login"
                     >Envoyer
                       
                   </button>

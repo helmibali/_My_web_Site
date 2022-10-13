@@ -5,3 +5,26 @@
     border-radius: 10px;
     margin: auto;
   }
+
+  .mod-sign-up{
+    position:absolute;
+    top:17%;
+    left:34%;
+    z-index: 9999;
+  }
+  @media only screen and (max-width:800px){
+    .signup-card{
+      /* margin-top: -9%; */
+      display:flex;
+      width:99%;
+      border-radius: 10px;
+      margin: auto;
+    }
+  
+    .mod-sign-up{
+      position:absolute;
+      top:17%;
+      left:0%;
+      z-index: 9999;
+    }
+  }

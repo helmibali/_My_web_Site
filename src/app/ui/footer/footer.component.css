@@ -12,7 +12,7 @@
 }
 
 footer{
-    background-image: url("../../../assets/images/footer2.png");
+    background-image: url("../../../assets/design/s.png");
     height: 500px;
 }
 
@@ -33,6 +33,11 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.logo-footer{
+    position: absolute;
+    left: 43%;
+    width: 200px;  
 }
 
 @media only screen and (max-width:790px){
@@ -55,5 +60,10 @@ footer{
         align-items: center;
         justify-content: center;
         margin: auto;
+    }
+    .logo-footer{
+        position: absolute;
+        left: 23%;
+        width: 200px;  
     }
 }

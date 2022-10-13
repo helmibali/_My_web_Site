@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./slide.component.css']
 })
 export class SlideComponent implements OnInit {
+  @Input()
+  term;
   user:User;
   constructor(
     public authService:AuthService,

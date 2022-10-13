@@ -1,56 +1,29 @@
-import { Component, Input, OnInit, SimpleChange } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Cart } from 'src/app/model/cart.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { CartService } from 'src/app/services/cart.service';
+import { Component, Input, OnInit, SimpleChange } from "@angular/core";
+import { ActivatedRoute, Params, Router } from "@angular/router";
+import { Cart } from "src/app/model/cart.model";
+import { AuthService } from "src/app/services/auth.service";
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
-  selector: 'app-liste-cart',
-  templateUrl: './liste-cart.component.html',
-  styleUrls: ['./liste-cart.component.css']
+  selector: "app-liste-cart",
+  templateUrl: "./liste-cart.component.html",
+  styleUrls: ["./liste-cart.component.css"],
 })
 export class ListeCartComponent implements OnInit {
-@Input()
-carts:Cart[];
-@Input()
-id!:String;
+  @Input()
+  carts: Cart[];
+  @Input()
+  id!: String;
 
-user_id:number;
+  user_id: number;
 
+  constructor(private router: Router) {}
 
-  constructor(private cartService:CartService,
-    private authService:AuthService,
-    private router : Router,
-    private activatedRoute:ActivatedRoute,) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-   
-
-    //this.prixVenteEstime();
+  toProfile(user_id: number) {
+    this.router.navigate(["/profile", user_id]).then(() => {
+      window.location.reload();
+    });
   }
-
-  // supprimerCart(c:Cart){
-
-   
-  //   this.cartService.supprimerCart(c.id).subscribe(()=>{
-  //     console.log("produit supprimé");
-  //     this.carts = this.carts.splice(c.id);
-  //   });
-  
-  //  }
-
-  //  prixVenteEstime(){
-  //   return this.carts.reduce(function(prixAchat, cart) {
-  //     return prixAchat + (cart.prix);
-  // }, 0);
-  // }
-
- toProfile(user_id:number){
-  
-  this.router.navigate(['/profile',user_id]).then(()=> {
-    window.location.reload();
-  });
- }
- //data-dismiss="modal"[routerLink]="['/profile',c.produit.user.user_id]"
-
 }

@@ -30,7 +30,19 @@
             type="text" 
             formControlName="nomProduit" 
             class="form-control"
-            placeholder="libelle Produit">
+            placeholder="libelle Produit *">
+            <div class="validator-lib"
+            
+            *ngIf="nomProduit.touched && nomProduit.invalid"
+          >
+            <small *ngIf="nomProduit.errors.required" class="text-danger"
+              >*Obligatoire<br
+            /></small>
+            <small *ngIf="nomProduit.errors.minlength" class="text-danger"
+              >*Au moins 2 caractéres
+              </small
+            >
+          </div>
           </div>
       
           <div class="form-group" style="width:47%; margin:auto;">
@@ -42,8 +54,16 @@
             type="number" 
             formControlName="prixProduit"
              class="form-control"
-             placeholder="Prix Produit">
+             placeholder="Prix Produit *">
+             <div class="validator-prix"
+             style=""
+             *ngIf="prixProduit.touched && prixProduit.invalid"
+           >
+             <small *ngIf="prixProduit.errors.required" class="text-danger"
+               >*Obligatoire<br
+             /></small>
              
+           </div>
           </div>
         </div>   
       
@@ -52,7 +72,7 @@
               <div class="form-group" style="width:47%; margin:auto;">
                 
                 <select  class="form-control" (change)="onSelectByFamille($event)">
-                  <option value="0">Catégorie</option>
+                  <option value="0">Catégorie *</option>
                     <option *ngFor="let f of familles " [value]="f.id">
                         {{f.libelle}}
                     </option>
@@ -62,18 +82,27 @@
               <div class="form-group" style="width:47%; margin:auto;">
                 
                 <select  id="categorie_id" [ngModel]="selectedCategorie.id" formControlName="categorie_id" class="form-control">
-                  <option value="0">Sous-catégorie</option>
+                  <option value="0">Sous-catégorie *</option>
                     <option *ngFor="let c of categoriesByFamille" [value]="c.id">
                         {{c.nomCategorie}}
                     </option>
                 </select>
+                <div
+                style="position: absolute; left: 50%"
+                *ngIf="categorie_id.touched && categorie_id.invalid"
+              >
+                <small *ngIf="categorie_id.errors.required" class="text-danger"
+                  >*Obligatoire<br
+                /></small>
+                
+              </div>
             </div>
             </div>
             <div class="localisation mb-3"style="display:flex;width: 90%;margin: auto;">
             <div class="form-group" style="width:47%; margin:auto;"> 
               
                 <select class="form-control"  (change)="onSelect($event)">
-                  <option value="0">Marque</option>
+                  <option value="0">Marque *</option>
                   <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
                 </select>
           </div>
@@ -81,7 +110,7 @@
           position: relative;">
          
             <ng-multiselect-dropdown formControlName="modeles"
-          [placeholder]="'Modeles'"
+          [placeholder]="'Modeles *'"
           [settings]="dropdownSettings"
           [data]="modeles"
           (onSelect)="onItemSelect($event)"
@@ -148,17 +177,30 @@
         <div class="form-group" style="width:47%; margin:auto;"> 
           <!-- <label>Gouvernorat :</label>  -->
             <select class="custom-select custom-select-sm" (change)="onSelectGov($event)">
-              <option value="0">Gouvernorat</option>
+              <option value="0">Gouvernorat *</option>
               <option *ngFor="let g of gouvernorats" [value]="g.id">{{g.libelle}}</option>
             </select>
       </div> 
       
       <div class="form-group" style="width:47%; margin:auto;"> 
         <!-- <label>Delegation :</label>  -->
-          <select class="custom-select custom-select-sm" [ngModel]="selectedDelegation.id" formControlName="delegation_id">
-            <option value="0">Délégation</option>
+          <select class="custom-select custom-select-sm"
+           [ngModel]="selectedDelegation.id"
+            formControlName="delegation_id"
+            id="delegation_id">
+            <option value="0">Délégation *</option>
             <option *ngFor="let d of delegations" [value]="d.id">{{d.libelle}}</option>
+            <div
+            style="position: absolute; left: 50%"
+            *ngIf="delegation_id.touched && delegation_id.invalid"
+          >
+            <small *ngIf="delegation_id.errors.required" class="text-danger"
+              >*La delegation de produit est obligatoire<br
+            /></small>
+            
+          </div>
           </select>
+      
       </div> 
       </div>
       <div class="form-group" style="width:90%; margin:auto;">
@@ -179,15 +221,49 @@
           
         </div>
       </div>
-            <div class="mt-3 mb-3" style="display: flex;justify-content: center;align-items: center;" >
-              <button class="filter-btn mt-3 mb-3" type="submit">Publier!</button>
-              <div
+            <div class="mt-3 mb-3" style="
+            display: flex ;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;" >
+              <button *ngIf="this.produitService.dataForm!.valid"
+               class="filter-btn mt-3 mb-3 btn btn-primary"
+               id="btnForm50"
+               formControlName="btnForm50"
+                type="submit"
+                [disabled]="this.produitService.dataForm!.invalid"
+                >Publier!
+            
+            </button>
+            <button *ngIf="this.produitService.dataForm.invalid"
+            class=" mt-3 mb-3 btn btn-secondary "
+            type="button" 
+            data-toggle="collapse" 
+            data-target="#collapseExample"
+             aria-expanded="false"
+              aria-controls="collapseExample"
+             >Publier!
+         
+         </button>
+         <div class="collapse" id="collapseExample"
+         *ngIf="this.produitService.dataForm!.invalid"
+       >
+         
+          <div class="alert alert-danger">
+            * Merci de fournir les informations obligatoire pour deposer une annonce
+
+          </div>
+         
+         
+       </div>
+              <!-- <div
                style="position:relative;"
                class="alert alert-danger mt-5" 
+               
                *ngIf="errTXT !=''">
                 erreur l'annonce manque des informations obligatoire!<br/>
                 Merci de verifier
-            </div>
+            </div> -->
             </div>
       
          

@@ -97,6 +97,7 @@ import { CardProduitComponent } from './ui/card-produit/card-produit.component';
 import { FilterElementComponent } from './ui/filter-element/filter-element.component';
 import { MenuLightComponent } from './ui/menu-light/menu-light.component';
 import { Slide2Component } from './ui/slide2/slide2.component';
+import { FilterMobileComponent } from './ui/filter-mobile/filter-mobile.component';
 
 
 
@@ -195,6 +196,7 @@ import { Slide2Component } from './ui/slide2/slide2.component';
     FilterElementComponent,
     MenuLightComponent,
     Slide2Component,
+    FilterMobileComponent,
    
     
    

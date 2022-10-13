@@ -335,7 +335,7 @@ small.justify-content-center{
         align-items: center;
         width: 90%;
         margin: auto;
-       position: sticky;
+       /* position: sticky; */
        top: 85px;
        height:400px;
     }
@@ -344,27 +344,29 @@ small.justify-content-center{
         /* background-color:#ddd; */
     
        
-        width: 100%;
+        width: 90%;
         border-radius: 1rem;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
-        position: sticky;
-       top: 85px;
+        /* position: sticky; */
+        margin: auto;
+         top: 85px;
         
     }
     .filter2{
-        margin-top: 0px;
+        /* margin-top: 0px; */
         display: flex;
         background-color:#ddd;
        z-index: 12;
         width: 100%;
+        margin: auto;
         border-radius: 1rem;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
-         position: fixed;
-       top: 54px; 
+         /* position: fixed;
+       top: 50px;  */
         
     }
     
@@ -385,21 +387,41 @@ small.justify-content-center{
    
     
 }
-.filtre-mobile{
-    display:flex;  
-    
+.filter-mobile{
+    display:flex; 
+    width: 100%; 
+    margin: auto;
     position: relative;
-    top: 150px;
+    
+   
 }
 
 .button-filtre{
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    border-radius: 0px;
-    top: 1%;
-    z-index: 9999;
-    left: 70%;
     
+    background-image: url(../../../../assets/design/button.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-weight: bold;
+    border: none;
+    /* border-radius: 1rem; */
+   
+  
+    top: 0%;
+    z-index: 5;
+    left: 82%;
+  
+    height: 48px;
+    width: 16%
+    
+}
+.button-filtre{
+    transform: scale(1.1); 
 }
 .essence{
     
@@ -427,6 +449,7 @@ small.justify-content-center{
     top: 1%;
     z-index: 9999;
     left: 70%;  
+
 }
 }
 @media only screen and (max-width:790px){
@@ -459,7 +482,7 @@ border-radius: 5px;
         position:absolute;
         left: 80%;
         /* top: -1184px; */
-        top: 750px;
+        top: 700px;
     border-radius: 5px;
         width: 35px;
         height: 35px;
@@ -469,3 +492,71 @@ border-radius: 5px;
     .fleche img:hover{
         transform: scale(1.1);
     } }
+
+#accordion .panel-title a{
+    display: none;
+    
+}
+
+@media only screen and (max-width:800px){
+
+    #accordion .panel{
+        border: none;
+        border-radius: 5px;
+        box-shadow: none;
+        margin-bottom: 10px;
+        background: transparent;
+    }
+    #accordion .panel-heading{
+        padding: 0;
+        border: none;
+        border-radius: 5px;
+        background: transparent;
+        position: relative;
+    }
+    #accordion .panel-title a{
+        display: block;
+        padding: 20px 30px;
+        margin: 0;
+        background: rgba(0,0,0,0.4);
+        font-size: 17px;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: none;
+        border-radius: 5px;
+        position: relative;
+    }
+    #accordion .panel-title a.collapsed{ border: none; }
+    #accordion .panel-title a:before,
+    #accordion .panel-title a.collapsed:before{
+        content: "\f107";
+        font-family: "Font Awesome 5 Free";
+        width: 30px;
+        height: 30px;
+        line-height: 27px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 900;
+        color: #fff;
+        position: absolute;
+        top: 15px;
+        right: 30px;
+        transform: rotate(180deg);
+        transition: all .4s cubic-bezier(0.080, 1.090, 0.320, 1.275);
+    }
+    #accordion .panel-title a.collapsed:before{
+        color: rgba(255,255,255,0.5);
+        transform: rotate(0deg);
+    }
+    #accordion .panel-body{
+       
+        font-size: 15px;
+        color: #fff;
+        line-height: 28px;
+        letter-spacing: 1px;
+        border-top: none;
+        border-radius: 5px;
+    }
+}

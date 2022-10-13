@@ -1,4 +1,9 @@
-
+.filtre-mobile{
+    display: none;
+    
+    position: sticky;
+    top: 150px;
+}
 
 .button-filtre{
     display: none;
@@ -6,11 +11,13 @@
     top: 25px;
     z-index: 9998;
 }
-option, select{
-    color: #282a2c;
-    font-weight: bold;
-}
+.n{
+    position: sticky;
+    top:0px;
+    width: 100%;
+    z-index: 9998; 
 
+}
 .fa-search {
     content: "\f002";
     position: absolute;
@@ -30,6 +37,8 @@ option, select{
     font-size: 80%;
 }
 
+
+
 .btn-light {
     background-color: #fff;
     border-color: #e4e4e4;
@@ -48,6 +57,7 @@ option, select{
 .filter2{
     display: none;
     background-color:#ddd;
+   
     width: 100%;
     border-radius: 1rem;
     justify-content: flex-start;
@@ -69,10 +79,30 @@ option, select{
    
 } */
 
+.all{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* background-color: #d6def3;  */
+    /* background-color: #f4d5da; */
 
 
+}
 
 
+.filtre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24%;
+    margin: auto;
+   position: sticky;
+   top: 85px;
+   height:400px;
+   background-image: url(../../../assets/design/ficheproduit.png
+   );
+   /* background-color: #f1f4fb; */
+}
 .search-input{
     width: 80%;
     margin: auto;  
@@ -106,10 +136,7 @@ option, select{
 }
 
 .filter-btn{
-    background-image: url(../../../assets/design/button.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center; 
+    background-image: url(../../../assets/design/menu.png);
     color: white;
     font-weight: bold;
     border: none;
@@ -127,10 +154,10 @@ select:hover{
     transform: scale(1.2);
 }
 .filter-interne{
-   
+    position: sticky; 
     top: 85px;width: 95%;
-    width: 100%;
-    border-radius: 1rem;
+    /* border:2px rgb(135, 135, 135) solid; */
+    /* border-radius: 1rem; */
     background-color: #e9ebedaf  
 }
 .btnFiltre{
@@ -138,7 +165,9 @@ select:hover{
     justify-content: flex-end;
 }
 
-
+app-produits-filtred{
+    width: 75%;
+}
 
 .produits{
     width: 75%;
@@ -198,8 +227,37 @@ justify-content: space-between;
     width: 45%;
 
 }
+.filter{
+    background-color:#ddd;
+    background-image: url(../../../assets/design/ficheproduit.png);
+        background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    display: flex;
+    width: 25%;
+    border-radius: 1rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    position: sticky;
+   top: 85px;
+    
+}
+.filtre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 24%;
+    margin: auto;
+   position: sticky;
+   top: 85px;
+   height:400px;
+   /* background-color: #f1f4fb; */
+  
 
+   
 
+}
 
 input{
     border: 1px solid rgba(0, 0, 0, 0.137);
@@ -277,47 +335,38 @@ small.justify-content-center{
         align-items: center;
         width: 90%;
         margin: auto;
-       position: sticky;
+       /* position: sticky; */
        top: 85px;
        height:400px;
-    }
-
-    .filter-mobile{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 90%;
-        margin: auto;
-       position: sticky;
-       top: 85px;
-       height:400px;   
     }
     .filter{
         display: none;
         /* background-color:#ddd; */
     
        
-        width: 100%;
+        width: 90%;
         border-radius: 1rem;
         justify-content: flex-start;
         align-items: center;
         flex-direction: column;
-        position: sticky;
-       top: 85px;
+        /* position: sticky; */
+        margin: auto;
+         top: 85px;
         
     }
     .filter2{
-        margin-top: 0px;
+        /* margin-top: 0px; */
         display: flex;
         background-color:#ddd;
        z-index: 12;
         width: 100%;
+        margin: auto;
         border-radius: 1rem;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
-         position: fixed;
-       top: 54px; 
+         /* position: fixed;
+       top: 50px;  */
         
     }
     
@@ -338,21 +387,41 @@ small.justify-content-center{
    
     
 }
-.filtre-mobile{
-    display:flex;  
-    
+.filter-mobile{
+    display:flex; 
+    width: 100%; 
+    margin: auto;
     position: relative;
-    top: 150px;
+    
+   
 }
 
 .button-filtre{
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    border-radius: 0px;
-    top: 1%;
-    z-index: 9999;
-    left: 70%;
     
+    background-image: url(../../../assets/design/button.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-weight: bold;
+    border: none;
+    /* border-radius: 1rem; */
+   
+  
+    top: 0%;
+    z-index: 5;
+    left: 82%;
+  
+    height: 48px;
+    width: 16%
+    
+}
+.button-filtre{
+    transform: scale(1.1); 
 }
 .essence{
     
@@ -380,6 +449,46 @@ small.justify-content-center{
     top: 1%;
     z-index: 9999;
     left: 70%;  
+
 }
+}
+@media only screen and (max-width:790px){
+    select{
+       font-size: 14px;
+    }  
 }
 
+.fleche{
+    position: sticky;
+    top: -100px;  
+    z-index: 9999;
+}
+.fleche img{
+    position:absolute;
+    left: 90%;
+    /* top: -1184px; */
+    top: 730px;
+border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    transition: transform .2s;
+    border: 2px solid white;
+}
+.fleche img:hover{
+    transform: scale(1.1);
+}
+@media only screen and (max-width:800px){
+    .fleche img{
+        position:absolute;
+        left: 80%;
+        /* top: -1184px; */
+        top: 750px;
+    border-radius: 5px;
+        width: 35px;
+        height: 35px;
+        transition: transform .2s;
+        border: 2px solid white;
+    }
+    .fleche img:hover{
+        transform: scale(1.1);
+    } }
