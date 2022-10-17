@@ -1,0 +1,309 @@
+
+    <app-menu-vertical></app-menu-vertical>
+    <div id="main">
+    
+        <app-menu></app-menu>
+      
+      
+          <h5 class="mt-5">S'inscrire</h5>
+          <p>C’est rapide et facile.</p>
+      
+
+  
+
+      <div class="container card shadow">
+        <form [formGroup]="this.userService.dataForm" (ngSubmit)="addData()">
+          <div class="form-group" hidden>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="enabled"
+              id="prenom"
+              placeholder=""
+            />
+          </div>
+
+          <div class="mt-5" style="display: flex; width: 90%; margin: auto">
+            <div class="form-group" style="width: 47%; margin: auto">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="prenom"
+                id="prenom"
+                placeholder="Prenom*"
+              />
+              <div
+                style="position: absolute; left: 10%"
+                *ngIf="prenom.touched && prenom.invalid"
+              >
+                <small *ngIf="prenom.errors.required" class="text-danger"
+                  >*Le prenom est obligatoire<br
+                /></small>
+                <small *ngIf="prenom.errors.minlength" class="text-danger"
+                  >*Au moins 6 caractéres</small
+                >
+              </div>
+            </div>
+
+            <div class="form-group" style="width: 47%; margin: auto">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nom"
+                id="nom"
+                placeholder="Nom*"
+              />
+              <div
+                style="position: absolute; left: 51%"
+                *ngIf="nom.touched && nom.invalid"
+              >
+                <small *ngIf="nom.errors.required" class="text-danger"
+                  >*Le nom est obligatoire<br
+                /></small>
+                <small *ngIf="nom.errors.minlength" class="text-danger"
+                  >*Au moins 6 caractéres</small
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4" style="display: flex; width: 90%; margin: auto">
+            <div class="form-group" style="width: 47%; margin: auto">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email*"
+                formControlName="username"
+                id="username"
+                [ngClass]="{
+                  'is-invalid': username.errors && username.touched
+                }"
+              />
+              <div
+                style="position: absolute; left: 10%"
+                class="invalid-feedback"
+                *ngIf="username.hasError('usernameTaken')"
+              >
+                <small>L'email Déjà utiliser</small>
+              </div>
+              <div
+                style="position: absolute; left: 10%"
+                class="invalid-feedback"
+                *ngIf="username.hasError('required')"
+              >
+                <small>l'Email est obligatoire</small>
+              </div>
+              <div
+                style="position: absolute; left: 10%"
+                class="invalid-feedback"
+                *ngIf="username.hasError('minlength')"
+              >
+                <small>Ou moins 3 caracteres</small>
+              </div>
+              <div
+                style="position: absolute; left: 10%"
+                class="invalid-feedback"
+                *ngIf="username.hasError('email')"
+              >
+                <small>format non valide</small>
+              </div>
+            </div>
+            <div class="form-group" style="width: 47%; margin: auto">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="telephone"
+                id="telephone"
+                placeholder="+216 -- --- ---"
+              />
+              <div
+                style="position: absolute; left: 51%"
+                *ngIf="telephone.touched && telephone.invalid"
+              >
+                <small *ngIf="telephone.errors.required" class="text-danger"
+                  >Le téléphone est obligatoire<br
+                /></small>
+                <small *ngIf="telephone.errors.minlength" class="text-danger"
+                  >Au moins 6 caractéres</small
+                >
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="localisation mt-4"
+            style="display: flex; width: 90%; margin: auto"
+          >
+            <div class="form-group" style="width: 47%; margin: auto">
+              <select
+                class="custom-select custom-select-sm"
+                (change)="onSelectGov($event)"
+              >
+                <option value="0">gouvernorats*</option>
+                <option *ngFor="let g of gouvernorats" [value]="g.id">
+                  {{ g.libelle }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group" style="width: 47%; margin: auto">
+              <select
+                class="custom-select custom-select-sm"
+                formControlName="delegation_id"
+              >
+                <option value="0">delegations*</option>
+                <option *ngFor="let d of delegations" [value]="d.id">
+                  {{ d.libelle }}
+                </option>
+              </select>
+              <div
+                style="position: absolute; left: 10%"
+                *ngIf="delegation_id.touched && delegation_id.invalid"
+              >
+                <small
+                  *ngIf="delegation_id.errors.required"
+                  class="text-danger"
+                >
+                  L'adresse est obligatoire
+                </small>
+              </div>
+            </div>
+          </div>
+          <div
+            class="localisation mt-4 mb-3"
+            style="
+              display: flex;
+              width: 90%;
+              margin: auto;
+              align-items: flex-start;
+            "
+          >
+            <div class="form-group" style="width: 47%; margin: auto">
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                id="password"
+                placeholder="Mot de passe"
+              />
+              <div
+                style="position: absolute; left: 10%"
+                *ngIf="password.touched && password.invalid"
+              >
+                <small *ngIf="password.errors.required" class="text-danger">
+                  Le mot de passe est obligatoire
+                  <br
+                /></small>
+                <small *ngIf="password.errors.minlength" class="text-danger"
+                  >*Au moins 6 caractéres</small
+                >
+              </div>
+            </div>
+
+            <div
+              class="form-group"
+              style="width: 47%; margin: auto; align-self: stretch"
+            >
+              <input
+                type="password"
+                class="form-control"
+                id="repassword"
+                formControlName="repassword"
+                placeholder="Confirmer mot de passe"
+              />
+              <div
+                style="position: absolute; left: 51%"
+                *ngIf="repassword.touched && repassword.invalid"
+              >
+                <small *ngIf="repassword.errors.required" class="text-danger">
+                  Le mot de passe est obligatoire
+                  <br
+                /></small>
+                <small *ngIf="repassword.errors.minlength" class="text-danger"
+                  >*Au moins 6 caractéres</small
+                >
+              </div>
+              <div
+                style="position: absolute; left: 51%"
+                *ngIf="repassword.valid && repassword.value != password.value"
+                class="text-danger"
+              >
+                <small> Les deux mots de passes ne sont identique </small>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="form-group"
+            style="width: 47%; margin: auto; position: relative"
+            hidden
+          >
+            <ng-multiselect-dropdown
+              formControlName="roles"
+              [placeholder]="'roles'"
+              [settings]="dropdownSettings"
+              [data]="roles"
+              (onSelect)="onItemSelect($event)"
+              [(ngModel)]="selectedRoles"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+          <p>
+            <a
+              style="margin: auto"
+              class="btn btn-light"
+              data-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              <i class="fa fa-image"> Image</i>
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <div class="form-group">
+                <label>File Upload </label>
+                <input
+                  type="file"
+                  accept=".jpg,.png,.jpeg"
+                  (change)="onSelectFile($event)"
+                />
+                <img [src]="imgURL" height="200" *ngIf="imgURL" />
+              </div>
+              <!-- [disabled]="! onSelect"  -->
+              <!-- <button
+         class="btn btn-primary"
+         type="button" 
+         data-toggle="collapse" 
+         data-target="#collapseExample"
+          aria-expanded="false"
+           aria-controls="collapseExample"
+        
+         (click)="validateImg()"
+         >valider
+        </button> -->
+              <!-- <p>{{ok}}</p> -->
+            </div>
+          </div>
+          <div class="form-group"></div>
+
+          <div class="modal-footer footer-user">
+            <a 
+            type="button" 
+            (click)="backClicked()"> 
+            <i class="fa fa-arrow-left"></i> <span class="ml-1">Retour</span> </a>
+            <button
+              style="width: 80%; margin: auto; border-radius: 10px"
+              type="submit"
+              [disabled]="this.userService.dataForm!.invalid"
+              class="btn btn-success"
+            >
+              S'inscrire
+            </button>
+          </div>
+        </form>
+      </div>
+  
+    </div>

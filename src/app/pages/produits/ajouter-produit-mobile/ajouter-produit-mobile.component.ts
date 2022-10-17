@@ -109,9 +109,9 @@ export class AjouterProduitMobileComponent implements OnInit {
       this.categories = c;
     });
 
-    this.produitService.listeModele().subscribe((m) => {
-      this.modeles = m;
-    });
+    // this.produitService.listeModele().subscribe((m) => {
+    //   this.modeles = m;
+    // });
 
     this.marqueService.getAllMarques().subscribe((m) => {
       this.marques = m;
@@ -131,6 +131,10 @@ export class AjouterProduitMobileComponent implements OnInit {
       textField: "libelleModele",
       selectAllText: "Selectioner tout",
       unSelectAllText: "déselectioner tout",
+      allowSearchFilter: true,
+      enableCheckAll: false,
+      noDataAvailablePlaceholderText:"modeles",
+      searchPlaceholderText	:"recherche..."
     };
 
     // this.dropdownSettings2 = {

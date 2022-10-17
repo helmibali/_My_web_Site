@@ -98,6 +98,8 @@ import { FilterElementComponent } from './ui/filter-element/filter-element.compo
 import { MenuLightComponent } from './ui/menu-light/menu-light.component';
 import { Slide2Component } from './ui/slide2/slide2.component';
 import { FilterMobileComponent } from './ui/filter-mobile/filter-mobile.component';
+import { InscriptionPageComponent } from './pages/user/inscription-page/inscription-page.component';
+import { CreateArticleCollapseComponent } from './article/create-article-collapse/create-article-collapse.component';
 
 
 
@@ -197,6 +199,8 @@ import { FilterMobileComponent } from './ui/filter-mobile/filter-mobile.componen
     MenuLightComponent,
     Slide2Component,
     FilterMobileComponent,
+    InscriptionPageComponent,
+    CreateArticleCollapseComponent,
    
     
    

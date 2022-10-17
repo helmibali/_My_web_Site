@@ -27,11 +27,14 @@
             <ul class="list-group list-group-flush mb-3">
            
               
-              <li class="list-group-item">
+              <li class="list-group-item create-article-large">
                  <app-create-article></app-create-article> <br>
                  <p class="text">Pour demader des conseils, pour poser des questions et pour partager des nouveautés dans le domaine de l'automobile.</p>
               </li>
-            
+              <li class="list-group-item create-article-small">
+                <app-create-article-collapse></app-create-article-collapse> <br>
+                <p class="text">Pour demader des conseils, pour poser des questions et pour partager des nouveautés dans le domaine de l'automobile.</p>
+             </li>
             </ul>
           
           </div>
@@ -50,7 +53,7 @@
             <div *ngIf="a.user.filename !== null" >
               <img class="card-img-top img-responsive rounded-circle"
               src = "{{'https://casse12.herokuapp.com/api/imageuser/'+a.user.user_id}}" 
-              style = "height :70px;width:35px;"
+              style = "height :70px;width:55px;"
              alt="">
             </div>
             <div *ngIf="a.user.filename === null">

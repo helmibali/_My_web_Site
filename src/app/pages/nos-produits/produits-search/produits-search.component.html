@@ -41,7 +41,7 @@
                       aria-expanded="true"
                       aria-controls="collapseOne"
                     >
-                      Filtre avancé <i class="fa fa-filter"></i> 
+                      Filtre avancé <i class="fa fa-filter"></i>
                     </a>
                   </h4>
                 </div>
@@ -67,7 +67,9 @@
                         >
                           <div class="mt-3" style="width: 50%; margin: auto">
                             <h4>Filtre avancé</h4>
-                            <a type="button" (click)="reInitFilter()">reinit filtre</a>
+                            <a type="button" (click)="reInitFilter()"
+                              >reinit filtre</a
+                            >
                           </div>
                           <div></div>
                           <div class="search-input">
@@ -221,160 +223,11 @@
     </div>
 
     <div class="all" style="display: flex">
-      <!-- <div class="filter-mobile ">
-            <div class="button-filtre-div" >
-            <button class="button-filtre" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                       <i class="fa fa-filter">filtre</i>
-            </button>
-          </div>
-          <div class="collapse" id="collapseExample">
-            <div class="collapse navbar-collapse filter2">
-              <div class="mt-5" style="  position: sticky; top: 85px;width: 95%;border:2px rgb(135, 135, 135) solid;border-radius: 1rem;background-color: #e9ebedaf">
-                <div class="mt-3" style="width:50%;margin: auto;">
-                  <h4>Filtre avancé</h4>
-              </div>
-              <div></div>
-              <div class="search-input">
-                  <input
-                    class=" form-control form-control-lg recherche text-center"
-                  
-                    type="search"
-                    placeholder="Rechercher une piece..."
-                    aria-label="Search"
-                    [(ngModel)]="term"
-                  />
-                </div>
-  
-                <div>
-                  <div class="mt-2 mb-2" style="width: 100%">
-                      <div class="categorie-scategorie">
-                        <div style="width:45% ; margin: auto;">
-                          <select
-                            class="form-control mb-1 inputFiltre text-center"
-                       
-                            [(ngModel)]="selectedFamille.id"
-                            (change)="onSelectByFamille($event)"
-                          >
-                            <option value="0"><u>Catégorie</u></option>
-                            <option *ngFor="let f of familles" [value]="f.id">
-                              {{ f.libelle }}
-                            </option>
-                          </select>
-                        </div>
-                        <div style="width:45% ;margin: auto;">
-                          <select
-                            class="form-control mb-1 inputFiltre text-center"
-                            style="/* border-radius: 10px; */"
-                            [(ngModel)]="selectedCategorie.id"
-                            (change)="onSelectByCat($event)"
-                          >
-                            <option value="0">Sous-catégorie</option>
-                            <option
-                              *ngFor="let c of categoriesByFamille"
-                              [value]="c.id"
-                            >
-                              {{ c.nomCategorie }}
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 mb-2" style="width: 100%">
-                      <div style="display: flex;">
-                        <div style="width: 45%;margin: auto;">
-                          <select
-                            class="form-control mb-1 inputFiltre text-center"
-                            style="/* border-radius: 10px; */"
-                            [(ngModel)]="selectedMarque.id"
-                            (change)="onSelect($event)"
-                          >
-                            <option value="0">Marque</option>
-                            <option *ngFor="let m of marques" [value]="m.id">
-                              {{ m.libelleMarque }}
-                            </option>
-                          </select>
-                        </div>
-                        <div style="width: 45%;margin: auto;">
-                          <select
-                            class="form-control mb-1 inputFiltre text-center"
-                            style="/* border-radius: 10px; */"
-                            [(ngModel)]="selectedModele.id"
-                            (change)="onSelectByMod($event)"
-                          >
-                            <option value="0">Modele</option>
-                            <option
-                              *ngFor="let mod of modelesByMarque"
-                              [value]="mod.id"
-                            >
-                              {{ mod.libelleModele }}
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="mt-2 mb-2" style="width: 100%">
-                    
-                    </div>
-  
-                    <div class="mt-2 mb-2" style="width: 100%">
-                      <div style="display: flex;">
-                        <div style="width:45%;margin:auto;">
-                          <select
-                            class="form-control mb-1 inputFiltre text-center"
-                            style="/* border-radius: 10px; */"
-                            [(ngModel)]="selectedGouvernorat.id"
-                            (change)="onSelectGov($event)"
-                          >
-                            <option style="border-radius: 25px" value="0">
-                              Gouvernourat
-                            </option>
-                            <option
-                              style="border-radius: 25px"
-                              *ngFor="let g of gouvernorats"
-                              [value]="g.id"
-                            >
-                              {{ g.libelle }}
-                            </option>
-                          </select>
-                        </div>
-                        <div style="width:45%;margin:auto;">
-                          <select
-                            class="form-control mb-1 inputFiltre text-center"
-                            style="/* border-radius: 10px; */"
-                            [(ngModel)]="selectedDelegation.id"
-                            (change)="onSelectByDelegation($event)"
-                          >
-                            <option value="0">Délégation</option>
-                            <option *ngFor="let d of delegationsByGov" [value]="d.id">
-                              {{ d.libelle }}
-                            </option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="submit mt-3 mb-5" style="display: flex;width: 100%">
-                      <button
-                        class="btn-lg filter-btn"
-                        style="width: 70%;margin: auto;"
-                        (click)="filter2()"
-                      >
-                        Filtrer <i class="fa fa-filter"></i>
-                      </button>
-                    </div>
-  
-  
-                </div>
-              </div>
-          
-          
-          </div>
-          </div>
-          </div> -->
-
       <div class="filter">
         <div class="filter-interne mt-5 mb-5" style="">
           <div class="mt-3" style="width: 50%; margin: auto">
-            <h4>Filtre avancé</h4><a type="button" (click)="reInitFilter()">reinit filtre</a> 
+            <h4>Filtre avancé</h4>
+            <a type="button" (click)="reInitFilter()">reinit filtre</a>
           </div>
           <div></div>
           <div class="search-input">
@@ -591,7 +444,7 @@
               </button>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <ul style="list-style-type: none" *ngFor="let p of anneeSearch">
-                  <a (click)="anneeClick(p.annee)">
+                  <a type="button" (click)="anneeClick(p.annee)">
                     <li *ngIf="p.annee > 0">{{ p.annee }}</li></a
                   >
                 </ul>
@@ -613,68 +466,7 @@
           [produits]="produitsSearch"
           [term]="term"
         ></app-card-produit>
-
-        <!-- <div  class="container-fluid d-flex justify-content-center">
-        <div class="row mb-5">
-          <div *ngFor="let p of produitsSearch|filter:term  " class="col-sm-3">
-            <div class="card mt-3">
-    
-    
-              
-    
-    
-          <img src="{{'http://localhost:8081/api/imgp/'+p.idProduit}}" class="card-img-top" width="100%" style="height:170px ;">
-          <div class="card-body pt-0 px-0">
-            <div class="dropdown" style="position:absolute ;left: 83%; top: 1%;">
-              <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                
-              </button>
-              <div class="dropdown-menu" style="border-radius:10px;background-color:#e9ebeddf" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" (click)="supprimerProduit(p)">Supprimer</a>
-                <a class="dropdown-item" href="#">Modifier</a>
-                <a class="dropdown-item" href="#">Désactiver</a>
-              </div>
-            </div>
-            <div class="d-flex flex-row justify-content-between mb-0 px-3">
-              <h6 class="text-muted mt-1">{{  p.nomProduit }}</h6>
-              <h6>{{p.prixProduit}} TND</h6>
-            </div>
-            <hr class="mt-2 mx-3">
-            <div class="d-flex flex-row justify-content-between px-3 pb-4">
-              <div class="d-flex flex-column"><span class="text-muted">{{p.categorie.famille.libelle}}</span></div>
-              <div class="d-flex flex-column"><h5 class="mb-0">{{p.categorie.nomCategorie}}</h5></div>
-            </div>
-            <div class="d-flex flex-row justify-content-between px-3 pb-4">
-                <div class="d-flex flex-column"><span class="text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> {{p.delegation.libelle}}</span><small class="text-muted">{{p.delegation.gouvernorat.libelle}}</small></div>
-                <div class="d-flex flex-column"><span class="text-muted"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    {{p.dateCreation | date:'HH:mm'}}  </span><small class="text-muted text-right">{{p.dateCreation | date:'dd-MM-yyyy'}}</small></div>
-              </div>
-            <div class="d-flex flex-row justify-content-between p-3 mid" style="display:flex ;" >
-              <div class="d-flex flex-column" *ngFor="let m of p.modeles">
-                <small class="text-muted mb-1">Marque</small>
-                <div class="d-flex flex-row">
-                <img src="{{'http://localhost:8081/api/ImgMarque/'+m.marque.id}}" width="35px" height="25px">
-                <div class="d-flex flex-column ml-1">
-                    <small class="ghj">{{m.libelleModele}} </small></div></div></div>
-            </div>
-        
-            <div class="mx-3 mt-3 mb-2"><button type="button" class="btn btn-danger btn-block" [routerLink]="['/produit',produit.idProduit]"><small>découvrir</small></button></div>
-           
-          </div>
-        </div>
-          </div>
-          
-    
-        
-        </div>
-      </div> -->
       </div>
     </div>
   </div>
-
-  <!-- <app-footer></app-footer>
-    <app-card-produit
-    [produits]="produitsSearch"
-    [term]="term"
-  ></app-card-produit> -->
 </div>

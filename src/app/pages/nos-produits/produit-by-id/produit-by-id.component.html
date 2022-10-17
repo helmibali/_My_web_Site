@@ -15,7 +15,26 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-9">
                         <div class="images p-3">
-                            <div class="text-center p-4"> <img id="main-image" src="{{'https://casse12.herokuapp.com/api/imageproduit/'+produit.idProduit}}" width="250" /> </div>
+
+<!-- Button trigger modal -->
+<!-- <a type="button" class="" data-toggle="modal" data-target="#exampleModalLong"> -->
+  <div class="text-center p-4"> <img id="main-image" src="{{'https://casse12.herokuapp.com/api/imageproduit/'+produit.idProduit}}" width="250" /> </div>
+
+<!-- </a> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" style="display:flex; justify-content: center;align-items: center; " role="document">
+<div class="image" style="z-index:9999 ;width:300px; margin: auto;">
+  <img id="main-image"  src="{{'https://casse12.herokuapp.com/api/imageproduit/'+produit.idProduit}}" width="500"  />
+</div>
+   
+
+  </div>
+</div> -->
+
+
+                          
                            
                         </div>
                     </div>
@@ -26,28 +45,115 @@
                                   <a 
                                   type="button" 
                                   (click)="backClicked()"> 
-                                  <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Retour</span> </a>
+                                  <i class="fa fa-arrow-left"></i> <span class="ml-1">Retour</span> </a>
                                  
                                 </div> 
                             </div>
                             <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">Catégorie: {{produit?.categorie.nomCategorie}}</span>
                                 <h5 class="text-uppercase">{{  produit?.nomProduit }}</h5>
-                                <div class="price d-flex flex-row align-items-center"> <span class="act-price"> Prix: {{ produit?.prixProduit}} TND</span>
+                                <div class="price d-flex flex-row align-items-center">
+                                   <span class="act-price"> Prix: {{ produit?.prixProduit}} TND</span>
                                     <div class="ml-2"> <small class="dis-price"></small>
+                                      
                                 </div>
+                                
                             </div>
-                            <p class="about">
-                              Description: {{produit?.description}}</p>
+                            <div *ngIf="produit.description !== ''">
+                              <p  class="about">
+                                Description: {{produit?.description}}</p>
+                            </div>
+                           <br>
+                           <div>
+                            <p class="about" *ngIf="produit.carburant !== ''">
+                              <i class="fa fa-gas-pump"></i> carburant: {{produit?.carburant}}</p>
+                              <p><i class="fa fa-calendar"></i>  Annee: {{produit?.annee}}</p>
+                           </div>
+                             
+                            
                               <div class="d-flex" *ngFor="let m of produit?.modeles">
                                 <small class="text-muted mb-1">Marque:</small>
                                 <div class="d-flex flex-row">
                                 <img src="{{'https://casse12.herokuapp.com/api/imagemarque/'+m.marque.id}}" width="35px" height="25px">
                                 <div class="d-flex flex-column ml-1">
                                     <small class="ghj">Modéle: {{m.libelleModele}} </small></div></div></div>
-                                    <a class="badge badge-primary ml-5" [routerLink]="['/profile',produit?.user.user_id]" style="width:30%;">
+                                    <div class="d-flex flex-column"><span class="text-muted"><i class="fa fa-map-marker" aria-hidden="true"></i> {{produit?.delegation.libelle}}</span><small class="text-muted">{{produit?.delegation.gouvernorat.libelle}}</small></div>
+                                    <a class="badge badge-primary ml-5 auteur-badge" [routerLink]="['/profile',produit?.user.user_id]" style="">
                                       {{produit?.user.prenom}} {{produit?.user.nom}}
                                      </a>
                             <div class="cart mt-4 align-items-center">
+
+
+
+
+
+                              <div class="mb-2" style="display:flex;flex-direction: column;" >
+                                <div class="btn-group" style="display:flex;flex-direction: column;">
+                                  <button type="button" class="btn btn-info"
+                                  type="button" style="width: 50%;margin: auto;"
+                                   data-toggle="collapse"
+                                    data-target="#collapseExample"
+                                   aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    <img src="../../../../assets/design/message-icon.png" alt="" width="30">
+                                  
+                                  </button>
+                                  <div class="collapse" id="collapseExample" style="border-radius:10px;background-color:rgb(231 215 215 / 88%);">
+                                    <div class="mt-2"> 
+                              <form [formGroup]="this.messageService.dataForm" (ngSubmit)="onSubmit()">
+                                <input type="hidden"  formControlName="id" id="id">
+                      
+                       
+                                <div class="form-group">
+                                  
+                                  <input type="date" class="form-control" formControlName="dateCreation" id="" hidden>
+                                </div>
+                                <div class="form-group">
+                                  
+                                  <input type="text" class="form-control" formControlName="auteur" id="" hidden>
+                                </div>
+                                <div class="form-group">
+                                  
+                                    <input type="text" class="form-control" formControlName="emiter"  id="" hidden>
+                                  </div>
+                                  <div class="form-group">
+                                    <textarea 
+                                    class="form-control mb-2"
+                                     placeholder="ecrire un message..." 
+                                     id="floatingTextarea"
+                                      formControlName="message"
+                                      ></textarea>
+                                  </div>
+                                
+                                  <button *ngIf="authService.isloggedIn"
+                                  class="btn btn-primary"
+                                   type="submit"
+                                   
+                                    >Envoyer
+                                      
+                                  </button>
+                    
+                                  <button *ngIf="!authService.isloggedIn"
+                                  class="btn btn-primary"
+                                   type="submit"
+                                   routerLink="/login"
+                                    >Envoyer
+                                      
+                                  </button>
+                                  <button
+                                
+                                  type="button"
+                                  class="btn "
+                                  >
+                                  Annuler
+                              </button>
+                              </form>
+                                    </div></div></div></div>
+
+
+
+
+
+
 
                                 <button 
                                  class="btn btn-danger text-uppercase mr-2 px-4" hidden>Commander</button> 
@@ -56,6 +162,55 @@
                                 [loginBtn]="loginBtn"
                                 style="z-index: 9999"
                               ></app-login-modal>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                              <div class="container" style="" >
+                                <form [formGroup]="this.cartService.dataForm" (ngSubmit)="addToCart()">
+                                    <div class="form-group" hidden>
+                                      
+                                      <input type="text" class="form-control" formControlName="dateCreation" id="">
+                                    </div>
+                                    <div class="form-group" hidden>
+                                      
+                                        <input type="text" class="form-control" formControlName="user" id="">
+                                      </div>
+                                
+                                      <div class="form-group" hidden >
+                                      
+                                        <input type="number" class="form-control" formControlName="produit" id="">
+                                      </div>
+                                
+                                      <div class="form-group" hidden>
+                                      
+                                        <input type="text" class="form-control" formControlName="prix" id="">
+                                      </div>
+                                
+                                    
+                                    <div class="form-group commander">
+                                      <button *ngIf="authService.isloggedIn"
+                                       type="submit" 
+                                        class="btn btn-info text-uppercase mr-2 px-4">
+                                        <i class="fa fa-tasks" aria-hidden="true">
+
+                                        </i> Commander
+                                      </button>
+                                    </div>
+                                
+                                
+                                  </form></div>
                                 <div class="text-center mt-1" *ngIf="isLoading != false">
                                   <div class="card shadow mb-4">
                                         <span class="visually-hidden">Loading...</span>
@@ -78,71 +233,7 @@
 </div>
 
 
-<div class="container" style="margin-left:20%;position: absolute;" >
-    <form [formGroup]="this.cartService.dataForm" (ngSubmit)="addToCart()">
-        <div class="form-group" hidden>
-          
-          <input type="text" class="form-control" formControlName="dateCreation" id="">
-        </div>
-        <div class="form-group" hidden>
-          
-            <input type="text" class="form-control" formControlName="user" id="">
-          </div>
-    
-          <div class="form-group" hidden >
-          
-            <input type="number" class="form-control" formControlName="produit" id="">
-          </div>
-    
-          <div class="form-group" hidden>
-          
-            <input type="text" class="form-control" formControlName="prix" id="">
-          </div>
-    
-        
-        <div class="form-group commander">
-          <button *ngIf="authService.isloggedIn" type="submit"  class="btn btn-danger text-uppercase mr-2 px-4"><i class="fa fa-tasks" aria-hidden="true"></i> Commander</button>
-        </div>
-    
-    
-      </form></div>
 
-      <!-- <div class="container" style="">
-        <form  >
-          
-          <div class="form-group">
-              
-            <input type="text" class="form-control" name="id" id="id" [(ngModel)]="c.idProduit"
-            >
-          </div>
-           
-           
-            <div class="form-group">
-              
-              <input type="text" class="form-control" name="dateCreation" id="date" [(ngModel)]="date">
-            </div>
-            <div class="form-group">
-              
-                <input type="text" class="form-control" name="user" id="" [(ngModel)]="authService.loggedUser">
-              </div>
-        
-              <div class="form-group" >
-              
-                <input type="number" class="form-control" name="produit" id="" [(ngModel)]="produit.idProduit">
-              </div>
-        
-              <div class="form-group" >
-              
-                <input type="text" class="form-control" name="prix" id="" [(ngModel)]="produit.prixProduit">
-              </div>
-        
-            
-            <div class="form-group">
-          <button (click)="newCart()"> cart</button>
-            </div>
-        
-        
-          </form></div> -->
-    
+
 <app-footer></app-footer>
 </div>

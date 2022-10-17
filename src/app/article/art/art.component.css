@@ -28,7 +28,19 @@
  z-index: 9998; 
 
 }
+.create-article-large{
+    display: flex;
+}
+.create-article-small{
+    display: none;
+}
 @media screen and (max-width:790px){
+    .create-article-small{
+        display: flex;
+    }
+    .create-article-large{
+        display: none;
+    }
     .root{
         display: flex;
         flex-direction: column;

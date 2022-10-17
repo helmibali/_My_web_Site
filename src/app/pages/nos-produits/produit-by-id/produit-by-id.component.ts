@@ -9,6 +9,9 @@ import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ProduitService } from 'src/app/services/produit.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { MessageService } from 'src/app/services/message.service';
+import { Message } from 'src/app/model/message.model';
+
 @Component({
   selector: 'app-produit-by-id',
   templateUrl: './produit-by-id.component.html',
@@ -16,12 +19,14 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ProduitByIdComponent implements OnInit {
   produit :Produit;
+  messages:Message[];
   isLoading:boolean = false;
   errTXT:string='';
   carts:Cart[];
   loginBtn:string = "Commander";
   date=new Date();
   c = new Cart();
+  user:User;
   constructor(
     private _location: Location,
     public produitService:ProduitService,
@@ -30,11 +35,13 @@ export class ProduitByIdComponent implements OnInit {
     public cartService:CartService,
     private router:Router,
     private toastr: ToastrService,
-    private formBuilder : FormBuilder) { }
+    private formBuilder : FormBuilder,
+    public messageService:MessageService) { }
     initForm(){
      
     }
   ngOnInit(): void {
+    
 //     this.produitService.consulterProduit(this.activatedRoute.snapshot.params.id).subscribe(p=>{
 //       this.produit=p;
 //       console.log(this.produit.categorie.nomCategorie);
@@ -44,7 +51,8 @@ this.initData();
 
 this.cartService.getAll().subscribe(data=>{
   this.carts=data;
-      })
+      });
+  
     
 }
 
@@ -59,11 +67,18 @@ initData(){
       dateCreation:new FormControl(new Date()),
       user:new FormControl(this.authService.loggedUser),
       produit:new FormControl(this.produit.idProduit),
-    })
+    });
+    this.messageService.dataForm = this.formBuilder.group({
+      auteur:new FormControl(this.authService.loggedUser), 
+      emiter:new FormControl(this.produit.user.user_id),
+      message:new FormControl(this.produit.nomProduit+":"),
+      dateCreation:new FormControl(new Date()),
+        });
   })
   .catch(()=>this.errTXT="msg d'erreur").finally(()=>{
     this.isLoading = false;
-  })
+  });
+  
 }
 
 newCart(){
@@ -94,6 +109,22 @@ addToCart(){
 }
 backClicked() {
   this._location.back();
+}
+
+onSubmit(){
+  const formData = new FormData();
+  const message = this.messageService.dataForm.value;
+  formData.append('message',JSON.stringify(message));
+
+  this.messageService.message(formData).toPromise().then(data=>{
+    console.log(data);  
+    this.toastr.success('Message envoyé!');
+    this.messages = [...this.messages, data];
+   }
+  ) 
+  .catch(()=>this.errTXT="msg d'erreur").finally(()=>{
+    
+  });
 }
 }
 

@@ -146,13 +146,24 @@
     .inscription-btn:hover {
       transform: scale(1.2);
     }
-
+.inscription-small{
+  display: none;
+}
+.inscription-large{
+  display: flex;
+}
     @media only screen and (max-width:790px){
       .home-btn{
         margin: -6%;
         position: absolute;
         left: 13%;
         top: 10%;
+      }
+      .inscription-large{
+        display: none;
+      }
+      .inscription-small{
+        display: flex;
       }
       .openbtn2{
         margin-left: -12%;

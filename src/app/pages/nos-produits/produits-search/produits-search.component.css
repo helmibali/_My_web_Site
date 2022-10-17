@@ -480,9 +480,9 @@ border-radius: 5px;
 @media only screen and (max-width:800px){
     .fleche img{
         position:absolute;
-        left: 80%;
+        left: 87%;
         /* top: -1184px; */
-        top: 700px;
+        top: 1100px;
     border-radius: 5px;
         width: 35px;
         height: 35px;

@@ -7,6 +7,7 @@
       <img class="logo" src="./../../../assets/design/LogoR.png"
       style="" alt="">
       <!-- ---------------------------------message-------------------------------- -->
+      
       <div class=""
       *ngIf="authService.isloggedIn && messagesRecevedUnread?.length === 0">
       <a
@@ -42,10 +43,12 @@
          aria-hidden="true"
          style="font-size: 25px"></i> -->
          <img class="img-message" src="../../../assets/design/msg-icon.png" width="25" alt="">
-        <span
+        <span style="margin-bottom: 25px;
+        margin-left: -6px;z-index: 565;"
+          class="badge badge-info"
           *ngIf="messagesRecevedUnread?.length > 0"
-          class="badge"
-          style="color:#212051;z-index: 9999;"
+          
+         
         >
           {{ messagesRecevedUnread?.length }}
         </span>
@@ -182,8 +185,9 @@
 
           <span
             *ngIf="carts?.length > 0"
-            class="badge"
-            style="color: #212051"
+            style="margin-bottom: 25px;
+            margin-left: -6px;z-index: 565;"
+              class="badge badge-info"
             >{{ carts?.length }}</span
           >
       </a>
@@ -253,7 +257,7 @@
             
             </a>
           </button>
-          <button class="dropdown-item" type="button">
+          <!-- <button class="dropdown-item" type="button">
              <a
               *ngIf="authService.isloggedIn"
               class="user_options"
@@ -261,7 +265,7 @@
             >
               <i class="fa fa-key"></i> &nbsp;Changer mot de passe</a
             >
-          </button>
+          </button> -->
 
           <button class="dropdown-item" type="button">
             <a
@@ -276,6 +280,9 @@
           </button>
         </div>
       </div>
+      <div class="add">
+        <button type="button" class="btn btn-info ml-4" routerLink="/add-annonce"><i class="fa fa-plus"></i></button>
+       </div>
   </div>
   </div>
 </div>

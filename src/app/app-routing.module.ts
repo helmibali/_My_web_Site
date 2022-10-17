@@ -53,6 +53,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ReglesDeDiffusionComponent } from './pages/regles-de-diffusion/regles-de-diffusion.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
 import { AddUserComponent } from './pages/user/add-user/add-user.component';
+import { InscriptionPageComponent } from './pages/user/inscription-page/inscription-page.component';
 import { ResetPasswordForgotComponent } from './pages/user/reset-password-forgot/reset-password-forgot.component';
 import { UpdateImageComponent } from './pages/user/update-image/update-image.component';
 import { UpdatePasswordComponent } from './pages/user/update-password/update-password.component';
@@ -124,7 +125,8 @@ const routes: Routes = [
   {path:"profile-test",component:ProfileTestComponent},
   {path:"config",component:ConfigComponent},
   {path:"sidebar",component:SidebarComponent},
-  {path:"card",component:MenuLightComponent}
+  {path:"card",component:MenuLightComponent},
+  {path:"inscription-resp",component:InscriptionPageComponent},
 ];
 
 @NgModule({

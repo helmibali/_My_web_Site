@@ -109,6 +109,10 @@
           left: 12%;;
           width: 200px;
     }
+    .user-menu{
+      left: -714%;
+      top: 136%;
+    }
     .groupe-btn{
       display:flex;
       width: 80%;
@@ -133,10 +137,13 @@
     .home-btn{
       margin: -6%;
       position: absolute;
-      left: 18%;
-      top: 26%;
+      left: 15%;
+      top: 22%;
     }
     .openbtn2{
       margin-left: -9%;
+    }
+    .add{
+      margin-right: -23%;
     }
   }

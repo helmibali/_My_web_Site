@@ -1,0 +1,83 @@
+
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Créez votre publication
+  </a>
+  
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" style="    padding: 0.25rem;
+  width: 80%;
+  margin: -18%;
+  margin-top: 1%;">
+
+ 
+    <form [formGroup]="this.articleService.dataForm" (ngSubmit)="insertArticle()">
+    
+      <div class="modal-body">
+          <div class="form-group">
+              <label for="title">
+                  Titre d'article
+              </label>
+              <input id="title" type="text" formControlName="title" class="form-control">
+            </div>
+  
+            <div class="form-group">
+              <label for="text">
+                  Corps d'article
+              </label>
+              <textarea id="text" type="text" formControlName="text" class="form-control"></textarea>
+            </div>
+
+
+            <!-- <div class="form-group">
+              <label>Upload une image</label><br/>
+                  <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                  <img [src]="imgURL" height="200" *ngIf="imgURL">
+          </div> -->
+            
+
+          <p>
+            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <i class="fa fa-image">  Image</i>
+            </a>
+            
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+             
+              <div class="form-group">
+                <label>File Upload  </label>
+                    <input type="file" accept="image/*" (change)="onSelectFile($event)">
+                    <img [src]="imgURL" height="200" *ngIf="imgURL">
+            </div>
+    
+            <!-- <button
+             class="btn btn-primary"
+             type="button" 
+             data-toggle="collapse" 
+             data-target="#collapseExample"
+              aria-expanded="false"
+               aria-controls="collapseExample"
+             [disabled]="! onSelect" 
+             (click)="validateImg()"
+             >valider
+            </button> -->
+            <p>{{ok}}</p>
+            </div>
+          </div>
+    
+
+
+
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-danger" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Annuler
+        </a>
+        <button class="btn btn-primary" type="submit">Publier!</button>
+      </div>
+          </form>
+   
+  </div>
+</div>
+

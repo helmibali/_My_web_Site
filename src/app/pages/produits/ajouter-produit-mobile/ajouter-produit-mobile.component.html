@@ -106,10 +106,11 @@
                   <option *ngFor="let m of marques" [value]="m.id">{{m.libelleMarque}}</option>
                 </select>
           </div>
-          <div class="form-group"  style="width:47%; margin:auto;;
+          <div *ngIf="selectedMarque !== 0" 
+          class="form-group" style="width:47%; margin:auto;;
           position: relative;">
          
-            <ng-multiselect-dropdown formControlName="modeles"
+            <ng-multiselect-dropdown formControlName="modeles"  
           [placeholder]="'Modeles *'"
           [settings]="dropdownSettings"
           [data]="modeles"

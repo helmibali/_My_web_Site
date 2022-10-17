@@ -20,8 +20,21 @@
       </a>
       </div>
       <!-- -------------------------------------S'inscrire----------------------------------  -->
-      <div class="ml-2">
+      <div class="ml-2 inscription-large">
         <app-add-user></app-add-user>
+      </div>
+      <div class="ml-2 inscription-small">
+        <a
+        type="button"
+        class="inscription-btn"
+        style="
+       "
+        data-toggle="dropdown"
+        *ngIf="!authService.isloggedIn"
+        routerLink="/inscription-resp"
+      >
+      <i class="fa fa-user-plus"></i> &nbsp;S'inscrire
+    </a>
       </div>
 <!---------------user---------------------------------------------------------------- -->
        
