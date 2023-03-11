@@ -1,28 +1,32 @@
 <div class="container" style="">
-    <form [formGroup]="this.cartService.dataForm" (ngSubmit)="addToCart()">
-        <div class="form-group">
-          
-          <input type="text" class="form-control" formControlName="dateCreation" id="">
-        </div>
-        <div class="form-group">
-          
-            <input type="text" class="form-control" formControlName="user" id="">
-          </div>
-    
-          <div class="form-group" >
-          
-            <input type="number" class="form-control" formControlName="produit" id="">
-          </div>
-    
-          <div class="form-group" >
-          
-            <input type="text" class="form-control" formControlName="prix" id="">
-          </div>
-    
-        
-        <div class="form-group">
-          <button  type="submit"  class="btn btn-danger"> Commander</button>
-        </div>
-    
-    
-      </form></div>
+  <form [formGroup]="this.cartService.dataForm" (ngSubmit)="addToCart()">
+    <div class="form-group">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="dateCreation"
+        id=""
+      />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="user" id="" />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="number"
+        class="form-control"
+        formControlName="produit"
+        id=""
+      />
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="prix" id="" />
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-danger">Commander</button>
+    </div>
+  </form>
+</div>

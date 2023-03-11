@@ -6,7 +6,6 @@
   <div class="n" *ngIf="!authServices.isloggedIn"><app-menu></app-menu></div>
 
   <div class="" style="background-color: #e9ebedaf">
-   
     <div class="container" style="padding-bottom: 100px">
       <!-- Page header start -->
       <div class="page-title">
@@ -64,7 +63,7 @@
                               <img
                                 class="card-img-top img-responsive rounded-circle image-user"
                                 src="{{
-                                  'https://casse12.herokuapp.com/api/imageuser/' +
+                                  ' http://localhost:8099/api/imageuser/' +
                                     c.user_id
                                 }}"
                                 style="height: 50px; width: 50px"
@@ -86,23 +85,6 @@
                 <!-- messages tools -->
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
                   <div class="selected-user" style="display: flex">
-                    <!-- <div>
-
-                                    
-                                            <span class="name" >
-                                                {{user?.prenom}} {{user?.nom}}
-                                            </span>
-                                       
-                                </div> -->
-
-                    <!-- <div>
-                                    <p>
-                                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3 collapseExample collapseExample2">
-                                          tout les messages
-                                        </button>
-                                      </p>
-                                </div> -->
-
                     <div>
                       <div class="" id="headingOne">
                         <h2 class="mb-0">
@@ -124,7 +106,7 @@
                       <div class="" id="headingTwo">
                         <h2 class="mb-0">
                           <button
-                          class="btn btn-info"
+                            class="btn btn-info"
                             type="button"
                             data-toggle="collapse"
                             data-target="#collapseTwo"
@@ -141,7 +123,7 @@
                       <div class="" id="headingThree">
                         <h2 class="mb-0">
                           <button
-                          class="btn btn-info"
+                            class="btn btn-info"
                             type="button"
                             data-toggle="collapse"
                             data-target="#collapseThree"
@@ -160,14 +142,6 @@
 
                   <div class="accordion" id="accordionExample">
                     <div class="card" style="margin-bottom: 0">
-                      <!-- <div class="card-header" id="headingOne">
-                                        <h2 class="mb-0">
-                                          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Collapsible Group Item #1
-                                          </button>
-                                        </h2>
-                                      </div> -->
-
                       <div
                         id="collapseOne"
                         class="collapse show"
@@ -196,7 +170,7 @@
                                     <img
                                       class="card-img-top img-responsive rounded-circle image-user"
                                       src="{{
-                                        'https://casse12.herokuapp.com/api/imageuser/' +
+                                        ' http://localhost:8099/api/imageuser/' +
                                           m.auteur.user_id
                                       }}"
                                       style="height: 50px; width: 50px"
@@ -204,7 +178,6 @@
                                     />
                                   </a>
                                 </div>
-                                <!-- <div class="chat-name">Vous</div> -->
                               </div>
 
                               <div class="col">
@@ -227,7 +200,7 @@
                                   {{ m.emiter.prenom }} {{ m.emiter.nom }}
                                 </div>
                                 <div class="row">{{ m.message }}</div>
-                                <!-- <div *ngIf="m.auteur.username === this.authServices.loggedUser" class="row"><i class="fa fa-arrow-right"></i> {{m.message}}</div> -->
+
                                 <div
                                   style="display: flex"
                                   *ngIf="
@@ -237,27 +210,18 @@
                                 >
                                   <p>pour:</p>
                                   <a
-                                  class="receive"
+                                    class="receive"
                                     (click)="toDiscussion(m.emiter.username)"
                                     >{{ m.emiter.prenom }} {{ m.emiter.nom }}
                                   </a>
                                 </div>
                               </div>
-
-                              <!-- <div class="col">{{c.produit.prixProduit | currency:"TND":"symbol"}} <span class="close"style="">en cours</span></div> -->
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="card" style="margin-bottom: 0">
-                      <!-- <div class="card-header" id="headingTwo">
-                                        <h2 class="mb-0">
-                                          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Collapsible Group Item #2
-                                          </button>
-                                        </h2>
-                                      </div> -->
                       <div
                         id="collapseTwo"
                         class="collapse"
@@ -286,7 +250,7 @@
                                     <img
                                       class="card-img-top img-responsive rounded-circle image-user"
                                       src="{{
-                                        'https://casse12.herokuapp.com/api/imageuser/' +
+                                        ' http://localhost:8099/api/imageuser/' +
                                           m.auteur.user_id
                                       }}"
                                       style="height: 50px; width: 50px"
@@ -294,7 +258,6 @@
                                     />
                                   </a>
                                 </div>
-                                <!-- <div class="chat-name">Vous</div> -->
                               </div>
 
                               <div class="col">
@@ -317,7 +280,6 @@
                                   {{ m.emiter.prenom }} {{ m.emiter.nom }}
                                 </div>
                                 <div class="row">{{ m.message }}</div>
-                                <!-- <div *ngIf="m.auteur.username === this.authServices.loggedUser" class="row"><i class="fa fa-arrow-right"></i> {{m.message}}</div> -->
                                 <div
                                   style="display: flex"
                                   *ngIf="
@@ -327,28 +289,19 @@
                                 >
                                   <p>pour:</p>
                                   <a
-                                  type="button"
+                                    type="button"
                                     class="receive"
                                     (click)="toDiscussion(m.emiter.username)"
                                     >{{ m.emiter.prenom }} {{ m.emiter.nom }}
                                   </a>
                                 </div>
                               </div>
-
-                              <!-- <div class="col">{{c.produit.prixProduit | currency:"TND":"symbol"}} <span class="close"style="">en cours</span></div> -->
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="card" style="margin-bottom: 0">
-                      <!-- <div class="card-header" id="headingThree">
-                                        <h2 class="mb-0">
-                                          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Collapsible Group Item #3
-                                          </button>
-                                        </h2>
-                                      </div> -->
                       <div
                         id="collapseThree"
                         class="collapse"
@@ -377,7 +330,7 @@
                                     <img
                                       class="card-img-top img-responsive rounded-circle image-user"
                                       src="{{
-                                        'https://casse12.herokuapp.com/api/imageuser/' +
+                                        ' http://localhost:8099/api/imageuser/' +
                                           m.auteur.user_id
                                       }}"
                                       style="height: 50px; width: 50px"
@@ -385,7 +338,6 @@
                                     />
                                   </a>
                                 </div>
-                                <!-- <div class="chat-name">Vous</div> -->
                               </div>
 
                               <div class="col">
@@ -408,7 +360,6 @@
                                   {{ m.emiter.prenom }} {{ m.emiter.nom }}
                                 </div>
                                 <div class="row">{{ m.message }}</div>
-                                <!-- <div *ngIf="m.auteur.username === this.authServices.loggedUser" class="row"><i class="fa fa-arrow-right"></i> {{m.message}}</div> -->
                                 <div
                                   style="display: flex"
                                   *ngIf="
@@ -424,8 +375,6 @@
                                   </a>
                                 </div>
                               </div>
-
-                              <!-- <div class="col">{{c.produit.prixProduit | currency:"TND":"symbol"}} <span class="close"style="">en cours</span></div> -->
                             </div>
                           </div>
                         </div>

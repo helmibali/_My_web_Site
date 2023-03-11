@@ -7,7 +7,7 @@
 }
 .fleche{
     position: sticky;
-    top: -100px;  
+    top: 15%;  
     z-index: 9999;
 }
 .fleche img{

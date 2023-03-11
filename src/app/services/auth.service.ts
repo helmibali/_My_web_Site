@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../model/user.model';
 
 
@@ -25,8 +26,8 @@ public countMsg: number;
 apiURL: string = '/api/login';
 apiURLall: string = '/api/users/liste';
 
-backUrl="https://casse12.herokuapp.com";
-//backUrl="http://localhost:8081";
+//backUrl="https://casse12.herokuapp.com";
+backUrl= environment.apiUrl;
 
   constructor(private router:Router, private http:HttpClient) { }
 

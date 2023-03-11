@@ -232,6 +232,9 @@ import { CreateArticleCollapseComponent } from './article/create-article-collaps
   // {provide:HTTP_INTERCEPTORS, useClass : TokenInterceptor,multi:true}
   providers: 
   [
+    // { provide : HTTP_INTERCEPTORS,
+    //   useClass : TokenInterceptor,
+    //   multi : true},
   
     {
       provide: 'SocialAuthServiceConfig',
